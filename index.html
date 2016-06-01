@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+
+
+<html>
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.6">
+    <meta name="description" content="Find current power outages on a map.">
+    <meta name="keywords" content="outage, power outage, out, location, customer outage, map municipality, region">
+    <meta name="author" content="">
+    <meta http-equiv="Expires" content="300" />
+    <meta http-equiv="Cache-Control" content="public" />
+    <meta name="DCS.dcsqry" content="" />
+    <meta name="WT.cg_n" content="Safety & Outages" />
+    <meta name="WT.cg_s" content="Outages map" />
+
+    <title>BC Hydro</title>
+
+
+
+    <script type="text/javascript" src="/orspocweb/etc/designs/hydro/mobile/clientlibs/global-media.min.js"></script>
+</head>
+
+
+
+
+
+<body>
+
+
+
+
+
+
+
+
+
+
+    <!-- R3 Request URL: httpss://www.bchydro.com:80/content/include/cached/framework/header.validatesession.html -->
+    <!-- R3 Request URI: /content/include/cached/framework/header.validatesession.html -->
+    <!-- R3 Request Selectors: numAccounts.0.inlineCSS.true.useAbsUrl.false.reqPath.%252Fpower-outages%252Fapp%252Fhome.html.includeHead.true -->
+
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+
+        <!-- Begin Meta Tagging for WebTrends -->
+
+
+        <meta name="WT.cg_n" content="Safety & Outages" />
+
+        <meta name="WT.cg_s" content="Outages landing;Logged In" />
+
+        <meta name="SmartView_Page" content="0" />
+
+        <meta name="�" content="�" />
+
+        <!--  End Meta Tagging for Webtrends -->
+
+
+        <link rel="icon" type="image/vnd.microsoft.icon" href="/orspocweb/content/dam/BCHydro/images/icons/favicon.ico" />
+        <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/orspocweb/content/dam/BCHydro/images/icons/favicon.ico" />
+        <link href="/orspocweb/content/dam/BCHydro/images/icons/hydro-icon-27-droid.png" rel="apple-touch-icon" sizes="27x27" />
+        <link href="/orspocweb/content/dam/BCHydro/images/icons/hydro-icon-72-droid.png" rel="apple-touch-icon" sizes="72x72" />
+        <link href="/orspocweb/content/dam/BCHydro/images/icons/hydro-icon-114-droid.png" rel="apple-touch-icon" sizes="114x114" />
+        <link href="/orspocweb/content/dam/BCHydro/images/icons/hydro-icon-76.png" rel="apple-touch-icon" sizes="114x114" />
+        <link href="/orspocweb/content/dam/BCHydro/images/icons/hydro-icon-120.png" rel="apple-touch-icon" sizes="120x120" />
+        <link href="/orspocweb/content/dam/BCHydro/images/icons/hydro-icon-152.png" rel="apple-touch-icon" sizes="152x152" />
+
+        <title>BC Hydro - Power Outages</title>
+        <meta content="width=device-width;" name="viewport">
+        <meta name="keywords" content="" />
+
+        <link type="text/css" rel="stylesheet" href="/orspocweb/etc/designs/BCHydro/clientlibs/Reset.css" />
+        <link type="text/css" rel="stylesheet" href="/orspocweb/etc/designs/BCHydro/clientlibs/static.css" />
+        <link rel="stylesheet" href="/orspocweb/etc/clientlibs/foundation/main.min.css" type="text/css">
+        <script type="text/javascript" src="/orspocweb/etc/clientlibs/granite/jquery.min.js"></script>
+        <script type="text/javascript" src="/orspocweb/etc/clientlibs/granite/utils.min.js"></script>
+        <script type="text/javascript" src="/orspocweb/etc/clientlibs/granite/jquery/granite.min.js"></script>
+        <script type="text/javascript" src="/orspocweb/etc/clientlibs/foundation/jquery.min.js"></script>
+        <script type="text/javascript" src="/orspocweb/etc/clientlibs/foundation/main.min.js"></script>
+
+        <link type="text/css" rel="stylesheet" href="/orspocweb/etc/designs/BCHydro/clientlibs/BCH-MyAccount.css" />
+
+        <link type="text/css" rel="stylesheet" href="/orspocweb/etc/designs/BCHydro/clientlibs/GeneralStyles.css" />
+        <link type="text/css" rel="stylesheet" href="/orspocweb/etc/designs/BCHydro/clientlibs/ComponentsStyles.css" />
+        <link type="text/css" rel="stylesheet" href="/orspocweb/etc/designs/BCHydro/clientlibs/BCHHeader.css" />
+
+        <script src="/orspocweb/etc/designs/BCHydro/Javascript/jquery-1.7.1.min.js" language="JavaScript"></script>
+
+        <!--[if lt IE 9 ]>
+    	<script src="/etc/designs/BCHydro/Javascript/html5.js"></script>
+    <![endif]-->
+        <!--[if IE 7 ]>
+    	<link type="text/css" rel="stylesheet" href="/etc/designs/BCHydro/clientlibs/IE7.css?v=2"/>
+    <![endif]-->
+        <!--[if IE 8 ]>
+    	<link type="text/css" rel="stylesheet" href="/etc/designs/BCHydro/clientlibs/IE8.css?v=2"/>
+    <![endif]-->
+    </head>
+
+    <body>
+        <div id="container">
+            <div class="notifications">
+
+
+
+
+
+                <script type="text/javascript">
+                    $(function () {
+
+                        if (isBrowserOld()) {
+                            displayBrowserNotification();
+                        }
+
+                        displayGeneralNotification();
+                        displayEmergencyNotification();
+
+                        $('#notification-browser #browser-message-close').on('click', function (e) {
+                            //e.preventDefault();            
+                            // Hide the alert message
+                            $('.browserMessage').slideUp();
+                            // Create cookie - emergencyMessageDismiss
+                            createCookie('browserMessageDismiss', 1, 0);
+                        });
+
+                        $('#general-message-close').on('click', function (e) {
+                            e.preventDefault();
+                            // Hide the alert message
+                            $('.generalMessage').slideUp();
+                            // Create cookie - generalMessageDismiss
+                            createCookie('generalMessageDismiss', 1, 0);
+                        });
+
+                    });
+                </script>
+
+                <div class="notification generalMessage alert-info" id="notification-general" style="display: none"></div>
+                <div class="notification browserSupport alert-warning" id="notification-browser" style="display: none"></div>
+                <div class="notification emergencyMessage alert-emergency" id="notification-emergency" style="display: none"></div>
+            </div>
+
+
+
+            <header id="bchheader" class="masthead hydro-r3">
+
+
+
+
+                <div id="bchh-utility_nav" class="bchh-utilmenu">
+                    <ul class="bchh-utilmenu">
+                        <li>
+                            <a href="/about.html" class="bchh-item">About BC Hydro</a>
+                        </li>
+                        <li>
+                            <a href="/careers.html" class="bchh-item">Careers</a>
+                        </li>
+                        <li>
+                            <a href="/newsletters.html" class="bchh-item">Newsletters</a>
+                        </li>
+                        <li>
+                            <a href="/contact.html" class="bchh-item">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End: #bchh-utility_nav -->
+
+                <div id="bchh-header-container">
+
+                    <a id="bchh-bchydro-logo" class="ir" href="/">BC Hydro Regeneration | 50</a>
+                    <!-- end #bchh-bchydro-logo -->
+
+                    <!-- Start: #bchh-hello -->
+                    <div id="bchh-hello" style="display:none">
+
+                        <!-- Start: #bchh-loginblock-in -->
+                        <div id="bchh-loginblock-in">
+                            <span id="bchh-welcome">Hi UserFirst</span>
+                            <ul id="bchh-my-profile" class="bchh-utilmenu">
+                                <li class="bchh-sub"><a href="https://www.bchydro.com/BCHCustomerPortal/web/viewProfile.html" class="bchh-profile bchh-item"><span class="bchh-icon bchh-i-profile"></span>My Profile<span class="bchh-icon bchh-i-arrow"></span></a>
+                                    <div class="bchh-utilsubmenu">
+                                        <ul>
+                                            <li><a href="https://www.bchydro.com/BCHCustomerPortal/web/viewProfile.html">Personal Information</a></li>
+                                            <li><a href="https://www.bchydro.com/BCHCustomerPortal/web/commPrefLanding.html">Subscriptions &amp; Alerts</a></li>
+
+
+                                            <li id="bchh-change-password"><a href="https://www.bchydro.com/BCHCustomerPortal/web/changePassword.html">Change Password</a></li>
+
+
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                            <button id="btnLogout" class="secondary" onClick="location.href='https://www.bchydro.com/BCHCustomerPortal/web/logout.html'">Log out</button>
+                        </div>
+                        <!-- End: #bchh-loginblock-in -->
+
+                        <!-- End: #bchh-loginblock-out -->
+                        <div id="bchh-loginblock-out">
+                            <a href="https://www.bchydro.com/BCHCustomerPortal/createProfile.html">Sign Up</a>
+                            <button id="btnLogin" class="primary" onClick="location.href='https://www.bchydro.com/BCHCustomerPortal/web/login.html'">Log in</button>
+                        </div>
+                        <!-- End: #bchh-loginblock-out -->
+
+                        <!-- Start: #bchh-searchblock -->
+                        <div id="bchh-searchblock">
+                            <form id="headerSearch" name="seek1" action="/search.html" method="get">
+                                <fieldset>
+                                    <input type="hidden" value="bchydro-com" name="site">
+                                    <input type="hidden" value="bchydro-com" name="client">
+                                    <input type="hidden" value="bchydro-com" name="proxystylesheet">
+                                    <input type="hidden" value="xml_no_dtd" name="output">
+                                    <label for="search">Search</label>
+                                    <i class="fa fa-search"></i>
+                                    <input type="text" value="" name="q" maxlength="100" id="search" placeholder="How can we help?" />
+                                </fieldset>
+                            </form>
+                        </div>
+                        <!-- End: #bchh-searchblock -->
+
+                        <input type="hidden" value="false" id="sessionLoggedIn">
+
+                    </div>
+                    <!-- end #bchh-hello -->
+                </div>
+                <!-- end #bchh-header-container -->
+
+
+
+
+
+                <div id="bchh-main_nav" class="bchh-subs">
+                    <ul id="bchh-nav">
+                        <li><a href="/accounts-billing.html">Accounts &amp; Billing</a></li>
+                        <li><a href="/powersmart.html">Energy savings</a></li>
+                        <li><a href="/news.html">News, events &amp; media</a></li>
+                        <li><a href="/energy-in-bc.html">Energy in B.C.</a></li>
+                        <li><a href="/community.html">Community</a></li>
+                        <li class="current"><a href="/safety-outages.html">Safety &amp; Outages</a></li>
+                    </ul>
+                </div>
+                <div id="bchh-sub_nav">
+                    <ul class="bchh-sub_nav">
+
+                        <!--//#####################################
+            // Change the font of My Account menu item here
+            //#####################################    -->
+
+                        <li lvl="5" class="bchh-sub current">
+
+
+
+
+                            <a href="/safety-outages/power-outages.html">Power Outages</a>
+
+
+                            <!--//#####################################
+            // end
+            //#####################################    -->
+
+                            <div depth="5" class="bchh-menu">
+                                <div class="bchh-menu-close">
+                                    <a class="ir" href="#">Close</a>
+                                </div>
+                                <div class="bchh-menu-container">
+                                    <ul depth="6">
+                                        <li class="bchh-header">
+
+
+
+                                            <a href="/safety-outages/power-outages/outage_map.html">Outage map </a>
+
+
+
+
+
+
+
+
+
+
+                                    </ul>
+                                    <ul depth="6">
+                                        <li class="bchh-header">
+
+
+
+                                            <a href="/safety-outages/power-outages/outage_list.html">Outage list </a>
+
+
+
+
+
+
+
+
+
+
+                                    </ul>
+                                    <ul depth="6">
+                                        <li class="bchh-header">
+
+
+
+                                            <a href="/safety-outages/power-outages/reporting_outage.html">Report an outage </a>
+
+
+
+
+
+
+
+
+
+
+                                    </ul>
+                                    <ul depth="6">
+                                        <li class="bchh-header">
+
+
+
+                                            <a href="/safety-outages/power-outages/prepare-for-outages.html">Prepare for outages </a>
+
+
+
+
+
+
+
+
+
+
+                                            <li depth="7">
+
+
+
+
+                                                <a href="/safety-outages/power-outages/prepare-for-outages/prepare-your-home.html">Prepare your home for an outage</a>
+                                            </li>
+                                            <li depth="7">
+
+
+
+
+                                                <a href="/safety-outages/power-outages/prepare-for-outages/prepare-your-business.html">Prepare your business for an outage</a>
+                                            </li>
+                                    </ul>
+                                    <ul depth="6">
+                                        <li class="bchh-header">
+
+
+
+                                            <a href="/safety-outages/power-outages/planned-outages.html">Why and how we plan outages </a>
+
+
+
+
+
+
+
+
+
+
+                                    </ul>
+                                    <ul depth="6">
+                                        <li class="bchh-header">
+
+
+
+                                            <a href="/safety-outages/power-outages/outages_rss.html">RSS outages feeds </a>
+
+
+
+
+
+
+
+
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            </li>
+
+                            <!--//#####################################
+            // Change the font of My Account menu item here
+            //#####################################    -->
+
+                            <li lvl="5" class="bchh-sub">
+
+
+
+
+                                <a href="/safety-outages/stay-safe.html">Learn to Stay Safe</a>
+
+
+                                <!--//#####################################
+            // end
+            //#####################################    -->
+
+                                <div depth="5" class="bchh-menu">
+                                    <div class="bchh-menu-close">
+                                        <a class="ir" href="#">Close</a>
+                                    </div>
+                                    <div class="bchh-menu-container">
+                                        <ul depth="6">
+                                            <li class="bchh-header">
+
+
+
+                                                <a href="/safety-outages/stay-safe/safety-at-home.html">Electricity safety at home </a>
+
+
+
+
+
+
+
+
+
+
+                                                <li depth="7">
+
+
+
+
+                                                    <a href="/safety-outages/stay-safe/safety-at-home/electrical-safety-tips.html">Electrical safety tips</a>
+                                                </li>
+                                                <li depth="7">
+
+
+
+
+                                                    <a href="/safety-outages/stay-safe/safety-at-home/protect-electronics.html">Protect your electronics</a>
+                                                </li>
+                                                <li depth="7">
+
+
+
+
+                                                    <a href="/safety-outages/stay-safe/safety-at-home/safety-for-kids.html">Electrical safety for kids</a>
+                                                </li>
+                                        </ul>
+                                        <ul depth="6">
+                                            <li class="bchh-header">
+
+
+
+                                                <a href="/safety-outages/stay-safe/safety-outside.html">Electrical safety outside </a>
+
+
+
+
+
+
+
+
+
+
+                                                <li depth="7">
+
+
+
+
+                                                    <a href="/safety-outages/stay-safe/safety-outside/outdoor-safety-bchydro-site.html">Outdoor safety and BC Hydro sites</a>
+                                                </li>
+                                                <li depth="7">
+
+
+
+
+                                                    <a href="/safety-outages/stay-safe/safety-outside/safe-distance.html">Safe Distance and Power Lines</a>
+                                                </li>
+                                                <li depth="7">
+
+
+
+
+                                                    <a href="/safety-outages/stay-safe/safety-outside/trees-power-lines.html">Trees and power lines</a>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                </li>
+
+                                <!--//#####################################
+            // Change the font of My Account menu item here
+            //#####################################    -->
+
+                                <li lvl="5" class="bchh-sub">
+
+
+
+
+                                    <a href="/safety-outages/safety-in-emergencies.html">Safety in Emergencies</a>
+
+
+                                    <!--//#####################################
+            // end
+            //#####################################    -->
+
+                                    <div depth="5" class="bchh-menu">
+                                        <div class="bchh-menu-close">
+                                            <a class="ir" href="#">Close</a>
+                                        </div>
+                                        <div class="bchh-menu-container">
+                                            <ul depth="6">
+                                                <li class="bchh-header">
+
+
+
+                                                    <a href="/safety-outages/safety-in-emergencies/evacuations.html">Plan ahead for evacuations </a>
+
+
+
+
+
+
+
+
+
+
+                                            </ul>
+                                            <ul depth="6">
+                                                <li class="bchh-header">
+
+
+
+                                                    <a href="/safety-outages/safety-in-emergencies/natural-disasters.html">Earthquakes, wildfires, and floods </a>
+
+
+
+
+
+
+
+
+
+
+                                            </ul>
+                                            <ul depth="6">
+                                                <li class="bchh-header">
+
+
+
+                                                    <a href="/safety-outages/safety-in-emergencies/accidents-people.html">Electrical accidents </a>
+
+
+
+
+
+
+
+
+
+
+                                            </ul>
+                                            <ul depth="6">
+                                                <li class="bchh-header">
+
+
+
+                                                    <a href="/safety-outages/safety-in-emergencies/motor-vehicle-accidents.html">Motor vehicle accidents involving power lines </a>
+
+
+
+
+
+
+
+
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    </li>
+
+                                    <!--//#####################################
+            // Change the font of My Account menu item here
+            //#####################################    -->
+
+                                    <li lvl="5" class="bchh-sub">
+
+
+
+
+                                        <a href="/safety-outages/worker-training.html">Worker Safety Training</a>
+
+
+                                        <!--//#####################################
+            // end
+            //#####################################    -->
+
+                                        <div depth="5" class="bchh-menu">
+                                            <div class="bchh-menu-close">
+                                                <a class="ir" href="#">Close</a>
+                                            </div>
+                                            <div class="bchh-menu-container">
+                                                <ul depth="6">
+                                                    <li class="bchh-header">
+
+
+
+                                                        <a href="/safety-outages/worker-training/safety-resources.html">Electrical safety resources </a>
+
+
+
+
+
+
+
+
+
+
+                                                </ul>
+                                                <ul depth="6">
+                                                    <li class="bchh-header">
+
+
+
+                                                        <a href="/safety-outages/worker-training/trades.html">Electrical Safety Awareness sessions for trades workers </a>
+
+
+
+
+
+
+
+
+
+
+                                                </ul>
+                                                <ul depth="6">
+                                                    <li class="bchh-header">
+
+
+
+                                                        <a href="/safety-outages/worker-training/first-responders.html">Safety training for first responders  </a>
+
+
+
+
+
+
+
+
+
+
+                                                </ul>
+                                                <ul depth="6">
+                                                    <li class="bchh-header">
+
+
+
+                                                        <a href="/safety-outages/worker-training/firefighters.html">Electrical Safety Awareness sessions for fire fighter training officers </a>
+
+
+
+
+
+
+
+
+
+
+                                                </ul>
+                                                <ul depth="6">
+                                                    <li class="bchh-header">
+
+
+
+                                                        <a href="/safety-outages/worker-training/students.html">Electrical Safety Awareness for post-secondary students </a>
+
+
+
+
+
+
+
+
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        </li>
+
+                                        <!--//#####################################
+            // Change the font of My Account menu item here
+            //#####################################    -->
+
+                                        <li lvl="5" class="bchh-sub">
+
+
+
+
+                                            <a href="/safety-outages/keeping-communities-safe.html">Keeping Our Communities Safe</a>
+
+
+                                            <!--//#####################################
+            // end
+            //#####################################    -->
+
+                                            <div depth="5" class="bchh-menu">
+                                                <div class="bchh-menu-close">
+                                                    <a class="ir" href="#">Close</a>
+                                                </div>
+                                                <div class="bchh-menu-container">
+                                                    <ul depth="6">
+                                                        <li class="bchh-header">
+
+
+
+                                                            <a href="/safety-outages/keeping-communities-safe/health-electricity.html">Health and electricity </a>
+
+
+
+
+
+
+
+
+
+
+                                                    </ul>
+                                                    <ul depth="6">
+                                                        <li class="bchh-header">
+
+
+
+                                                            <a href="/safety-outages/keeping-communities-safe/electricity-theft.html">Electricity theft </a>
+
+
+
+
+
+
+
+
+
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            </li>
+                    </ul>
+                </div>
+
+            </header>
+
+
+
+
+
+
+            <nav class="breadcrumbs ors">
+
+                <a href="/">Home</a> &nbsp;&rsaquo;&nbsp;
+
+                <a href="/safety-outages.html">Safety &amp; Outages</a> &nbsp;&rsaquo;&nbsp;Power Outages
+
+
+            </nav>
+
+
+
+            <script src="/orspocweb/etc/designs/hydro/clientlibs/notifications.js"></script>
+            <link rel="stylesheet" type="text/css" href="/orspocweb/etc/designs/hydro/clientlibs/notifications.css">
+
+
+
+
+
+
+
+
+            <div id="mainContent" class="columns_x4 floatnone">
+                <section class="column left span_3">
+                    <article class="column content">
+                        <div class="content-inner">
+
+
+
+
+
+
+
+
+
+
+                            <h1 class="page-title">ORS PoC Outage map</h1>
+                            <link href="https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/css/outages.css" rel="stylesheet">
+                            <script src="//maps.googleapis.com/maps/api/js?v=3&sensor=true&visual_refresh=true"></script>
+                            <script>
+                                var hash = window.location.hash;
+
+                                var region = null;
+                                var regions = [];
+
+
+                                region = {
+                                    id: '848340027',
+                                    paths: [new google.maps.LatLng(52.9603282838662, -122.445082984441), new google.maps.LatLng(52.9603282838662, -122.442102816079), new google.maps.LatLng(52.9585286987183, -122.442102816079), new google.maps.LatLng(52.9585286987183, -122.445082984441)]
+                                };
+
+                                regions.push(region);
+
+                                region = {
+                                    id: '521980323',
+                                    paths: [new google.maps.LatLng(50.1167921564644, -123.135750876244), new google.maps.LatLng(50.1167921564644, -122.208214296001), new google.maps.LatLng(49.0298783616419, -122.208214296001), new google.maps.LatLng(49.0298783616419, -123.135750876244)]
+                                };
+
+                                regions.push(region);
+
+                                region = {
+                                    id: '1602964060',
+                                    paths: [new google.maps.LatLng(54.6094249187891, -128.412189535727), new google.maps.LatLng(54.6094249187891, -128.409100067511), new google.maps.LatLng(54.6076315779912, -128.409100067511), new google.maps.LatLng(54.6076315779912, -128.412189535727)]
+                                };
+
+                                regions.push(region);
+
+                                region = {
+                                    id: '2072041405',
+                                    paths: []
+                                };
+
+                                regions.push(region);
+
+                                region = {
+                                    id: '725364552',
+                                    paths: [new google.maps.LatLng(51.373822335838, -121.041919878999), new google.maps.LatLng(51.373822335838, -121.039046027907), new google.maps.LatLng(51.3720236260058, -121.039046027907), new google.maps.LatLng(51.3720236260058, -121.041919878999)]
+                                };
+
+                                regions.push(region);
+
+                                region = {
+                                    id: '1602896846',
+                                    paths: []
+                                };
+
+                                regions.push(region);
+
+                                region = {
+                                    id: '1812901382',
+                                    paths: [new google.maps.LatLng(48.6954489403959, -123.440912727956), new google.maps.LatLng(48.6954489403959, -123.38355148537), new google.maps.LatLng(48.4288614059822, -123.38355148537), new google.maps.LatLng(48.4288614059822, -123.440912727956)]
+                                };
+
+                                regions.push(region);
+
+
+                                var map;
+                                var markers = [];
+                                var displayedOutage = null;
+                                var showPolygon = null;
+                                var clusterZoomLevel = 12;
+
+                                google.maps.visualRefresh = true;
+
+                                function initialize() {
+                                    if (!google.maps.Polygon.prototype.getBounds) {
+                                        google.maps.Polygon.prototype.getBounds = function (latLng) {
+                                            if (this.bounds) {
+                                                return this.bounds;
+                                            }
+
+                                            var bounds = new google.maps.LatLngBounds();
+                                            var paths = this.getPaths();
+                                            var path;
+
+                                            for (var p = 0; p < paths.getLength(); p++) {
+                                                path = paths.getAt(p);
+                                                for (var i = 0; i < path.getLength(); i++) {
+                                                    bounds.extend(path.getAt(i));
+                                                }
+                                            }
+
+                                            this.bounds = bounds;
+                                            return bounds;
+                                        }
+                                    }
+
+                                    var zoom = 4;
+                                    var center = new google.maps.LatLng(54.40986, -125.092773);
+                                    var initBounds = null;
+
+                                    if (hash) {
+                                        if (hash.indexOf("#locate=") === 0) {
+                                            var seperator = hash.indexOf("_");
+                                            var lat = hash.substring(8, seperator);
+                                            var lon = hash.substring(seperator + 1);
+
+                                            if (!isNaN(parseFloat(lat)) && isFinite(lat) && !isNaN(parseFloat(lon)) && isFinite(lon)) {
+                                                zoom = 12;
+                                                center = new google.maps.LatLng(lat, lon);
+                                            }
+                                        } else if (hash.indexOf("#region=") === 0) {
+                                            var hashValue = hash.substring(8);
+
+                                            for (var i = 0; i < regions.length; i++) {
+                                                if (regions[i].id == hashValue) {
+                                                    initBounds = new google.maps.LatLngBounds();
+                                                    var paths = regions[i].paths;
+                                                    for (var j = 0; j < paths.length; j++) {
+                                                        initBounds.extend(paths[j]);
+                                                    }
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    var mapOptions = {
+                                        zoom: zoom,
+                                        center: center,
+                                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                                        streetViewControl: false,
+                                        tilt: 0,
+                                        styles: [{
+                                            featureType: "poi",
+                                            elementType: "labels",
+                                            stylers: [{
+                                                visibility: "off"
+                                            }]
+                                        }],
+                                        mapTypeControl: false
+                                    };
+
+                                    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+                                    if (initBounds != null) {
+                                        map.fitBounds(initBounds);
+                                    }
+
+                                    var marker = null;
+
+
+
+                                    marker = new google.maps.Marker({
+                                        position: new google.maps.LatLng(52.959428491352, -122.44359290002),
+                                        map: map,
+                                        title: 'Work being done on our equipment : 5 Affected Customers',
+                                        icon: 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                    });
+
+                                    marker.polygon = new google.maps.Polygon({
+                                        paths: [new google.maps.LatLng(52.9585286987183, -122.443604461939), new google.maps.LatLng(52.9585446255628, -122.443313544715), new google.maps.LatLng(52.9585945182017, -122.44303336231), new google.maps.LatLng(52.9586764594007, -122.442774681398), new google.maps.LatLng(52.9587873003753, -122.442547442553), new google.maps.LatLng(52.9589227817704, -122.442360378289), new google.maps.LatLng(52.9590776973151, -122.442220677506), new google.maps.LatLng(52.9592460938651, -122.4421337092), new google.maps.LatLng(52.9594215001527, -122.442102816079), new google.maps.LatLng(52.9595971754559, -122.442129186021), new google.maps.LatLng(52.9597663686343, -122.442211806319), new google.maps.LatLng(52.9599225775771, -122.442347502501), new google.maps.LatLng(52.9600597990924, -122.442531060228), new google.maps.LatLng(52.9601727596327, -122.442755425625), new google.maps.LatLng(52.9602571179849, -122.443011976332), new google.maps.LatLng(52.9603096321316, -122.443290852875), new google.maps.LatLng(52.9603282838662, -122.44358133762), new google.maps.LatLng(52.9603123563697, -122.443872266729), new google.maps.LatLng(52.960262461764, -122.444152459283), new google.maps.LatLng(52.9601805175827, -122.444411147062), new google.maps.LatLng(52.9600696730645, -122.444638388448), new google.maps.LatLng(52.9599341881036, -122.444825450539), new google.maps.LatLng(52.9597792695141, -122.444965144766), new google.maps.LatLng(52.9596108709038, -122.445052103132), new google.maps.LatLng(52.959435463854, -122.445082984441), new google.maps.LatLng(52.9592597892027, -122.445056602614), new google.maps.LatLng(52.9590905979911, -122.444973972167), new google.maps.LatLng(52.9589343920306, -122.444838269118), new google.maps.LatLng(52.958797174059, -122.44465470885), new google.maps.LatLng(52.9586842170844, -122.444430345626), new google.maps.LatLng(52.958599861777, -122.444173801475), new google.maps.LatLng(52.9585473496907, -122.443894934872)],
+                                        strokeColor: '#FF0000',
+                                        clickable: true,
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 2,
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.35,
+                                        map: map,
+                                        title: 'Work being done on our equipment : 5 Affected Customers',
+                                        visible: false
+                                    });
+
+                                    marker.data = {
+                                        id: '956209',
+                                        dateOff: 'May 27, 10:46 a.m.',
+                                        crewStatus: 'On-site',
+                                        crewEta: 'May 27, 10:50 a.m.',
+                                        dateOn: 'May 27, 1:00 p.m.',
+                                        area: '1200 block CHEW RD',
+                                        cause: 'Work being done on our equipment',
+                                        numCustomersOut: '5',
+                                        lastUpdated: 'May 27, 10:47 a.m.'
+                                    };
+
+                                    markers.push(marker);
+
+
+
+                                    marker = new google.maps.Marker({
+                                        position: new google.maps.LatLng(49.0469588550905, -122.209580807046),
+                                        map: map,
+                                        title: 'Pole replacement : < 5 Affected Customers',
+                                        icon: 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                    });
+
+                                    marker.polygon = new google.maps.Polygon({
+                                        paths: [new google.maps.LatLng(49.0460605957228, -122.209595869884), new google.maps.LatLng(49.0460759235299, -122.209328992318), new google.maps.LatLng(49.0461251812699, -122.209071791314), new google.maps.LatLng(49.0462064761021, -122.208834150475), new google.maps.LatLng(49.0463166840746, -122.208625201873), new google.maps.LatLng(49.046451570151, -122.20845297516), new google.maps.LatLng(49.0466059509311, -122.208324089012), new google.maps.LatLng(49.0467738938157, -122.208243496763), new google.maps.LatLng(49.0469489449681, -122.208214296001), new google.maps.LatLng(49.0471243773137, -122.208237609459), new google.maps.LatLng(49.0472934490515, -122.208312541784), new google.maps.LatLng(49.0474496627426, -122.208436213857), new google.maps.LatLng(49.0475870150194, -122.20860387336), new google.maps.LatLng(49.0477002273169, -122.208809077358), new google.maps.LatLng(49.047784948754, -122.209043939877), new google.maps.LatLng(49.0478379233656, -122.209299434971), new google.maps.LatLng(49.0478571152531, -122.209565743634), new google.maps.LatLng(49.0478417868397, -122.209832631207), new google.maps.LatLng(49.0477925272224, -122.210089840783), new google.maps.LatLng(49.0477112295274, -122.210327487452), new google.maps.LatLng(49.0476010181426, -122.210536438256), new google.maps.LatLng(49.0474661286237, -122.210708663207), new google.maps.LatLng(49.0473117448952, -122.210837543897), new google.maps.LatLng(49.0471438000052, -122.210918127823), new google.maps.LatLng(49.0469687480955, -122.210947318665), new google.maps.LatLng(49.046793316356, -122.210923995199), new google.maps.LatLng(49.0466242464955, -122.210849054302), new google.maps.LatLng(49.0464680356673, -122.210725376399), new google.maps.LatLng(49.0463306868028, -122.210557714694), new google.maps.LatLng(49.0462174779477, -122.210352512458), new google.maps.LatLng(49.046132759459, -122.210117655397), new google.maps.LatLng(49.0460797868529, -122.209862168626)],
+                                        strokeColor: '#FF0000',
+                                        clickable: true,
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 2,
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.35,
+                                        map: map,
+                                        title: 'Pole replacement : < 5 Affected Customers',
+                                        visible: false
+                                    });
+
+                                    marker.data = {
+                                        id: '956173',
+                                        dateOff: 'May 27, 8:40 a.m.',
+                                        crewStatus: 'On-site',
+                                        crewEta: 'May 27, 8:45 a.m.',
+                                        dateOn: 'May 27, 4:00 p.m.',
+                                        area: '2400 block FOOKS RD',
+                                        cause: 'Pole replacement',
+                                        numCustomersOut: '< 5',
+                                        lastUpdated: 'May 27, 8:42 a.m.'
+                                    };
+
+                                    markers.push(marker);
+
+
+
+                                    marker = new google.maps.Marker({
+                                        position: new google.maps.LatLng(49.2492207345563, -122.770019489948),
+                                        map: map,
+                                        title: 'Work being done on our equipment : 15 Affected Customers',
+                                        icon: 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                    });
+
+                                    marker.polygon = new google.maps.Polygon({
+                                        paths: [new google.maps.LatLng(49.2480703274382, -122.77061022306), new google.maps.LatLng(49.2480746830603, -122.770132135531), new google.maps.LatLng(49.2480732157748, -122.769882391035), new google.maps.LatLng(49.2481011102455, -122.769636297891), new google.maps.LatLng(49.2481574609818, -122.769401844635), new google.maps.LatLng(49.2482404387609, -122.769186642015), new google.maps.LatLng(49.2486007262526, -122.768419777688), new google.maps.LatLng(49.2487181034037, -122.768215613272), new google.maps.LatLng(49.2488592982202, -122.768050346271), new google.maps.LatLng(49.2490188857909, -122.767930326869), new google.maps.LatLng(49.2491907344676, -122.767860166915), new google.maps.LatLng(49.2493682414355, -122.767842562672), new google.maps.LatLng(49.2495445863972, -122.767878191133), new google.maps.LatLng(49.2497129936237, -122.767965683927), new google.maps.LatLng(49.2498669923053, -122.768101679802), new google.maps.LatLng(49.2500006651976, -122.768280953706), new google.maps.LatLng(49.2501088760055, -122.768496617502), new google.maps.LatLng(49.250187466765, -122.768740384616), new google.maps.LatLng(49.250233417634, -122.769002888459), new google.maps.LatLng(49.2502864497365, -122.769495123112), new google.maps.LatLng(49.2502977981233, -122.76966592737), new google.maps.LatLng(49.2503116342923, -122.770205116842), new google.maps.LatLng(49.250311443022, -122.770320702349), new google.maps.LatLng(49.2503062485409, -122.770499978429), new google.maps.LatLng(49.2503042951578, -122.770618378765), new google.maps.LatLng(49.2502847551313, -122.770871648467), new google.maps.LatLng(49.2502351731271, -122.771115163962), new google.maps.LatLng(49.2501572272901, -122.771340683327), new google.maps.LatLng(49.2500535557514, -122.771540573824), new google.maps.LatLng(49.2499276673258, -122.771708070265), new google.maps.LatLng(49.2497838227372, -122.771837503981), new google.maps.LatLng(49.2496268903971, -122.771924494667), new google.maps.LatLng(49.2494621816182, -122.771966098597), new google.maps.LatLng(49.2490427843676, -122.772012149957), new google.maps.LatLng(49.2488760294499, -122.772006986297), new google.maps.LatLng(49.2487127097571, -122.77195529112), new google.maps.LatLng(49.2485583422675, -122.771858811174), new google.maps.LatLng(49.2484181414976, -122.771720805965), new google.maps.LatLng(49.2482968433673, -122.771545937601), new google.maps.LatLng(49.2481985452387, -122.771340113277), new google.maps.LatLng(49.2481265675266, -122.771110285723), new google.maps.LatLng(49.2480833415539, -122.770864218354)],
+                                        strokeColor: '#FF0000',
+                                        clickable: true,
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 2,
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.35,
+                                        map: map,
+                                        title: 'Work being done on our equipment : 15 Affected Customers',
+                                        visible: false
+                                    });
+
+                                    marker.data = {
+                                        id: '956206',
+                                        dateOff: 'May 27, 10:25 a.m.',
+                                        crewStatus: 'On-site',
+                                        crewEta: 'May 27, 10:30 a.m.',
+                                        dateOn: 'May 27, 3:00 p.m.',
+                                        area: '<b>***<\/b><br\/>1900 block MORGAN AVE',
+                                        cause: 'Work being done on our equipment',
+                                        numCustomersOut: '15',
+                                        lastUpdated: 'May 27, 10:39 a.m.'
+                                    };
+
+                                    markers.push(marker);
+
+
+
+
+
+                                    marker = new google.maps.Marker({
+                                        position: new google.maps.LatLng(49.1491397561552, -123.132841382141),
+                                        map: map,
+                                        title: 'Pole replacement : 12 Affected Customers',
+                                        icon: 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                    });
+
+                                    marker.polygon = new google.maps.Polygon({
+                                        paths: [new google.maps.LatLng(49.1481739688483, -123.132870872371), new google.maps.LatLng(49.1482368951349, -123.131203088447), new google.maps.LatLng(49.1482649653791, -123.130933338024), new google.maps.LatLng(49.1483275903465, -123.130677442266), new google.maps.LatLng(49.1484222794979, -123.130445578019), new google.maps.LatLng(49.1485452671104, -123.130246966556), new google.maps.LatLng(49.1486916620156, -123.130089506879), new google.maps.LatLng(49.148855642095, -123.129979461567), new google.maps.LatLng(49.1490306858017, -123.129921207681), new google.maps.LatLng(49.1492098315072, -123.129917062607), new google.maps.LatLng(49.1493859543597, -123.129967191811), new google.maps.LatLng(49.1495520496487, -123.13006960216), new google.maps.LatLng(49.1497015114025, -123.130220221101), new google.maps.LatLng(49.14982839514, -123.130413058561), new google.maps.LatLng(49.1499276543203, -123.130640445145), new google.maps.LatLng(49.1499953410833, -123.130893337157), new google.maps.LatLng(49.1500287632918, -123.131161676316), new google.maps.LatLng(49.1501179955114, -123.132707922682), new google.maps.LatLng(49.1501214479231, -123.132831648749), new google.maps.LatLng(49.1501194603928, -123.133945123023), new google.maps.LatLng(49.1501054416737, -123.134182415353), new google.maps.LatLng(49.1500646595162, -123.134412413298), new google.maps.LatLng(49.1499586432136, -123.134853665954), new google.maps.LatLng(49.1498823303775, -123.1350950632), new google.maps.LatLng(49.1497766444735, -123.135309186307), new google.maps.LatLng(49.1496456314866, -123.135487838203), new google.maps.LatLng(49.149494306962, -123.135624179922), new google.maps.LatLng(49.1493284639741, -123.135712992405), new google.maps.LatLng(49.1491544513334, -123.135750876244), new google.maps.LatLng(49.1489789305267, -123.135736381749), new google.maps.LatLng(49.1488086206991, -123.135670064364), new google.maps.LatLng(49.1486500414386, -123.135554463311), new google.maps.LatLng(49.1485092632129, -123.135394004313), new google.maps.LatLng(49.1483916750068, -123.135194830114), new google.maps.LatLng(49.148301778054, -123.134964565301), new google.maps.LatLng(49.1482430135533, -123.134712024437), new google.maps.LatLng(49.1482176309622, -123.13444687467), new google.maps.LatLng(49.1481734756629, -123.133013801581)],
+                                        strokeColor: '#FF0000',
+                                        clickable: true,
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 2,
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.35,
+                                        map: map,
+                                        title: 'Pole replacement : 12 Affected Customers',
+                                        visible: false
+                                    });
+
+                                    marker.data = {
+                                        id: '956185',
+                                        dateOff: 'May 27, 9:12 a.m.',
+                                        crewStatus: 'On-site',
+                                        crewEta: 'May 27, 9:20 a.m.',
+                                        dateOn: 'May 27, 4:00 p.m.',
+                                        area: '8100 - 8300 block ROBINSON RD',
+                                        cause: 'Pole replacement',
+                                        numCustomersOut: '12',
+                                        lastUpdated: 'May 27, 9:21 a.m.'
+                                    };
+
+                                    markers.push(marker);
+
+
+
+                                    marker = new google.maps.Marker({
+                                        position: new google.maps.LatLng(49.0312647764172, -122.872699060139),
+                                        map: map,
+                                        title: 'Pole replacement : 7 Affected Customers',
+                                        icon: 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                    });
+
+                                    marker.polygon = new google.maps.Polygon({
+                                        paths: [new google.maps.LatLng(49.0302431468488, -122.871182932049), new google.maps.LatLng(49.0305830619458, -122.870801538463), new google.maps.LatLng(49.0307286533049, -122.870668524202), new google.maps.LatLng(49.030888105253, -122.870579562407), new google.maps.LatLng(49.0310557177705, -122.870537833707), new google.maps.LatLng(49.0312254990527, -122.870544830324), new google.maps.LatLng(49.0316783432763, -122.870629108255), new google.maps.LatLng(49.0318470530265, -122.870685972834), new google.maps.LatLng(49.0320054817676, -122.870790914069), new google.maps.LatLng(49.0321477666926, -122.870940048973), new google.maps.LatLng(49.0322686423597, -122.871127858989), new google.maps.LatLng(49.0323636355662, -122.871347394182), new google.maps.LatLng(49.0324292309077, -122.871590530414), new google.maps.LatLng(49.0324630008906, -122.87184827002), new google.maps.LatLng(49.0324636957818, -122.872111074819), new google.maps.LatLng(49.0323576585453, -122.873852823538), new google.maps.LatLng(49.032326145404, -122.874106279393), new google.maps.LatLng(49.0322638676865, -122.874346208324), new google.maps.LatLng(49.0321730456767, -122.874564056636), new google.maps.LatLng(49.0320569172842, -122.874752057949), new google.maps.LatLng(49.0319196225921, -122.8749035101), new google.maps.LatLng(49.0317660562408, -122.875013014074), new google.maps.LatLng(49.0316016929128, -122.875076666453), new google.maps.LatLng(49.0314323921447, -122.875092198522), new google.maps.LatLng(49.0312641894258, -122.875059057086), new google.maps.LatLng(49.0311030810341, -122.874978424117), new google.maps.LatLng(49.0309548102789, -122.874853174546), new google.maps.LatLng(49.0308246627701, -122.874687773716), new google.maps.LatLng(49.030499441229, -122.874187955255), new google.maps.LatLng(49.0304247811361, -122.874057675123), new google.maps.LatLng(49.0303615333699, -122.873914103516), new google.maps.LatLng(49.0300000386349, -122.872969315662), new google.maps.LatLng(49.0299308555512, -122.872743263348), new google.maps.LatLng(49.0298898411479, -122.872501853976), new google.maps.LatLng(49.0298783616419, -122.872253129102), new google.maps.LatLng(49.0298967994226, -122.872005373926), new google.maps.LatLng(49.0299445403161, -122.871766841352), new google.maps.LatLng(49.0300199940407, -122.871545477123), new google.maps.LatLng(49.0301206471708, -122.871348655179)],
+                                        strokeColor: '#FF0000',
+                                        clickable: true,
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 2,
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.35,
+                                        map: map,
+                                        title: 'Pole replacement : 7 Affected Customers',
+                                        visible: false
+                                    });
+
+                                    marker.data = {
+                                        id: '956178',
+                                        dateOff: 'May 27, 8:54 a.m.',
+                                        crewStatus: 'On-site',
+                                        crewEta: 'May 27, 9:00 a.m.',
+                                        dateOn: 'May 27, 1:00 p.m.',
+                                        area: '1500 block 126A ST, 12500 - 12600 block 16 AVE',
+                                        cause: 'Pole replacement',
+                                        numCustomersOut: '7',
+                                        lastUpdated: 'May 27, 8:57 a.m.'
+                                    };
+
+                                    markers.push(marker);
+
+
+
+
+
+
+
+                                    marker = new google.maps.Marker({
+                                        position: new google.maps.LatLng(49.2541484099009, -123.030229122409),
+                                        map: map,
+                                        title: 'Pole replacement : 13 Affected Customers',
+                                        icon: 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                    });
+
+                                    marker.polygon = new google.maps.Polygon({
+                                        paths: [new google.maps.LatLng(49.253163961196, -123.028976093192), new google.maps.LatLng(49.2532800025114, -123.028801707134), new google.maps.LatLng(49.2534082102197, -123.028641717327), new google.maps.LatLng(49.2535534554006, -123.028520375511), new google.maps.LatLng(49.2537108075386, -123.028441801152), new google.maps.LatLng(49.2538749250804, -123.028408662015), new google.maps.LatLng(49.2540402367517, -123.028422083547), new google.maps.LatLng(49.2542011306805, -123.028481610608), new google.maps.LatLng(49.2543521449059, -123.028585222858), new google.maps.LatLng(49.2547346366432, -123.028915439494), new google.maps.LatLng(49.2548215214912, -123.029000876482), new google.maps.LatLng(49.2551117388021, -123.029323767073), new google.maps.LatLng(49.255245015413, -123.029505636051), new google.maps.LatLng(49.2553520960034, -123.029724204468), new google.maps.LatLng(49.2554287445354, -123.029970826134), new google.maps.LatLng(49.2554719288248, -123.030235744934), new google.maps.LatLng(49.2554799405125, -123.030508480809), new google.maps.LatLng(49.2554524626576, -123.030778244408), new google.maps.LatLng(49.2553905822781, -123.031034363982), new google.maps.LatLng(49.255296747341, -123.031266707624), new google.maps.LatLng(49.255174669906, -123.031466084131), new google.maps.LatLng(49.2550291792565, -123.031624606629), new google.maps.LatLng(49.2548660308328, -123.031736004567), new google.maps.LatLng(49.2546916785306, -123.031795871729), new google.maps.LatLng(49.254596343231, -123.031813651474), new google.maps.LatLng(49.2545830387586, -123.031815979122), new google.maps.LatLng(49.2540468824955, -123.031903600924), new google.maps.LatLng(49.2538896907366, -123.031908155945), new google.maps.LatLng(49.2537343857671, -123.031870782209), new google.maps.LatLng(49.2535857227793, -123.031792624448), new google.maps.LatLng(49.2534482535531, -123.031676076079), new google.maps.LatLng(49.2533261870964, -123.031524705881), new google.maps.LatLng(49.2532232607862, -123.0313431487), new google.maps.LatLng(49.2531100291111, -123.031103966719), new google.maps.LatLng(49.2530417799563, -123.030935379348), new google.maps.LatLng(49.2529901376283, -123.030753532761), new google.maps.LatLng(49.2529561790977, -123.03056221931), new google.maps.LatLng(49.2529121588444, -123.030217258514), new google.maps.LatLng(49.2528955669466, -123.029948170079), new google.maps.LatLng(49.2529138124222, -123.029679331559), new google.maps.LatLng(49.2529661878564, -123.029421166409), new google.maps.LatLng(49.2530506625411, -123.029183684325)],
+                                        strokeColor: '#FF0000',
+                                        clickable: true,
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 2,
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.35,
+                                        map: map,
+                                        title: 'Pole replacement : 13 Affected Customers',
+                                        visible: false
+                                    });
+
+                                    marker.data = {
+                                        id: '956168',
+                                        dateOff: 'May 27, 8:09 a.m.',
+                                        crewStatus: 'On-site',
+                                        crewEta: 'May 27, 8:15 a.m.',
+                                        dateOn: 'May 27, 2:00 p.m.',
+                                        area: 'South-West of WORTHINGTON DR, North of NORMANDY DR, East of SEAFORTH DR',
+                                        cause: 'Pole replacement',
+                                        numCustomersOut: '13',
+                                        lastUpdated: 'May 27, 8:11 a.m.'
+                                    };
+
+                                    markers.push(marker);
+
+
+
+                                    marker = new google.maps.Marker({
+                                        position: new google.maps.LatLng(49.2284471166527, -123.081958524296),
+                                        map: map,
+                                        title: 'Transformer replacement : 13 Affected Customers',
+                                        icon: 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                    });
+
+                                    marker.polygon = new google.maps.Polygon({
+                                        paths: [new google.maps.LatLng(49.2281197832574, -123.080450516683), new google.maps.LatLng(49.2287467461607, -123.080437871844), new google.maps.LatLng(49.2289248507021, -123.08046143895), new google.maps.LatLng(49.2290963737967, -123.080538382417), new google.maps.LatLng(49.2292545246523, -123.080665656527), new google.maps.LatLng(49.2293930418306, -123.080838222784), new google.maps.LatLng(49.2295064411676, -123.081049249332), new google.maps.LatLng(49.2295902329263, -123.08129038141), new google.maps.LatLng(49.2296410995793, -123.081552072146), new google.maps.LatLng(49.2296570271783, -123.081823960571), new google.maps.LatLng(49.2296551102735, -123.082104238874), new google.maps.LatLng(49.2296389805838, -123.082349084651), new google.maps.LatLng(49.2295944634261, -123.08258559127), new google.maps.LatLng(49.2295229911786, -123.08280614898), new google.maps.LatLng(49.2294268635141, -123.083003661276), new google.maps.LatLng(49.2293091733946, -123.083171773258), new google.maps.LatLng(49.2291737075399, -123.083305076116), new google.maps.LatLng(49.2290248245734, -123.083399281141), new google.maps.LatLng(49.2289861762079, -123.083417733058), new google.maps.LatLng(49.2288895942639, -123.083455008764), new google.maps.LatLng(49.2287909033909, -123.083475729142), new google.maps.LatLng(49.2285677017947, -123.083503455958), new google.maps.LatLng(49.2284575654707, -123.083506792098), new google.maps.LatLng(49.2283685312197, -123.083501146287), new google.maps.LatLng(49.2283352587949, -123.083498091532), new google.maps.LatLng(49.2280689762205, -123.083466065191), new google.maps.LatLng(49.2279088182929, -123.083424302081), new google.maps.LatLng(49.2277562050393, -123.083339181083), new google.maps.LatLng(49.2276161271171, -123.083213486173), new google.maps.LatLng(49.2274931652173, -123.083051328049), new google.maps.LatLng(49.2273913402845, -123.082858009674), new google.maps.LatLng(49.2273139820445, -123.082639852844), new google.maps.LatLng(49.227263620135, -123.082403991475), new google.maps.LatLng(49.2272419013987, -123.082158138333), new google.maps.LatLng(49.2272340220404, -123.081881972879), new google.maps.LatLng(49.2272412689216, -123.081638488414), new google.maps.LatLng(49.2272766215125, -123.08140080483), new google.maps.LatLng(49.2273389639075, -123.081176424655), new google.maps.LatLng(49.2274263282611, -123.080972430561), new google.maps.LatLng(49.2275359568923, -123.080795261824), new google.maps.LatLng(49.2276643893195, -123.080650511077), new google.maps.LatLng(49.2278075714784, -123.080542747774), new google.maps.LatLng(49.2279609836778, -123.080475373926)],
+                                        strokeColor: '#FF0000',
+                                        clickable: true,
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 2,
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.35,
+                                        map: map,
+                                        title: 'Transformer replacement : 13 Affected Customers',
+                                        visible: false
+                                    });
+
+                                    marker.data = {
+                                        id: '956191',
+                                        dateOff: 'May 27, 9:22 a.m.',
+                                        crewStatus: 'On-site',
+                                        crewEta: 'May 27, 9:30 a.m.',
+                                        dateOn: 'May 27, 4:00 p.m.',
+                                        area: '6100 block SHERBROOKE ST, 6100 block ROSS ST',
+                                        cause: 'Transformer replacement',
+                                        numCustomersOut: '13',
+                                        lastUpdated: 'May 27, 10:16 a.m.'
+                                    };
+
+                                    markers.push(marker);
+
+
+
+
+
+                                    marker = new google.maps.Marker({
+                                        position: new google.maps.LatLng(50.1158930376058, -122.9480855966),
+                                        map: map,
+                                        title: 'Work being done on our equipment : 24 Affected Customers',
+                                        icon: 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                    });
+
+                                    marker.polygon = new google.maps.Polygon({
+                                        paths: [new google.maps.LatLng(50.1149939193021, -122.948086608885), new google.maps.LatLng(50.1150110682824, -122.947813802161), new google.maps.LatLng(50.1150621102104, -122.947551439752), new google.maps.LatLng(50.1151450836847, -122.947309603596), new google.maps.LatLng(50.1152568002479, -122.947097586983), new google.maps.LatLng(50.1153929668922, -122.946923537475), new google.maps.LatLng(50.1155483510067, -122.946794143812), new google.maps.LatLng(50.1157169814341, -122.946714378857), new google.maps.LatLng(50.1158923779136, -122.946687308435), new google.maps.LatLng(50.1160678000961, -122.946713973441), new google.maps.LatLng(50.1162365065668, -122.946793349747), new google.maps.LatLng(50.1163920139193, -122.946922387471), new google.maps.LatLng(50.1165283459264, -122.947096128102), new google.maps.LatLng(50.1166402632287, -122.947307895004), new google.maps.LatLng(50.11672346471, -122.947549549976), new google.maps.LatLng(50.1167747528168, -122.947811806019), new google.maps.LatLng(50.1167921564644, -122.948084584275), new google.maps.LatLng(50.1167750068006, -122.948357401437), new google.maps.LatLng(50.1167239629165, -122.9486197727), new google.maps.LatLng(50.1166409865111, -122.94886161478), new google.maps.LatLng(50.116529266488, -122.949073633483), new google.maps.LatLng(50.116393096382, -122.949247680931), new google.maps.LatLng(50.1162377093307, -122.949377068696), new google.maps.LatLng(50.1160690769386, -122.949456824814), new google.maps.LatLng(50.1158936797658, -122.949483884804), new google.maps.LatLng(50.1157182582666, -122.949457209361), new google.maps.LatLng(50.115549553752, -122.949377824201), new google.maps.LatLng(50.1153940493307, -122.949248780554), new google.maps.LatLng(50.1152577207834, -122.949075037832), new google.maps.LatLng(50.1151458069429, -122.948863272991), new google.maps.LatLng(50.1150626083984, -122.948621623916), new google.maps.LatLng(50.1150113222561, -122.948359376711)],
+                                        strokeColor: '#FF0000',
+                                        clickable: true,
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 2,
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.35,
+                                        map: map,
+                                        title: 'Work being done on our equipment : 24 Affected Customers',
+                                        visible: false
+                                    });
+
+                                    marker.data = {
+                                        id: '956156',
+                                        dateOff: 'May 27, 12:14 a.m.',
+                                        crewStatus: 'On-site',
+                                        crewEta: 'May 27, 12:20 a.m.',
+                                        dateOn: 'May 27, 3:00 p.m.',
+                                        area: '4500 block BLACKCOMB WAY',
+                                        cause: 'Work being done on our equipment',
+                                        numCustomersOut: '24',
+                                        lastUpdated: 'May 27, 6:46 a.m.'
+                                    };
+
+                                    markers.push(marker);
+
+
+
+                                    marker = new google.maps.Marker({
+                                        position: new google.maps.LatLng(54.6085282487081, -128.410644804134),
+                                        map: map,
+                                        title: 'Bird contacting our wires : < 5 Affected Customers',
+                                        icon: 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                    });
+
+                                    marker.polygon = new google.maps.Polygon({
+                                        paths: [new google.maps.LatLng(54.6076315779912, -128.410528030327), new google.maps.LatLng(54.6076620308405, -128.410228917616), new google.maps.LatLng(54.6077257713048, -128.409945786206), new google.maps.LatLng(54.6078203500153, -128.409689516128), new google.maps.LatLng(54.607942132555, -128.409469955385), new google.maps.LatLng(54.608086439099, -128.409295541537), new google.maps.LatLng(54.6082477242248, -128.409172977464), new google.maps.LatLng(54.6084197899905, -128.409106973735), new google.maps.LatLng(54.6085960240943, -128.409100067511), new google.maps.LatLng(54.6087696539678, -128.409152524935), new google.maps.LatLng(54.6089340070411, -128.409262330796), new google.maps.LatLng(54.6090827671762, -128.409425265867), new google.maps.LatLng(54.6092102174146, -128.409635068958), new google.maps.LatLng(54.6093114597055, -128.409883677488), new google.maps.LatLng(54.6093826031673, -128.410161537319), new google.maps.LatLng(54.6094209136415, -128.410457969952), new google.maps.LatLng(54.6094249187891, -128.410761582973), new google.maps.LatLng(54.6093944646851, -128.411060707963), new google.maps.LatLng(54.609330721735, -128.411343849016), new google.maps.LatLng(54.609236139686, -128.411600124633), new google.maps.LatLng(54.6091143534633, -128.41181968597), new google.maps.LatLng(54.6089700434527, -128.411994095375), new google.maps.LatLng(54.6088087556042, -128.412116650643), new google.maps.LatLng(54.6086366882744, -128.412182642547), new google.maps.LatLng(54.6084604540031, -128.412189535727), new google.maps.LatLng(54.6082868253842, -128.412137066025), new google.maps.LatLng(54.6081224747968, -128.41202725052), new google.maps.LatLng(54.6079737180002, -128.411864309909), new google.maps.LatLng(54.6078462714447, -128.411654506225), new google.maps.LatLng(54.6077450326205, -128.411405902138), new google.maps.LatLng(54.6076738918814, -128.411128051112), new google.maps.LatLng(54.6076355829713, -128.410831630304)],
+                                        strokeColor: '#FF0000',
+                                        clickable: true,
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 2,
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.35,
+                                        map: map,
+                                        title: 'Bird contacting our wires : < 5 Affected Customers',
+                                        visible: false
+                                    });
+
+                                    marker.data = {
+                                        id: '956204',
+                                        dateOff: 'May 27, 10:16 a.m.',
+                                        crewStatus: 'On-site',
+                                        crewEta: 'May 27, 11:30 a.m.',
+                                        dateOn: '',
+                                        area: 'GITAUS SUBD P11 NA',
+                                        cause: 'Bird contacting our wires',
+                                        numCustomersOut: '< 5',
+                                        lastUpdated: 'May 27, 10:20 a.m.'
+                                    };
+
+                                    markers.push(marker);
+
+
+
+                                    marker = new google.maps.Marker({
+                                        position: new google.maps.LatLng(51.3729229807976, -121.040482952666),
+                                        map: map,
+                                        title: 'Under investigation : < 5 Affected Customers',
+                                        icon: 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                    });
+
+                                    marker.polygon = new google.maps.Polygon({
+                                        paths: [new google.maps.LatLng(51.3720236260058, -121.040522227061), new google.maps.LatLng(51.3720361109199, -121.040241147697), new google.maps.LatLng(51.3720826770842, -121.039969360218), new google.maps.LatLng(51.3721615350904, -121.039717308715), new google.maps.LatLng(51.3722696546323, -121.039494679002), new google.maps.LatLng(51.372402880933, -121.039310026453), new google.maps.LatLng(51.3725560943818, -121.039170447255), new google.maps.LatLng(51.3727234072465, -121.039081305682), new google.maps.LatLng(51.3728983899095, -121.039046027907), new google.maps.LatLng(51.3730743179356, -121.039065970256), new google.maps.LatLng(51.3732444304808, -121.039140366987), new google.maps.LatLng(51.3734021901118, -121.039266359628), new google.maps.LatLng(51.3735415340521, -121.039439106735), new google.maps.LatLng(51.3736571071955, -121.039651969894), new google.maps.LatLng(51.3737444679296, -121.039896768801), new google.maps.LatLng(51.3738002588558, -121.040164095646), new google.maps.LatLng(51.373822335838, -121.040443676698), new google.maps.LatLng(51.3738098504198, -121.040724767192), new google.maps.LatLng(51.3737632824374, -121.040996564346), new google.maps.LatLng(51.3736844215759, -121.041248622597), new google.maps.LatLng(51.3735762985762, -121.041471255103), new google.maps.LatLng(51.3734430687416, -121.041655906063), new google.maps.LatLng(51.3732898522209, -121.041795479536), new google.maps.LatLng(51.3731225372138, -121.041884612115), new google.maps.LatLng(51.3729475536642, -121.041919878999), new google.maps.LatLng(51.3727716261422, -121.04189992552), new google.maps.LatLng(51.3726015154152, -121.041825519113), new google.maps.LatLng(51.3724437586394, -121.041699519725), new google.maps.LatLng(51.3723044181569, -121.041526769825), new google.maps.LatLng(51.3721888485474, -121.041313908255), new google.maps.LatLng(51.3721014908852, -121.041069115074), new google.maps.LatLng(51.3720457021014, -121.040801797221)],
+                                        strokeColor: '#FF0000',
+                                        clickable: true,
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 2,
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.35,
+                                        map: map,
+                                        title: 'Under investigation : < 5 Affected Customers',
+                                        visible: false
+                                    });
+
+                                    marker.data = {
+                                        id: '956193',
+                                        dateOff: 'May 27, 9:38 a.m.',
+                                        crewStatus: 'On-site',
+                                        crewEta: 'May 27, 11:35 a.m.',
+                                        dateOn: '',
+                                        area: '6400 block SHORE CRT',
+                                        cause: 'Under investigation',
+                                        numCustomersOut: '< 5',
+                                        lastUpdated: 'May 27, 9:39 a.m.'
+                                    };
+
+                                    markers.push(marker);
+
+
+
+                                    marker = new google.maps.Marker({
+                                        position: new google.maps.LatLng(48.6941591097114, -123.438745197982),
+                                        map: map,
+                                        title: 'Work being done on our equipment : 7 Affected Customers',
+                                        icon: 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                    });
+
+                                    marker.polygon = new google.maps.Polygon({
+                                        paths: [new google.maps.LatLng(48.692934743952, -123.439497287837), new google.maps.LatLng(48.6929703564164, -123.437922509093), new google.maps.LatLng(48.6929930969404, -123.437660931778), new google.maps.LatLng(48.6930486090778, -123.437410788465), new google.maps.LatLng(48.6931348342548, -123.437181355376), new google.maps.LatLng(48.6932485749415, -123.436981140845), new google.maps.LatLng(48.6933856132096, -123.436817569822), new google.maps.LatLng(48.6935408671278, -123.436696708532), new google.maps.LatLng(48.6937085791998, -123.436623039482), new google.maps.LatLng(48.6938825298604, -123.436599295183), new google.maps.LatLng(48.6940562681155, -123.436626356744), new google.maps.LatLng(48.6942233507744, -123.436703221117), new google.maps.LatLng(48.6943965064543, -123.436657169649), new google.maps.LatLng(48.6945722907767, -123.436662448908), new google.maps.LatLng(48.694744097863, -123.436718861062), new google.maps.LatLng(48.6949054712234, -123.436824286689), new google.maps.LatLng(48.6950503464001, -123.43697476434), new google.maps.LatLng(48.695173278887, -123.437164639356), new google.maps.LatLng(48.6952696487583, -123.437386776334), new google.maps.LatLng(48.6953358343121, -123.437632827273), new google.maps.LatLng(48.6953693481979, -123.437893545323), new google.maps.LatLng(48.6954489403959, -123.439159347201), new google.maps.LatLng(48.6954481078571, -123.439431034641), new google.maps.LatLng(48.6954117997087, -123.439697131403), new google.maps.LatLng(48.6953414438912, -123.439947172389), new google.maps.LatLng(48.6952398073746, -123.440171324044), new google.maps.LatLng(48.6952337869194, -123.440182124221), new google.maps.LatLng(48.6951312628644, -123.440338583199), new google.maps.LatLng(48.6950134727756, -123.440468216724), new google.maps.LatLng(48.6948834580994, -123.440567677756), new google.maps.LatLng(48.6947445759049, -123.440634398403), new google.maps.LatLng(48.6940457360762, -123.440878772149), new google.maps.LatLng(48.6938813002052, -123.440912727956), new google.maps.LatLng(48.6937155212077, -123.440900853947), new google.maps.LatLng(48.6935539502131, -123.440843548199), new google.maps.LatLng(48.6934019973873, -123.440742730029), new google.maps.LatLng(48.6932647507815, -123.440601775677), new google.maps.LatLng(48.693146805974, -123.440425405204), new google.maps.LatLng(48.6930521122071, -123.440219524416), new google.maps.LatLng(48.6929838401671, -123.439991027111), new google.maps.LatLng(48.6929442758342, -123.439747564257)],
+                                        strokeColor: '#FF0000',
+                                        clickable: true,
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 2,
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.35,
+                                        map: map,
+                                        title: 'Work being done on our equipment : 7 Affected Customers',
+                                        visible: false
+                                    });
+
+                                    marker.data = {
+                                        id: '956171',
+                                        dateOff: 'May 27, 8:28 a.m.',
+                                        crewStatus: 'On-site',
+                                        crewEta: 'May 27, 8:30 a.m.',
+                                        dateOn: 'May 27, 2:00 p.m.',
+                                        area: '1400 block OCEANSPRAY DR, 1400 block HONEYSUCKLE PL',
+                                        cause: 'Work being done on our equipment',
+                                        numCustomersOut: '7',
+                                        lastUpdated: 'May 27, 8:29 a.m.'
+                                    };
+
+                                    markers.push(marker);
+
+
+
+
+
+                                    marker = new google.maps.Marker({
+                                        position: new google.maps.LatLng(48.5186134163646, -123.435904797317),
+                                        map: map,
+                                        title: 'Pole replacement : < 5 Affected Customers',
+                                        icon: 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                    });
+
+                                    marker.polygon = new google.maps.Polygon({
+                                        paths: [new google.maps.LatLng(48.5185496373827, -123.434219566419), new google.maps.LatLng(48.5190374090605, -123.434402542857), new google.maps.LatLng(48.5192059310865, -123.434493447562), new google.maps.LatLng(48.5193591216516, -123.434632874239), new google.maps.LatLng(48.5194908901809, -123.434815279987), new google.maps.LatLng(48.519595997751, -123.435033412956), new google.maps.LatLng(48.519670265407, -123.43527860066), new google.maps.LatLng(48.5197107403355, -123.43554109479), new google.maps.LatLng(48.5197158132849, -123.435810458846), new google.maps.LatLng(48.5196835345703, -123.436488615348), new google.maps.LatLng(48.5196545590634, -123.436745604168), new google.maps.LatLng(48.519593347353, -123.436989439073), new google.maps.LatLng(48.5195021766636, -123.437211048904), new google.maps.LatLng(48.5193844387499, -123.437402189449), new google.maps.LatLng(48.5192445136967, -123.437555750162), new google.maps.LatLng(48.519087606951, -123.437666018689), new google.maps.LatLng(48.5189195556503, -123.437728893345), new google.maps.LatLng(48.5187466114576, -123.437742035642), new google.maps.LatLng(48.5185752079841, -123.437704957218), new google.maps.LatLng(48.5184117214536, -123.437619037923), new google.maps.LatLng(48.518262233512, -123.437487474411), new google.maps.LatLng(48.5180274985273, -123.437232192006), new google.maps.LatLng(48.5179260429745, -123.437103672278), new google.maps.LatLng(48.5178382697096, -123.436954061199), new google.maps.LatLng(48.5177660933049, -123.436786622303), new google.maps.LatLng(48.5175453436056, -123.436180776278), new google.maps.LatLng(48.5174771327186, -123.435941365416), new google.maps.LatLng(48.5174407047629, -123.435686703698), new google.maps.LatLng(48.517437413196, -123.435426252969), new google.maps.LatLng(48.5174673803137, -123.435169690127), new google.maps.LatLng(48.5175294927075, -123.434926547642), new google.maps.LatLng(48.5176214426246, -123.434705859436), new google.maps.LatLng(48.5177398136985, -123.434515825274), new google.maps.LatLng(48.5178802078631, -123.434363506125), new google.maps.LatLng(48.5180374087425, -123.434254561804), new google.maps.LatLng(48.5182055754466, -123.43419304065), new google.maps.LatLng(48.5183784595769, -123.434181229051)],
+                                        strokeColor: '#FF0000',
+                                        clickable: true,
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 2,
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.35,
+                                        map: map,
+                                        title: 'Pole replacement : < 5 Affected Customers',
+                                        visible: false
+                                    });
+
+                                    marker.data = {
+                                        id: '956175',
+                                        dateOff: 'May 27, 8:42 a.m.',
+                                        crewStatus: 'On-site',
+                                        crewEta: 'May 27, 8:45 a.m.',
+                                        dateOn: 'May 27, 4:30 p.m.',
+                                        area: '200 block EASTLAKE RD',
+                                        cause: 'Pole replacement',
+                                        numCustomersOut: '< 5',
+                                        lastUpdated: 'May 27, 8:43 a.m.'
+                                    };
+
+                                    markers.push(marker);
+
+
+
+
+
+
+
+
+
+                                    marker = new google.maps.Marker({
+                                        position: new google.maps.LatLng(48.4297591118789, -123.384900392235),
+                                        map: map,
+                                        title: 'Under investigation : < 5 Affected Customers',
+                                        icon: 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                    });
+
+                                    marker.polygon = new google.maps.Polygon({
+                                        paths: [new google.maps.LatLng(48.4288614059822, -123.384893151994), new google.maps.LatLng(48.4288795948473, -123.384630137312), new google.maps.LatLng(48.4289315824391, -123.384377507808), new google.maps.LatLng(48.4290153710153, -123.384144971428), new google.maps.LatLng(48.4291277407934, -123.383941464106), new google.maps.LatLng(48.4292643736605, -123.38377480641), new google.maps.LatLng(48.4294200190856, -123.383651403019), new google.maps.LatLng(48.4295886958657, -123.383575996572), new google.maps.LatLng(48.4297639219549, -123.38355148537), new google.maps.LatLng(48.4299389635493, -123.383578811917), new google.maps.LatLng(48.4301070938581, -123.383656926622), new google.maps.LatLng(48.4302618516159, -123.383782828045), new google.maps.LatLng(48.4303972894033, -123.383951678173), new google.maps.LatLng(48.4305082022277, -123.384156988294), new google.maps.LatLng(48.4305903275777, -123.38439086834), new google.maps.LatLng(48.4306405092589, -123.384644330114), new google.maps.LatLng(48.4306568187093, -123.384907632749), new google.maps.LatLng(48.4306386291294, -123.38517065712), new google.maps.LatLng(48.4305866395751, -123.385423294796), new google.maps.LatLng(48.4305028480876, -123.385655836589), new google.maps.LatLng(48.4303904748924, -123.385859345738), new google.maps.LatLng(48.4302538386228, -123.386026001398), new google.maps.LatLng(48.4300981903277, -123.386149399201), new google.maps.LatLng(48.4299295116472, -123.386224797357), new google.maps.LatLng(48.4297542849164, -123.386249298828), new google.maps.LatLng(48.4295792440367, -123.386221962592), new google.maps.LatLng(48.4294111156906, -123.386143839714), new google.maps.LatLng(48.4292563608441, -123.386017932879), new google.maps.LatLng(48.4291209264738, -123.385849080924), new google.maps.LatLng(48.4290100170519, -123.385643772839), new google.maps.LatLng(48.4289278945718, -123.385409898381), new google.maps.LatLng(48.428877714791, -123.385156444899)],
+                                        strokeColor: '#FF0000',
+                                        clickable: true,
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 2,
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.35,
+                                        map: map,
+                                        title: 'Under investigation : < 5 Affected Customers',
+                                        visible: false
+                                    });
+
+                                    marker.data = {
+                                        id: '956212',
+                                        dateOff: 'May 27, 10:59 a.m.',
+                                        crewStatus: 'Enroute',
+                                        crewEta: 'May 27, 12:30 p.m.',
+                                        dateOn: '',
+                                        area: '300 block CATHERINE ST',
+                                        cause: 'Under investigation',
+                                        numCustomersOut: '< 5',
+                                        lastUpdated: 'May 27, 11:10 a.m.'
+                                    };
+
+                                    markers.push(marker);
+
+
+
+                                    function checkClickZoom() {
+                                        var zoom = map.getZoom();
+
+                                        if (zoom <= clusterZoomLevel) {
+                                            zoom = clusterZoomLevel + 1;
+                                        }
+
+                                        map.setZoom(zoom);
+                                    }
+
+                                    function showOutageDetails(outage, fitbounds) {
+                                        if (fitbounds) {
+                                            map.fitBounds(outage.polygon.getBounds());
+                                            checkClickZoom();
+                                            google.maps.event.addListenerOnce(map, 'bounds_changed', function () {
+                                                checkClickZoom();
+                                            });
+                                        }
+
+                                        if (outage == displayedOutage) {
+                                            return;
+                                        }
+
+                                        outage.setIcon('https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage-clicked.png');
+                                        outage.polygon.setVisible(true);
+
+                                        $("#offTime").html(outage.data.dateOff);
+
+                                        if (outage.data.crewStatus != '') {
+                                            $("#crewStatus").html(outage.data.crewStatus);
+                                            $("#crewStatus").parent().show();
+                                        } else {
+                                            $("#crewStatus").parent().hide();
+                                        }
+
+                                        if ((outage.data.crewStatus == 'Not assigned' || outage.data.crewStatus == 'Dispatched' || outage.data.crewStatus == 'Enroute') && outage.data.crewEta != '') {
+                                            $("#crewEta").html(outage.data.crewEta);
+                                            $("#crewEta").parent().show();
+                                        } else {
+                                            $("#crewEta").parent().hide();
+                                        }
+
+                                        if (outage.data.crewStatus == '' || outage.data.crewStatus == 'On-site') {
+                                            $("#onTime").html(outage.data.dateOn);
+                                            $("#onTime").parent().show();
+                                        } else {
+                                            $("#onTime").parent().hide();
+                                        }
+
+                                        $("#cause").html(outage.data.area + '. ' + outage.data.cause);
+                                        $("#affected").html(outage.data.numCustomersOut);
+                                        $("#updated").html(outage.data.lastUpdated);
+                                        $("#map-panel").show();
+
+                                        if (displayedOutage != null) {
+                                            displayedOutage.setIcon('https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage-small.png');
+                                            displayedOutage.polygon.setVisible(true);
+                                        }
+
+                                        displayedOutage = outage;
+                                    };
+
+                                    function addMarkerClick(marker) {
+                                        google.maps.event.addListener(marker, 'click', function () {
+                                            showOutageDetails(marker, true);
+                                        });
+
+                                        google.maps.event.addListener(marker.polygon, 'click', function () {
+                                            showOutageDetails(marker, true);
+                                        });
+                                    }
+
+                                    for (i = 0; i < markers.length; i++) {
+                                        addMarkerClick(markers[i]);
+                                    }
+
+                                    google.maps.event.addListener(map, 'idle', function () {
+                                        var bounds = map.getBounds();
+                                        var newShowPolygon = map.getZoom() > clusterZoomLevel;
+                                        var icon = newShowPolygon ? 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage-small.png' : 'https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png';
+
+                                        if (displayedOutage != null && !bounds.contains(displayedOutage.getPosition())) {
+                                            displayedOutage.setIcon(icon);
+                                            displayedOutage.polygon.setVisible(newShowPolygon);
+                                            displayedOutage = null;
+                                            $("#map-panel").hide();
+                                        }
+
+                                        if ((showPolygon == null) || (showPolygon && !newShowPolygon) || (!showPolygon && newShowPolygon)) {
+                                            showPolygon = newShowPolygon;
+                                            for (var i = 0; i < markers.length; i++) {
+                                                if (markers[i] != displayedOutage) {
+                                                    markers[i].setIcon(icon);
+                                                    markers[i].polygon.setVisible(showPolygon);
+                                                }
+                                            }
+                                        }
+
+                                        var singleOutage = null;
+                                        for (var i = 0; i < markers.length; i++) {
+                                            if (bounds.contains(markers[i].getPosition())) {
+                                                if (singleOutage != null) {
+                                                    singleOutage = null;
+                                                    break;
+                                                }
+
+                                                singleOutage = markers[i];
+                                            }
+                                        }
+
+                                        if (singleOutage != null) {
+                                            showOutageDetails(singleOutage, false);
+                                        }
+                                    });
+
+                                    if (hash) {
+                                        if (hash.indexOf("#outage=") === 0) {
+                                            var hashValue = hash.substring(8);
+
+                                            for (var i = 0; i < markers.length; i++) {
+                                                if (markers[i].data.id == hashValue) {
+                                                    google.maps.event.addListenerOnce(map, "idle", function () {
+                                                        google.maps.event.trigger(markers[i], 'click');
+                                                    });
+                                                    break;
+                                                }
+                                            }
+                                        } else if (hash === "#locate") {
+                                            google.maps.event.addListenerOnce(map, "idle", function () {
+                                                $("#has-gps").click();
+                                            });
+                                        } else if (hash.indexOf("#address=") === 0) {
+                                            var hashValue = hash.substr(9);
+                                            $("#AddressOrPostalCode").val(decodeURIComponent(hashValue));
+                                            google.maps.event.addListenerOnce(map, "idle", function () {
+                                                gotoMapLocation();
+                                            });
+                                        }
+                                    }
+
+                                    // create a marker cluster only after we zoom in on the map
+                                    var mc = new MarkerClusterer(map, markers, {
+                                        ignoreHidden: true,
+                                        gridSize: 30,
+                                        styles: [{
+                                            url: "https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outages-cluster.png",
+                                            height: 38,
+                                            width: 38,
+                                            fontFamily: 'DINWeb-Medium,Arial,sans-serif',
+                                            textColor: 'white',
+                                            anchorText: [-1, -1]
+                                        }],
+                                        maxZoom: clusterZoomLevel
+                                    });
+
+                                    google.maps.event.addListener(mc, 'clusteringend', function (cluster) {
+                                        var markers = cluster.getMarkers();
+                                        for (var i = 0; i < markers.length; i++) {
+                                            if (markers[i] == displayedOutage && markers[i].getMap() == null) {
+                                                displayedOutage.setIcon('https://www.bchydro.com/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png');
+                                                displayedOutage.polygon.setVisible(false);
+                                                displayedOutage = null;
+                                                $("#map-panel").hide();
+                                            }
+                                        }
+                                    });
+                                }
+
+                                google.maps.event.addDomListener(window, 'load', initialize);
+                            </script>
+
+                            <!-- OUTAGES MAP -->
+
+
+
+
+
+                            <div class="text parbase">
+                                <section class="rte">
+                                    <h4>Report an outage:</h4>
+                                    <p>Call <a href="tel:18887693766">1 888 769 3766</a> or <a href="https://www.bchydro.com/youraccount/outageweb/report.do?src=wep">report online</a>
+                                        <br>
+                                    </p>
+                                </section>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+                            <div class="outagesmap-wrapper">
+                                <div id="map_canvas" style="height:350px;"></div>
+                                <table style="display:none;" id="map-panel" class="table outages-map table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label>Off since</label>
+                                            </td>
+                                            <td id="offTime"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Crew status</label>
+                                            </td>
+                                            <td id="crewStatus"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Est. arrival</label>
+                                            </td>
+                                            <td id="crewEta"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Est. time on</label>
+                                            </td>
+                                            <td id="onTime"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Details</label>
+                                            </td>
+                                            <td id="cause"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Customers affected</label>
+                                            </td>
+                                            <td id="affected"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Last updated</label>
+                                            </td>
+                                            <td id="updated"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+
+
+                            <div class="section find">
+                                <div class="icon-outages-wrapper">
+                                    <a name="outages-icon-anchor"></a>
+                                    <h4>Find outages by:</h4>
+                                    <a id="has-gps" href="../app/outage-map.html#locate=" class="icon-outages nearme button blue secondary"><i class="fa fa-location-arrow fa-2x"></i>Near me</a>
+                                    <a class="icon-outages mid-icon address button blue secondary"><i class="fa fa-home fa-2x"></i>Address</a>
+                                    <a href="../app/outage-list.html" class="icon-outages list button blue secondary"><i class="fa fa-list-ul fa-2x"></i>List</a>
+                                </div>
+
+                                <!-- ADDRESS FORM-->
+                                <form class="outages-address form" action="../app/outage-map.html" method="GET" novalidate="novalidate">
+                                    <div class="form-group">
+                                        <input type="text" class="{required:true, messages:{required:&#39;Please enter address or postal code.&#39;, email:&#39;Please enter adddress or postal code.&#39;}} form-control" name="txtComments" required="" id="AddressOrPostalCode" placeholder="* Enter Address or Postal code">
+                                    </div>
+                                    <button id="map-address-submit" type="submit" class="primary btn btn-default">Find outages</button>
+                                </form>
+                            </div>
+
+
+
+                            <p>* Is this information helpful? <a href="https://iris.insitesystems.com/Pages/survey.aspx?passkey=BRHE&view=start" target="_blank">Please give us some feedback.</a></p>
+
+
+
+                        </div>
+                    </article>
+                </section>
+
+
+                <section id="col2" class="column right">
+                    <div class="right-inner">
+                        <div class="parsys rightPar">
+                            <!-- Tertiary Nav Include -->
+                            <nav id="tertiary_nav" class="tertiary">
+                                <h3><a class="tertiary_nav_handle" href="/safety-outages/power-outages.html">Power Outages</a></h3>
+                                <ul>
+                                    <li class="expanded active">
+                                        <a class="tertiary_nav_handle" href="/safety-outages/power-outages/outage_map.html">Outage map</a>
+                                    </li>
+                                    <li>
+                                        <a class="tertiary_nav_handle" href="/safety-outages/power-outages/outage_list.html">Outage list</a>
+                                    </li>
+                                    <li><a class="tertiary_nav_handle" href="/safety-outages/power-outages/reporting_outage.html">Report an outage</a></li>
+                                    <li><a class="tertiary_nav_handle" href="/safety-outages/power-outages/prepare-for-outages.html">Prepare for outages</a></li>
+                                    <li><a class="tertiary_nav_handle" href="/safety-outages/power-outages/planned-outages.html">Why and how we plan outages</a></li>
+                                    <li><a class="tertiary_nav_handle" href="/safety-outages/power-outages/outages_rss.html">RSS outages feeds</a></li>
+                                </ul>
+                            </nav>
+                            <script>
+                                $(document).ready(function () {
+                                    var params = [];
+                                    var queryStr = '';
+                                    $.each(params, function (index, value) {
+                                        if (index == 0) {
+                                            queryStr += '?' + value;
+                                        } else {
+                                            queryStr += '&' + value;
+                                        }
+                                    });
+                                    $("nav.tertiary a.tertiary_nav_handle").each(function () {
+                                        this.href = this.href + queryStr
+                                    });
+                                });
+                            </script>
+                            <!-- Tertiary Nav Include Ends -->
+                        </div>
+                    </div>
+                    <!-- /end rightside-inner -->
+                </section>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Request URL: httpss://www.bchydro.com:80/content/include/cached/framework/footer.validatesession.html -->
+
+
+            <link type="text/css" rel="stylesheet" property="stylesheet" href="/orspocweb/etc/designs/BCHydro/clientlibs/BCH-Footer.css" />
+
+            <!-- The Footer -->
+            <footer id="footer" class="footer">
+                <div class="footer-links">
+                    <div class="footer-links-box">
+                        <div class="footer-links-icon icon-billing"></div>
+                        <div class="footer-links-content">
+                            <div class="text parbase">
+                                <section class="rte">
+                                    <h4>Need help with your bill?</h4>
+                                    <p>Get answers to questions about paying your bill, rates, moving your account and more.</p>
+                                </section>
+                            </div>
+
+                            <div class="bch-button"><a class="button secondary inverse" href="/accounts-billing/get-help.html">Get help</a></div>
+
+                        </div>
+                    </div>
+                    <div class="footer-links-box">
+                        <div class="footer-links-icon icon-bug"></div>
+                        <div class="footer-links-content">
+                            <div class="text parbase">
+                                <section class="rte">
+                                    <h4>Working with BC Hydro</h4>
+                                    <p>We rely on a variety of suppliers, contractors &amp; consultants. And we offer rewarding careers, too.
+                                        <br>
+                                    </p>
+                                </section>
+                            </div>
+
+                            <div class="bch-button"><a class="button secondary inverse" href="/careers.html">Learn more</a></div>
+
+                        </div>
+                    </div>
+                    <div class="footer-links-box">
+                        <div class="footer-links-icon icon-contact-us"></div>
+                        <div class="footer-links-content">
+                            <div class="text parbase">
+                                <section class="rte">
+                                    <h4>Get in touch with us</h4>
+                                    <p>Call us to report a power outage in your area or to get information you couldn't find online.</p>
+                                </section>
+                            </div>
+
+                            <div class="bch-button"><a class="button secondary inverse" href="/contact.html">Contact us</a></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="footer-social-copyright">
+                    <div id="footer-social">
+                        <div class="rawHtml social">
+                            <a href="http://www.facebook.com/bchydro" title="Facebook" target="_blank" class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-social"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></a>
+
+                            <a href="http://www.twitter.com/bchydro" title="Twitter" target="_blank" class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-social"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></a>
+
+                            <a href="https://instagram.com/bchydro/?hl=en" title="Instagram" target="_blank" class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-social"></i><i class="fa fa-instagram fa-stack-1x fa-inverse"></i></a>
+
+                            <a href="http://www.youtube.com/bchydro" title="YouTube" target="_blank" class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-social"></i><i class="fa fa-youtube-play fa-stack-1x fa-inverse"></i></a>
+                        </div>
+
+                    </div>
+                    <div id="footer-copyright">
+                        <div class="rawHtml copyright">
+                            Copyright &copy; 2016 BC Hydro. All Rights Reserved | <a href="/siteinfo/legal.html">Legal</a> &
+                            <A href="/siteinfo/privacy.html">Privacy Statements</a>
+                        </div>
+
+                        <a class="view-mobile fullsite" href="/index.html?fixZoomMobile=true">View Mobile Site</a>
+                    </div>
+                </div>
+            </footer>
+            <!-- END Footer -->
+
+            <script src="/orspocweb/etc/designs/BCHydro/Javascript/masonry.js"></script>
+            <script src="/orspocweb/etc/designs/BCHydro/Javascript/jquery.placeholder.min.js"></script>
+            <script src="/orspocweb/etc/designs/BCHydro/Javascript/jquery.hoverIntent.js"></script>
+            <script src="/orspocweb/etc/designs/BCHydro/Javascript/bchheader.js"></script>
+
+
+
+            <script src="/orspocweb/etc/designs/BCHydro/Javascript/cookie-utils.js"></script>
+            <script src="/orspocweb/etc/designs/hydro/mobile/clientlibs/global/js/jquery.cookie.js"></script>
+            <script src="/orspocweb/etc/designs/hydro/mobile/clientlibs/global/js/fullsite.js"></script>
+
+
+
+            <script src="/orspocweb/etc/designs/hydro/clientlibs/global/js/webtrends.js" type="text/javascript"></script>
+
+
+
+
+            <script type="text/javascript">
+                //<![CDATA[
+                var _tag = new WebTrends();
+                _tag.dcsGetId();
+                //]]>
+            </script>
+            <script type="text/javascript">
+                //<![CDATA[
+                _tag.dcsCustom = function () {
+                    // Add custom parameters here.
+                    //_tag.DCSext.param_name=param_value;
+                }
+                _tag.dcsCollect();
+                //]]>
+            </script>
+            <noscript>
+                <div><img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="//www8.bchydro.com/dcs4zxlja10000sxcmlgunoe0_6k3y/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=9.4.0&amp;dcssip=www.bchydro.com" /></div>
+            </noscript>
+
+
+
+
+
+            <script type="text/javascript" src="/orspocweb/etc/designs/hydro/clientlibs/global/js/webtrends.js"></script>
+            <script type="text/javascript" src="/orspocweb/etc/designs/hydro/mobile/clientlibs/outages/js/outage-local.js"></script>
+            <script type="text/javascript" src="/orspocweb/etc/designs/hydro/mobile/clientlibs/outages/js/outages.js"></script>
+            <script type="text/javascript" src="/orspocweb/etc/designs/BCHydro/Javascript/jquery.tablesorter.min.js"></script>
+    </body>
+
+
+
+</html>

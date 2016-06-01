@@ -1,0 +1,1765 @@
+/*----------------------------------------------------------------
+  * Filename:   BCH-MyAccount.css
+  * Version:    0.0.1
+  * Author: srooks
+  * Description: Form styles for BCHydro.com implementing the styleguide
+  * provided by Engine Digital. Please see supplemental stylesheets
+  * for additional styles
+
+==TOC:===================================================
+
+  __MAINCONTENT
+  __MYACCOUNT
+  __TPS_WIDGET
+  __BILLING_WIDGET
+  __BILLING_RATE WIDGET
+
+==COLOR LEGEND:==========================================
+  header text:      #30353a, rgb(48, 53, 58)
+  paragraph text:   #555555, rgb(85, 85, 85)
+  lt misc text:     #979a9c, rgb(151, 154, 156)
+  link color:       #0d6893, rgb(13, 104, 147)
+  link hover:       #0d5292, rgb(13, 82, 146)
+  brand blue:       #00adf0, rgb(0, 173, 239)
+  brand green:      #50b849, rgb(80, 184, 72)
+  tps yel-green:    #def873, rgb(222, 248, 115)
+  panel stroke:     #e2e2e2, rgb(226, 226, 226)
+  error red:        #ca4b53, rgb(202, 75, 83)
+
+**********************************************************/
+/* GENERAL STYLES */
+h1.icon.payment_history:before {
+  background-position: -48px -288px;
+}
+.floatright,
+.floatR {
+  float: right;
+}
+/* somehow getting missed in retrofit. reincluding here */
+/* UL.icons */
+ul.icons {
+  list-style: none;
+}
+ul.icons > li {
+  /* testing an IE7 hack */
+  cursor: pointer;
+}
+ul.icons > li:before,
+.account_nav ul.icons > li > .before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: .5em;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/16px-icons-sprite.png') no-repeat -60px -820px;
+  /* default icon */
+
+}
+ul.icons > li.circle:before,
+ul.icons > li.circle > .before {
+  display: inline-block;
+  height: 46px;
+  width: 46px;
+  vertical-align: middle;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/h1-icons-sprite.png') no-repeat -1px -1104px;
+  /* default icon */
+
+}
+ul.icons > li.accountlist:before,
+ul.icons > li.accountlist > .before {
+  background-position: -1px -1200px;
+  /* circle icon */
+
+}
+ul.icons > li.accountlist.active:before,
+ul.icons > li.active.accountlist > .before,
+ul.icons > li.accountlist:hover:before {
+  background-position: -49px -1200px;
+  /* circle icon */
+
+}
+ul.icons > li.commercialaccount:before,
+ul.icons > li.commercialaccount > .before {
+  /* circle icon */
+
+  background-position: -49px -1152px;
+}
+ul.icons > li.residentialaccount:before,
+ul.icons > li.residentialaccount > .before {
+  /* circle icon */
+
+  background-position: -49px -1104px;
+}
+ul.icons > li.selectaccount {
+  cursor: default;
+}
+ul.icons > li.selectaccount:before,
+ul.icons > li.selectaccount > .before {
+  /* circle icon */
+
+  background-position: 0px -1680px;
+}
+/* Sprite-oriented element icons */
+a.icon:before,
+label.icon:before {
+  content: '';
+  display: inline-block;
+  width: 1.45em;
+  height: 1.5em;
+  vertical-align: middle;
+  margin-right: 0.1em;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/16px-icons-sprite.png') no-repeat -60px -320px;
+  /* default icon */
+
+}
+.icon.mimo:before {
+  background-position: -60px -440px;
+}
+.icon.act_settings:before {
+  background-position: -60px -300px;
+}
+.icon.act_access:before {
+  background-position: -60px -320px;
+}
+.icon.comm_prefs:before {
+  background-position: -60px -160px;
+}
+.icon.new_residential:before {
+  background-position: -60px -460px;
+}
+.icon.billing_export:before {
+  background-position: -60px -600px;
+}
+.icon.add_account:before {
+  background-position: -60px -340px;
+}
+.icon.request_service:before {
+  background-position: -60px -360px;
+}
+.icon.view_baseline:before {
+  background-position: -60px -200px;
+}
+.icon.billing_format:before {
+  background-position: -60px -400px;
+}
+.icon.payment_history:before {
+  background-position: -60px -120px;
+}
+.icon.bill_explainer:before {
+  background-position: -60px -240px;
+}
+.icon.bill_forecasts:before {
+  background-position: -60px -260px;
+}
+.icon.report_payment:before {
+  background-position: -60px -377px;
+}
+.icon.defer_payment:before {
+  background-position: -60px -177px;
+}
+.icon.payment_options:before {
+  background-position: -60px -377px;
+}
+.icon.preauth_payment:before {
+  background-position: -60px -40px;
+}
+.icon.close_account:before {
+  background-position: -60px -880px;
+}
+.icon.link_account:before {
+  background-position: -60px -900px;
+}
+.icon.new_account:before {
+  background-position: -60px -920px;
+}
+.icon.email:before {
+  background-position: -60px -540px;
+}
+.icon.epp:before {
+  background-position: -60px -19px;
+}
+.icon.pdf:before {
+  background-position: -60px -800px;
+  margin-right: .25em;
+  vertical-align: middle;
+}
+.icon.info:before {
+  background-position: -80px -620px;
+}
+.icon.number_one:before {
+  background-position: -60px -739px;
+  float: left;
+}
+.icon.number_two:before {
+  background-position: -60px -759px;
+  float: left;
+}
+.icon.number_three:before {
+  background-position: -60px -779px;
+  float: left;
+}
+.icon.rates:before {
+  background-position: 0 -400px;
+}
+.icon.new_business_account:before {
+  background-position: -60px -480px;
+}
+.icon.view_requests:before {
+  background-position: -60px -500px;
+}
+/* hover states */
+a.icon:hover:before {
+  background-position: -100px -320px;
+}
+/* NOTE: pseudo element order :hover THEN :before */
+a.mimo:hover:before {
+  background-position: -100px -440px;
+}
+a.act_settings:hover:before {
+  background-position: -100px -300px;
+}
+a.act_access:hover:before {
+  background-position: -100px -320px;
+}
+a.comm_prefs:hover:before {
+  background-position: -100px -160px;
+}
+a.new_residential:hover:before {
+  background-position: -100px -460px;
+}
+a.billing_export:hover:before {
+  background-position: -100px -600px;
+}
+a.add_account:hover:before {
+  background-position: -100px -340px;
+}
+a.request_service:hover:before {
+  background-position: -100px -360px;
+}
+a.view_baseline:hover:before {
+  background-position: -100px -200px;
+}
+a.billing_format:hover:before {
+  background-position: -100px -400px;
+}
+a.payment_history:hover:before {
+  background-position: -100px -120px;
+}
+.icon.bill_explainer:hover:before {
+  background-position: -100px -240px;
+}
+.icon.bill_forecasts:hover:before {
+  background-position: -100px -260px;
+}
+.icon.report_payment:hover:before {
+  background-position: -100px -377px;
+}
+.icon.defer_payment:hover:before {
+  background-position: -100px -177px;
+}
+.icon.payment_options:hover:before {
+  background-position: -100px -377px;
+}
+.icon.preauth_payment:hover:before {
+  background-position: -100px -40px;
+}
+.icon.close_account:hover:before {
+  background-position: -60px -880px;
+}
+.icon.link_account:hover:before {
+  background-position: -80px -900px;
+}
+.icon.new_account:hover:before {
+  background-position: -80px -920px;
+}
+.icon.email:hover:before {
+  background-position: -100px -540px;
+}
+.icon.epp:hover:before {
+  background-position: -100px -19px;
+}
+.icon.pdf:hover:before {
+  background-position: -60px -800px;
+}
+/* No change */
+.icon.info:hover:before {
+  background-position: -100px -620px;
+}
+/* No change */
+.icon.rates:hover:before {
+  background-position: -20px -400px;
+}
+/* No change */
+.icon.new_business_account:hover:before {
+  background-position: -100px -480px;
+}
+.icon.view_requests:hover:before {
+  background-position: -100px -500px;
+}
+/* :before is the better 'css only' way of doing this. */
+ul.alerts > li.icon:before {
+  content: '';
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  vertical-align: text-top;
+  margin-right: 0.5em;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/grey-list-icons-sprite.png') no-repeat 0px -110px;
+  /* default icon */
+
+}
+ul.alerts > li > a {
+  color: #555;
+}
+/* __MAINCONTENT
+ * __MYACCOUNT
+ * establishes some overrides to generalStyles specific to the myaccount pages
+ * e.g. the pale blue background not found on other pages.
+ */
+#mainContent.myAccount {
+  background-color: #f1faff;
+  margin: 0;
+  padding-top: 1.55em;
+}
+#mainContent.noAccount {
+  padding-top: 1.55em;
+}
+/* The account navigator header */
+header.user_account_tools {
+  font-size: 13px;
+  line-height: 1.54em;
+  /* re-asserting this for multiple contexts */
+
+  position: relative;
+  margin: 0;
+  /*margin-bottom: 2.5em;*/
+  padding: 1em 7.1% 0.85em;
+  background-color: #fff;
+  border-bottom: 1px solid #d7e3e9;
+  min-height: 46px;
+  z-index: 10;
+}
+header.user_account_tools ~ #mainContent {
+  padding-top: 1.55em;
+}
+header.user_account_tools a {
+  font-size: 13px;
+}
+header.user_account_tools > .account_nav {
+  float: left;
+  margin: 0;
+  position: relative;
+  top: .4em;
+}
+.account_nav > ul.icons > li {
+  position: relative;
+  /* so that we can absolutely place the carat V */
+
+  line-height: 3.2em;
+  height: 46px;
+  float: left;
+  margin-right: 2em;
+}
+.account_nav > ul.icons > li > a {
+  color: #979a9c;
+}
+.account_nav > ul.icons > li.addaccount > a.button.secondary {
+  color: #0d6893;
+}
+.account_nav > ul.icons > li.addaccount > a:before {
+  margin-right: 0;
+  vertical-align: top;
+  width: 1.35em;
+}
+.account_nav > ul.icons > li.accountlist:hover > a {
+  color: #30353A;
+  text-decoration: none;
+}
+.account_nav > ul.icons > li b {
+  color: #30353A;
+}
+.account_nav > ul.icons > li.active > a {
+  color: #30353A;
+  font-weight: bold;
+}
+/* the carat and the shadow live in the "focus" li 
+ * so that they line up under it appropriately */
+.account_nav > ul > li > img.carat {
+  z-index: 7;
+  position: absolute;
+  left: 13px;
+  bottom: -16px;
+}
+.account_nav > ul > li > img.shadow {
+  z-index: 4;
+  position: absolute;
+  left: -81px;
+  bottom: -19px;
+}
+.account_nav > ul.icons > li > * {
+  vertical-align: middle;
+}
+/* Special style for the custom select dropdown */
+.account_nav > ul.icons > li > div.dropdown {
+  text-indent: 0;
+}
+.account_nav > ul.icons > li > div.dropdown * {
+  /* text-indent: inherit; */
+
+}
+#gotoAccount {
+  margin: 0;
+}
+.user_account_tools > div.page {
+  float: right;
+}
+header .utilitylist {
+  position: relative;
+  min-height: 48px;
+}
+header .utilitylist > .acctsrv_shortcuts {
+  float: right;
+}
+/* .acctsrv_shortcuts { */
+/*     border: 1px solid transparent; */
+/*     border: 1px solid #dadada; */
+/*     -moz-border-radius: .2em; */
+/*     -webkit-border-radius: .2em; */
+/*     border-radius: .2em; */
+/*     background-color: transparent; */
+/*     position: absolute; */
+/*     top: -24px; */
+/*     right: 0; */
+/*     z-index: 65; */
+/*     width: 36.8em; */
+/*     padding-bottom: 0.55em; */
+/*     font-size: 13px; reset this in case of inheritance */
+/* } */
+/* Copied from Brandon's email for Sprint Project Changes 19 Aug 2013 - Jai Parkash*/
+.acctsrv_shortcuts {
+  -moz-box-shadow: 3px 3px 4px #000;
+  -webkit-box-shadow: 3px 3px 4px #000;
+  box-shadow: 3px 3px 4px #000;
+  border: 1px solid #dadada;
+  -moz-border-radius: .2em;
+  -webkit-border-radius: .2em;
+  border-radius: .2em;
+  background-color: transparent;
+  position: absolute;
+  top: -24px;
+  right: 0;
+  z-index: 65;
+  width: 36.8em;
+  padding-bottom: 0.55em;
+  font-size: 13px;
+  /* reset this in case of inheritance */
+
+}
+.acctsrv_shortcuts.mini {
+  /* for the rare, single item shortcuts */
+
+  width: 16.8em;
+}
+.acctsrv_shortcuts > div.image {
+  display: none;
+}
+/* Copied from Brandon's email for Sprint Project Changes 19 Aug 2013 - Jai Parkash*/
+/* .acctsrv_shortcuts > h3 { */
+/*     margin: 0 0 0.5em; */
+/*     padding: 0.5em 0.65em; */
+/*     border-radius: 0.2em 0.2em 0 0; */
+/*     color: #ffffff; */
+/*     font-size: 0.9em; */
+/*     text-transform: uppercase; */
+/*     background-color: #005778; */
+/* } */
+.acctsrv_shortcuts > h3 {
+  margin: 0 0 0.5em;
+  padding: 0.5em 0.65em;
+  border-radius: 0.2em 0.2em 0 0;
+  color: #ffffff;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  /*background-color: #005778;*/
+
+  background: #2b8db3;
+  /* Old browsers */
+
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzJiOGRiMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDU3NzgiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #2b8db3 0%, #005778 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2b8db3), color-stop(100%, #005778));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, #2b8db3 0%, #005778 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #2b8db3 0%, #005778 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #2b8db3 0%, #005778 100%);
+  /* IE10+ */
+
+  background: linear-gradient(to bottom, #2b8db3 0%, #005778 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2b8db3', endColorstr='#005778', GradientType=0);
+  /* IE6-8 */
+
+}
+/* Copied from Brandon's email for Sprint Project Changes 19 Aug 2013 - Jai Parkash*/
+.acctsrv_shortcuts > h3:before {
+  margin-right: 0.55em;
+  background: url("../../../../content/dam/BCHydro/images/sprites/16px-icons-sprite.png") no-repeat scroll -60px -520px transparent;
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;
+  height: 1.5em;
+  width: 1.5em;
+}
+.acctsrv_shortcuts > h3 > a {
+  color: inherit;
+  /*font-size: .85em;*/
+
+  font-weight: bold;
+  text-transform: none;
+}
+.acctsrv_shortcuts.mini > h3 > a {
+  display: none;
+}
+.acctsrv_shortcuts > div.lists {
+  width: auto;
+  margin-bottom: 0.35em;
+}
+.acctsrv_shortcuts > div.lists > ul {
+  display: block;
+  margin: 0 0.85em;
+  /*height: 20px;*/
+
+  list-style: none;
+}
+.acctsrv_shortcuts > div.lists ul > li {
+  font-weight: bold;
+  float: left;
+  margin-right: .85em;
+  width: 215px;
+  list-style: none outside none;
+}
+.acctsrv_shortcuts > div.lists > ul > li:first-child {
+  margin-left: -2px;
+}
+.acctsrv_shortcuts > div.lists > ul > li:last-child {
+  margin-right: 0;
+}
+.acctsrv_shortcuts > div.lists ul > li > a {
+  color: #30353a;
+}
+.acctsrv_shortcuts > div.lists ul > li > a:hover {
+  color: #0d5093;
+  text-decoration: none;
+}
+div.extra {
+  display: none;
+  width: 99.5%;
+  /*max-width: 29.5em;*/
+
+  clear: both;
+  float: left;
+  border-top: 0px;
+  margin-top: -2px;
+}
+/* Copied from Brandon's email for Sprint Project Changes 19 Aug 2013 - Jai Parkash*/
+/* div.extra > ul { */
+/*     float: left; */
+/*     width: 48.8%; */
+/*     margin: 0em 0.5em 0 -2px; */
+/*     list-style: none; */
+/* } */
+div.extra {
+  /* border-top: 1px solid #DADADA; */
+
+  clear: both;
+  display: none;
+  float: left;
+  /* margin-top: 8px;*/
+
+  width: 99.5%;
+}
+/* Copied from Brandon's email for Sprint Project Changes 19 Aug 2013 - Jai Parkash*/
+div.extra > ul > li {
+  margin-bottom: .5em;
+}
+/* .acctsrv_shortcuts.expanded { */
+/*     border: 1px solid #dadada; */
+/*     -moz-border-radius: .2em; */
+/*     -webkit-border-radius: .2em; */
+/*     border-radius: .2em; */
+/*     //background-color: #fff; */
+/*     //-webkit-box-shadow: 0px 1px 1px 0px rgba(50,50,50,0.25); */
+/*     //-moz-box-shadow: 0px 1px 1px 0px rgba(50,50,50,0.25); */
+/*     //box-shadow: 0px 1px 1px 0px rgba(50,50,50,0.25); */
+/*     background-color: #FFFFFF;   */
+/*     padding-bottom: 0px; */
+/* } */
+/* Copied from Brandon's email for Sprint Project Changes 19 Aug 2013 - Jai Parkash*/
+.acctsrv_shortcuts.expanded {
+  -moz-box-shadow: 3px 3px 4px #000;
+  -webkit-box-shadow: 3px 3px 4px #000;
+  box-shadow: 3px 3px 4px #000;
+  border: 1px solid #dadada;
+  -moz-border-radius: .2em;
+  -webkit-border-radius: .2em;
+  background-color: #fff;
+}
+/* Copied from Brandon's email for Sprint Project Changes 19 Aug 2013 - Jai Parkash*/
+div.acctsrv_shortcuts > h3 > a {
+  border: 1px solid #69A7BE;
+  color: inherit;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 0 25px 0 5px;
+  text-align: left;
+  white-space: nowrap;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: url(../../../../content/dam/BCHydro/images/acct_services_down_arrow.png) right no-repeat;
+}
+div.accountservices > h3 > a {
+  border: 1px solid #43849C;
+  color: inherit;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 0 5px;
+  text-align: left;
+  white-space: nowrap;
+  text-transform: uppercase;
+  text-decoration: none;
+  /*the background needs to be removed here*/
+
+}
+/* div.acctsrv_shortcuts:hover > h3 > a, div.accountservices:hover > h3 > a { */
+/* 	background: url(../../../../content/dam/BCHydro/images/acct_services_up_arrow.png) right no-repeat; */
+/* } */
+/* Changed on 2013-09-13th  - Jai Parkash */
+div.acctsrv_shortcuts:hover > h3 > a {
+  background: url(../../../../content/dam/BCHydro/images/acct_services_up_arrow.png) right no-repeat;
+}
+/* Copied from Brandon's email for Sprint Project Changes 19 Aug 2013 - Jai Parkash*/
+/* SUSTAINMENT-923 - drop shadow*/
+.acctsrv_shortcuts,
+.acctsrv_shortcuts.expanded {
+  behavior: url('../Javascript/PIE.htc');
+  /* behavior is added to support IE box shadow CSS */
+
+  background-color: #FFFFFF;
+  /* IE 8 fix */
+
+  /*       box-shadow: 3px 3px 3px #E5E5E5; */
+
+  /* Commented line as per request from Brandon to enablle shadow on the account services toolbox in UAT 21 Aug 2013 Jai Parkash */
+
+}
+div.expanded > div.lists > div.extra {
+  display: block;
+  background-color: #fff;
+  padding: 0.65em .85em 0;
+  z-index: inherit;
+  max-width: 35.1em;
+}
+div.accountservices.expanded > div.lists > div.extra {
+  padding-top: 0;
+}
+/* The Welcome Message Content */
+#mainContent.myAccount > div.alert.welcome {
+  margin-bottom: 3em;
+  border-width: 2px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+#mainContent.myAccount > div.alert.welcome > div.column {
+  display: inline-block;
+  margin: 0 .7em;
+  padding: .85em;
+  min-height: 11em;
+  /* this em is affected by .plug font size */
+
+}
+#mainContent.myAccount > div.alert.welcome > div.hasbutton {
+  overflow: hidden;
+  /* padding-bottom: 4.5em; this clears absolutely positioned button at bottom */
+
+  min-height: 8.2em;
+}
+#mainContent.myAccount > div.alert.welcome > div.vr {
+  color: #c6d7e0;
+  background-color: #c6d7e0;
+  width: 1px;
+  margin: 1em 0;
+  min-height: 209px;
+  height: 16em;
+  float: left;
+}
+#mainContent.myAccount div.alert.welcome > div.oneandhalf {
+  width: 34%;
+  position: relative;
+  margin-right: 0.7em;
+}
+#mainContent.myAccount button.bottom_left {
+  position: absolute;
+  bottom: .85em;
+  left: .85em;
+}
+div.myAccount div.alert.welcome p {
+  margin: 0;
+}
+div.myAccount div.alert.welcome p.plug {
+  font-weight: bold;
+  font-size: 1.19em;
+}
+div.myAccount div.alert.welcome p.plug > a {
+  text-decoration: none;
+}
+div.myAccount div.alert.welcome > .left {
+  width: 19.6%;
+  margin-left: 0;
+}
+div.myAccount div.alert.welcome ul {
+  list-style-type: disc;
+  margin: 0;
+}
+div.myAccount div.alert.welcome ul li {
+  margin-left: 1em;
+}
+#mainContent.myAccount div.alert.welcome > div.column.right {
+  margin-right: 0;
+  margin-left: 1em;
+}
+#mainContent.myAccount .left.demarcated {
+  width: 19.1%;
+  padding-right: 1.65em;
+  padding-bottom: 1.5em;
+  background: transparent url('../../../../content/dam/BCHydro/images/left-col-edge-fade.png') no-repeat 101% top;
+  min-height: 665px;
+  /* the height of the background image*/
+
+  margin-right: 0;
+}
+#mainContent.myAccount .right.demarcated {
+  background: transparent url("../../../../content/dam/BCHydro/images/right-col-edge-fade.png") no-repeat scroll 0 0;
+  min-height: 665px;
+}
+div.myAccount div.column {
+  width: 20.1%;
+  margin-right: 1.8%;
+  float: left;
+}
+#mainContent.myAccount div.column.span_3 {
+  width: 63%;
+}
+#mainContent.myAccount div.column.right {
+  margin-right: 7%;
+  margin-top: -0.3em;
+}
+#mainContent.myAccount .column.right.span_3 > * {
+  margin-left: 0;
+}
+/* need to fix!!! Making problems */
+#mainContent.myAccount div.column.right > div:first-child {
+  margin-top: 0;
+}
+#mainContent.myAccount div.column.oneandhalf {
+  width: 31.1%;
+}
+#mainContent.myAccount div.column.oneandhalf.right {
+  padding: 0;
+}
+#mainContent.myAccount .module > h4 {
+  margin-bottom: 0;
+}
+div.myAccount h4.icon {
+  /*letter-spacing: -0.05em;*/
+
+}
+div.myAccount h4.icon:before {
+  content: '';
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/20px-icons-sprite.png') no-repeat 0px 0px;
+  margin-right: 0;
+  vertical-align: middle;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+}
+div.myAccount h4.addaccount:before,
+div.myAccount h3.addaccount:before {
+  background-position: 0px -48px;
+}
+div.myAccount h4.profile:before {
+  /* set as the default */
+}
+div.myAccount h4.moving:before,
+div.myAccount h3.moving:before {
+  background-position: 0px -24px;
+}
+div.myAccount h4.newsalerts:before {
+  background-position: 0px -75px;
+}
+/* __TPS_WIDGET
+ * Styles for the TPS widget.
+ * also have available a .tps_widget class
+ */
+.tps_widget {
+  position: relative;
+  /*background: #50b849 url('../../../../content/dam/BCHydro/images/tps/tps_leaf_shadow.png') no-repeat right top;*/
+
+  background-color: #50b849;
+  color: #fff;
+  -moz-border-radius: 0.7em 0;
+  -webkit-border-radius: 0.7em 0;
+  border-radius: 0.7em 0;
+  padding: .8em;
+  behavior: url('../../../../BCHCustomerPortal/static/javascript/PIE.htc');
+  margin-bottom: 1.8em;
+  float: /*left*/ none;
+}
+.tps_widget.member {
+  /*cursor: pointer;*/
+
+}
+.tps_widget:after {
+  content: ' ';
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: transparent url('../../../../content/dam/BCHydro/images/tps/tps_tail.png') no-repeat 0 0;
+  position: absolute;
+  bottom: -11px;
+  /* additional 1px accounts for border */
+
+  left: 0px;
+}
+.tps_widget * {
+  color: #fff;
+}
+.tps_widget h4 {
+  font-size: 1.3em;
+  font-family: DIN, "Arial narrow", Arial, sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: #def873;
+  margin-bottom: 0.35em;
+}
+.tps_widget p {
+  line-height: 1.25em;
+  margin-bottom: 0.4em;
+}
+.tps_widget p > span.label {
+  width: 10.5em;
+  text-align: left;
+  padding: 0.4em 0;
+  font-size: 0.9em;
+}
+.tps_widget img.tps-leaf {
+  /* deprecated */
+
+  position: absolute;
+  top: -7px;
+  right: -6px;
+  z-index: 4;
+}
+.tps_widget div.tps-score {
+  position: absolute;
+  width: 54px;
+  height: 48px;
+  top: 35px;
+  right: 8px;
+  font-size: 1.75em;
+  line-height: .9em;
+  letter-spacing: -0.03em;
+  font-family: DIN, Arial, sans-serif;
+  font-weight: normal;
+  text-align: center;
+  z-index: 5;
+}
+.tps_widget div.tps-score:before {
+  content: '';
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/tps-arrows-sprite.png') no-repeat 0 0;
+}
+.tps_widget div.tps-score.down:before {
+  /* same as default */
+}
+.tps_widget div.tps-score.up:before {
+  background-position: -25px 0;
+}
+.tps_widget img.tps-tail {
+  display: none;
+  /* Deprecated using .tps_widget:after. Hiding cases where img.tps-tail still exists */
+}
+.tps_widget + p.linktag {
+  /* view toolbox link */
+
+  color: #50b849;
+  font-weight: bold;
+  margin-left: 1em;
+  margin-top: -1.5em;
+  padding-top: 0.1em;
+  float: left;
+}
+p.linktag a {
+  /* view toolbox link */
+
+  color: #50b849;
+}
+p.linktag a:hover,
+p.linktag a:active {
+  /* view toolbox link */
+
+  color: #30353a;
+  text-decoration: none;
+}
+/* TPS button overrides */
+div.tps_widget button,
+div.tps_widget a.button {
+  font-size: 0.87em;
+  padding: .4em .55em;
+  margin-right: 0;
+}
+div.tps_widget button.primary,
+div.tps_widget a.button.primary {
+  background: none;
+  /* clear inherited settings */
+
+  filter: none;
+  /* IE6-9 */
+
+  border-color: #fff;
+  background-color: #fff;
+  color: #50b849;
+}
+div.tps_widget button.primary:hover,
+div.tps_widget a.button.primary:hover {
+  background: none;
+  /* clear inherited settings */
+
+  filter: none;
+  /* IE6-9 */
+
+  border-color: #fff;
+  background-color: #fff;
+  color: #30353a;
+}
+div.tps_widget button.primary:active,
+div.tps_widget a.button.primary:active {
+  background: none;
+  /* clear inherited settings */
+
+  filter: none;
+  /* IE6-9 */
+
+  border-color: #fff;
+  background-color: #fff;
+  color: #30353a;
+}
+div.tps_widget button.tertiary,
+div.tps_widget a.button.tertiary {
+  background: none;
+  /* clear inherited settings */
+
+  filter: none;
+  /* IE6-9 */
+
+  background-color: transparent;
+  color: #fff;
+}
+div.tps_widget button.tertiary:hover,
+a.div.tps_widget button.tertiary:hover {
+  background: none;
+  /* clear inherited settings */
+
+  filter: none;
+  /* IE6-9 */
+
+  color: #30353a;
+  border-color: transparent;
+  background-color: transparent;
+}
+div.tps_widget button.tertiary:active,
+div.tps_widget a.button.tertiary:active {
+  background: none;
+  /* clear inherited settings */
+
+  filter: none;
+  /* IE6-9 */
+
+  color: #30353a;
+  border-color: transparent;
+  background-color: transparent;
+}
+/* __BILLING_WIDGET
+ * Styles for the bill info widget.
+ * 
+ */
+.billing_widget,
+.accountinfobox {
+  margin-bottom: 2.4em;
+  position: relative;
+}
+.billing_widget > p,
+.accountinfobox > p {
+  margin: 0 0 .6em 0;
+  line-height: 1em;
+}
+.billing_widget > p:first-child,
+.accountinfobox > p:first-child {
+  color: #30353a;
+  font-weight: bold;
+}
+.billing_widget > p.bill_amount,
+.accountinfobox > p.memberaccountno {
+  color: #50b849;
+  font-family: DIN, "Arial narrow", Arial, sans-serif;
+  font-weight: normal;
+  font-size: 3.30769em;
+  margin-bottom: 0;
+  letter-spacing: -0.05em;
+}
+.billing_widget > p.bill_amount {
+  color: #3e3935;
+  margin: 20px 0 15px;
+}
+.accountinfobox > p {
+  /*text-align:center*/
+}
+.accountinfobox > p.memberaccountno {
+  font-size: 2.5em !important;
+}
+.accountinfobox > p.belongsto {
+  margin-top: 20px !important;
+}
+.accountinfobox > p.masteraccount {
+  color: #0d6893;
+}
+.accountinfobox > p.masteraccountno {
+  color: #0d6893;
+  font-size: 2.0em;
+  font-family: DIN, "Arial narrow", Arial, sans-serif;
+  letter-spacing: -0.05em;
+}
+.accountinfobox.billingrates {
+  width: 15.5em;
+  float: left;
+  clear: both;
+  padding: 10px;
+  border: 0;
+}
+.billing_widget > p.payment_received {
+  color: #979a9c;
+}
+.billing_widget > p.nopay {
+  color: #0d6893;
+}
+.billing_widget > p.balance {
+  font-weight: bold;
+  line-height: 2.5em;
+  padding-top: 1.55em;
+}
+.billing_widget > p.balance > button {
+  width: 128px;
+  margin-bottom: 0.45em;
+}
+.billing_widget > p > span.amount {
+  display: inline-block;
+  float: left;
+}
+.billing_widget > p > button {
+  margin-right: 0;
+  vertical-align: middle;
+  font-size: .9em;
+  /*float: right;*/
+
+}
+.billing_widget > p > span.amount.received {
+  color: #555;
+  float: right;
+}
+.billing_widget > p > span.loading {
+  font-weight: bold;
+}
+.billing_widget > p > span.error {
+  color: #ca4b53;
+  font-weight: normal;
+}
+.billing_widget > p > span.loading > img {
+  height: .8em;
+  vertical-align: baseline;
+}
+.billing_widget > p > button + a {
+  display: inline-block;
+  padding: .8em 0;
+  float: left;
+  vertical-align: middle;
+  text-decoration: none;
+}
+.billing_widget > p > button + a.icon:before {
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/16px-icons-sprite.png') no-repeat -138px -800px !important;
+  width: 25px;
+}
+.billing_widget > p > button + a.icon {
+  text-indent: -1.55em;
+  padding-left: 1.8em;
+  line-height: 2em;
+}
+.billing_widget.overdue > p.bill_amount,
+.billing_widget.overdue > p.due_date {
+  color: #ca4b53;
+}
+.billing_widget.neardue > p.bill_amount {
+  color: #ff9933;
+}
+.billing_widget > hr.divider {
+  margin-bottom: .5em;
+}
+.billing_widget > h4.icon.go_paperless {
+  clear: both;
+  margin-top: 0;
+  letter-spacing: normal;
+}
+.billing_widget > h4.go_paperless > a {
+  color: #555;
+}
+.billing_widget > h4.go_paperless > a:hover {
+  text-decoration: none;
+}
+.billing_widget > h4.icon.go_paperless:before {
+  width: 18px;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/16px-icons-sprite.png') no-repeat -20px -695px;
+  margin-right: 0;
+}
+.billing_widget > h4.paperless {
+  color: #50b849;
+}
+.billing_widget > h4.icon.paperless:before {
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/16px-icons-sprite.png') no-repeat -115px -674px;
+}
+.billing_widget > .modal.contained {
+  bottom: -17.25em;
+}
+/* __BILLING_RATE WIDGET
+ * Styles for the Billing Rate on commercial accounts
+ * class = billing_rate
+ * This style mostly based on the success alert...
+ */
+.billing_rate {
+  width: 99%;
+  position: relative;
+  font-size: 13px;
+  border: 2px solid #00adf0;
+  line-height: 1.4em;
+  -moz-border-radius: .2em;
+  -webkit-border-radius: .2em;
+  border-radius: .2em;
+  margin-bottom: 1em;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 0.25);
+  box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 0.25);
+}
+.billing_rate > * {
+  margin: 0 0.85em 0.5em;
+  font-size: inherit;
+  color: inherit;
+}
+.billing_rate > *:last-child {
+  margin-bottom: 0.85em;
+}
+.billing_rate > h3:first-child {
+  font-size: 1em;
+  font-weight: bold;
+  color: #fff;
+  background-color: #00adf0;
+  margin: 0;
+  padding: 0.85em;
+}
+.billing_rate > h3:first-child + * {
+  margin-top: 0.85em;
+}
+/* __ACTSRV_WIDGET
+ * Styles for the Account Services widget.
+ * class = accountservices
+ */
+.accountservices {
+  position: relative;
+  padding-top: 1.3em;
+  margin-top: .85em;
+  background: transparent url('../../../../content/dam/BCHydro/images/account-services-medallion.png') no-repeat 89px top;
+  color: #fff;
+  border: none;
+}
+#mainContent.myAccount .column.right > .accountservices {
+  margin-left: 1.4em;
+  background-position: center top;
+}
+/* in this context, need some margin */
+.accountservices > div.image {
+  position: absolute;
+  top: 9px;
+  left: 113px;
+  margin-left: -12px;
+  z-index: 4;
+}
+.column.right > .accountservices > div.image {
+  left: 50%;
+}
+/* more contextual alignment */
+.accountservices a {
+  text-transform: none;
+  color: #fff;
+  font-weight: bold;
+}
+.accountservices a:hover,
+.accountservices a:active {
+  text-decoration: none;
+  color: #f1faff;
+}
+.accountservices > h3 {
+  margin: 0;
+  font-size: .9em;
+  padding: 1em;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: #005778;
+  border: 1px solid #005778;
+  -moz-border-radius: .2em .2em 0 0;
+  -webkit-border-radius: .2em .2em 0 0;
+  border-radius: .2em .2em 0 0;
+}
+.accountservices > h3 > a {
+  display: inline-block;
+  float: right;
+}
+.accountservices > div.lists ul {
+  clear: none;
+  float: left;
+  padding: 1em 0;
+}
+.accountservices > div.lists > .extra {
+  clear: none;
+  float: left;
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+.accountservices > div.lists > ul:first-child {
+  width: 100%;
+  display: block;
+  background-color: #00688f;
+  -moz-border-radius: 0 0 .2em .2em;
+  -webkit-border-radius: 0 0 .2em .2em;
+  border-radius: 0 0 .2em .2em;
+}
+.accountservices > div.lists ul > li {
+  margin: 0 .5em .5em 2.8em;
+  text-indent: -1.8em;
+  /* allows for multi-line with icons */
+
+}
+.accountservices.expanded {
+  min-width: 50em;
+  z-index: 75;
+}
+.accountservices.expanded > div.lists {
+  width: 99.75%;
+  overflow: auto;
+  background-color: #fff;
+  border: 1px solid #dadada;
+  border-top: none;
+  -moz-border-radius: 0 0 .2em .2em;
+  -webkit-border-radius: 0 0 .2em .2em;
+  border-radius: 0 0 .2em .2em;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.25);
+  box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.25);
+}
+.accountservices.expanded > div.lists > ul {
+  display: block;
+  float: left;
+  background-color: #fff;
+  height: 100%;
+  width: 33%;
+}
+.accountservices.expanded > div.lists > .extra {
+  display: block;
+  width: 67%;
+  max-width: 31em;
+  border: 0;
+}
+.accountservices.expanded > div.lists > .extra > ul {
+  width: 49%;
+  margin-right: 0;
+}
+.accountservices.expanded ul > li > a {
+  color: #30353A;
+}
+.accountservices.expanded ul > li > a:hover {
+  color: #0d5093;
+}
+/* __SMICONTENT
+ * Styles for the SMI Content box. And the side bar after it
+ * class = SMIContent
+ */
+div.SMIContent.module {
+  width: 65%;
+  margin: 0 1.4em 0 0;
+  padding: 0;
+}
+div.SMIContent > h3 {
+  font-size: 1em;
+}
+div.SMIContent > div.alert {
+  line-height: 1.2em;
+}
+div.SMIContent > div.alert button {
+  vertical-align: middle;
+  float: left;
+  font-size: 12px;
+  margin-bottom: .8em;
+  width: 38%;
+}
+div.SMIContent > div.alert button.icon:before {
+  content: " ";
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  background: transparent url("../../../../content/dam/BCHydro/images/icons/Consumption-icon_sm_blue.png") no-repeat 0px 0px;
+  margin: 0;
+  vertical-align: top;
+}
+div.SMIContent + div.module {
+  width: 220px;
+  /* match modules below */
+
+  padding: 0;
+  margin: 0;
+}
+div.SMIContent > div.alert {
+  margin: 1.5em 0 1.5em;
+}
+/* DIVIDERS */
+hr.divider {
+  /* Covered in GeneralStyles.css*/
+}
+.column.right > hr.divider {
+  /* context dependencies */
+
+  clear: both;
+  position: relative;
+  left: -1.6em;
+  width: 103%;
+}
+.messaging > div {
+  float: left;
+  width: 220px;
+  height: 210px;
+  max-height: 210px;
+  margin: 0 1.3% 0 0;
+  padding: 0;
+  border: 1px solid #cce5f0;
+  background-color: #fff;
+  -moz-border-radius: .2em .2em;
+  -webkit-border-radius: .2em .2em;
+  border-radius: .2em .2em;
+}
+.messaging > div:last-child {
+  margin-right: 0;
+}
+.messaging > .static-promo {
+  padding: 1.3em;
+  font-size: 0.9em;
+  width: 190px;
+  height: 180px;
+  overflow: hidden;
+}
+.messaging > .static-promo p {
+  margin-bottom: .5em;
+  line-height: 1.3em;
+}
+.messaging > .static-promo > h3,
+.messaging > .static-promo > h4 {
+  font-weight: normal;
+  font-size: 2em;
+  line-height: 1em;
+  margin: 0 0 0.5em;
+  font-family: DIN, "Arial narrow", Arial, sans-serif;
+  text-transform: uppercase;
+  color: #00adf0;
+}
+.messaging > .static-promo img {
+  float: right;
+  padding: 2px;
+  border: 1px solid #d7d7d7;
+  -moz-border-radius: .2em .2em;
+  -webkit-border-radius: .2em .2em;
+  border-radius: .2em .2em;
+}
+.messaging > .carousel {
+  -moz-border-radius: .2em .2em;
+  -webkit-border-radius: .2em .2em;
+  border-radius: .2em .2em;
+  margin-right: 0;
+}
+.messaging > .carousel > .carousel-content {
+  text-align: center;
+  /* temporary */
+
+  height: 176px;
+  background-color: #00adf0;
+  -moz-border-radius: .2em .2em 0 0;
+  -webkit-border-radius: .2em .2em 0 0;
+  border-radius: .2em .2em 0 0;
+  overflow: hidden;
+}
+.messaging > .carousel > .carousel-controls {
+  height: 32px;
+  padding: .5em;
+  text-align: center;
+}
+.messaging > .carousel > .carousel-controls > a {
+  display: inline-block;
+  margin-right: 4px;
+  width: 15px;
+  height: 15px;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/carousel-buttons-sprite.png') no-repeat 0 0;
+}
+.messaging > .carousel > .carousel-controls > a:last-child {
+  margin-right: 0;
+}
+.messaging > .carousel > .carousel-controls > a:hover {
+  background-position: -40px 0;
+}
+.messaging > .carousel > .carousel-controls > a.active {
+  background-position: -20px 0;
+}
+/* __DIV.DROPDOWN 
+ * Custom select/dropdown css
+ * ================================================== 
+ * Moved from Forms.css. Covers custom selects
+ * but also used for the account picker.
+ */
+div.dropdown {
+  float: none;
+  display: inline-block;
+  position: relative;
+  overflow: visible;
+  color: #999999;
+  min-width: 50px;
+  font-size: 1em;
+  border: 1px solid #c6d7e0;
+  margin: 0;
+  padding: 0.4em 0.7em;
+  -moz-border-radius: .2em;
+  -webkit-border-radius: .2em;
+  border-radius: .2em;
+  background-color: #fbfbfb;
+  background: -moz-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* W3C */
+
+  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fbfbfb',GradientType=0 );  IE6-9 */
+
+  /* filter declaration breaks dropdown visibility in IE 8 */
+
+  z-index: 5;
+}
+div.dropdown.active,
+div:hover.dropdown {
+  color: #0d6893;
+  background-color: #dcedf6;
+  background: #f3fafd;
+  /* Old browsers */
+
+  background: -moz-radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* FF3.6+ */
+
+  background: -webkit-radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* Opera 12+ */
+
+  background: -ms-radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* IE10+ */
+
+  background: radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* W3C */
+
+  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3fafd', endColorstr='#dcedf6',GradientType=1 );  IE6-9 fallback on horizontal gradient */
+
+  /* filter declaration breaks dropdown visibility in IE 8 */
+
+}
+div.dropdown > a {
+  display: block;
+  text-decoration: none;
+  color: #999999;
+}
+div.dropdown.active > a,
+div:hover.dropdown > a {
+  color: #0d6893;
+}
+div.dropdown > a.current {
+  padding-right: 20px;
+}
+div.dropdown > span.nocurrent {
+  display: block;
+  color: #999999;
+  margin-right: 20px;
+  /* was padding-right:20px; */
+
+}
+div.dropdown > a.selector {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 20px;
+  height: 32px;
+  /*float: right;*/
+
+  background: transparent url("../../../../content/dam/BCHydro/images/sprites/dropdown-sprite.png") 3px 3px no-repeat;
+  overflow: visible;
+}
+div.dropdown.active a.selector,
+div:hover.dropdown > a.selector {
+  background-position: 3px -22px;
+}
+div.dropdown > ul {
+  /* default state */
+
+  display: block;
+  position: absolute;
+  top: 2.45em;
+  left: -1px;
+  float: left;
+  z-index: 30;
+  background-color: #ffffff;
+  border: 1px solid #c6d7e0;
+  -moz-border-radius: .2em;
+  -webkit-border-radius: .2em;
+  border-radius: .2em;
+}
+/*div.dropdown.active > ul { 
+    display: block;
+}*/
+div.dropdown > ul > li {
+  cursor: pointer;
+  color: #0d6893;
+  background-color: #ffffff;
+  padding: 0.4em 1em 0.4em 30px;
+  border-bottom: 1px solid #c6d7e0;
+  white-space: nowrap;
+}
+div.dropdown > ul > li:hover,
+div.dropdown > ul > li:hover.current {
+  background-color: #f3fafd;
+}
+div.dropdown > ul > li:last-child {
+  border: none;
+}
+div.dropdown > ul > li.current {
+  font-weight: bold;
+  background: url("../../../../content/dam/BCHydro/images/sprites/dropdown-sprite.png") 0.7em -48px no-repeat;
+}
+div.dropdown > ul > li.default {
+  font-style: italic;
+  color: #ccc;
+}
+div.dropdown.disabled,
+div:hover.dropdown.disabled {
+  color: #ccc;
+  background: none;
+  background-color: #F0F0F0;
+  border: 1px solid #F0F0F0;
+}
+div.dropdown.disabled > a,
+div:hover.dropdown.disabled > a {
+  color: #ccc !important;
+  background-position: 0px 1px !important;
+}
+/* ACCOUNTS DROPDOWN */
+div.account_picker {
+  display: inline-block;
+  position: relative;
+  overflow: visible;
+  line-height: 1.54em;
+  z-index: 66;
+}
+div.account_picker > a.current {
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 200px;
+}
+div.accounts_dropdown {
+  clear: both;
+  display: none;
+  position: absolute;
+  top: 2.5em;
+  left: -1px;
+  z-index: 15;
+  background-color: #fff;
+  border: 1px solid  #c6d7e0;
+  -moz-border-radius: .2em .2em;
+  -webkit-border-radius: .2em .2em;
+  border-radius: .2em .2em;
+  min-width: 35em;
+  color: #979a9c;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.25);
+  box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.25);
+}
+/* CSS override for SVI in presence of account picker */
+.graph-widget-collection-menu {
+  position: relative;
+  z-index: 0;
+}
+div.accounts_dropdown > input.search {
+  margin: 0.85em;
+  width: 84%;
+}
+div.accounts_dropdown > h4 {
+  margin: 0.85em 0.85em 0.5em;
+  color: #979a9c;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+div.accounts_dropdown > a.moreaccounts {
+  display: block;
+  height: 1.3em;
+  background: #ffffff url('../../../../content/dam/BCHydro/images/sprites/accounts-list-sprite.png') no-repeat center 2px;
+}
+div.accounts_dropdown > a.moreaccounts:hover {
+  background-color: #f3fafd;
+}
+div.accounts_dropdown > a.down {
+  margin-top: -1px;
+  background-position: center 2px;
+}
+div.accounts_dropdown > a.up {
+  background-position: center -12px;
+}
+div.accounts_dropdown > a.down:hover {
+  background-position: center -38px;
+}
+div.accounts_dropdown > a.up:hover {
+  background-position: center -52px;
+}
+div.accounts_dropdown > ul.account_list {
+  list-style: none;
+}
+div.accounts_dropdown > ul > li {
+  margin: 0;
+  padding: 0.5em 0.85em;
+  border-bottom: 1px solid  #c6d7e0;
+  cursor: pointer;
+}
+div.accounts_dropdown > ul > li:before {
+  content: '';
+  display: inline-block;
+  vertical-align: bottom;
+  margin-right: .5em;
+  height: 20px;
+  width: 15px;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/accounts-list-sprite.png') no-repeat 0px -76px;
+}
+div.accounts_dropdown > ul > li:hover {
+  background-color: #f2f6f8;
+}
+div.accounts_dropdown > ul > li:last-child {
+  border: 0;
+}
+div.accounts_dropdown > ul > li.residential {
+  /* default style for background image */
+
+}
+div.accounts_dropdown > ul > li.error {
+  color: #ca4b53;
+  font-weight: bold;
+  margin-bottom: 1em;
+  background-position: 0.85em 50px;
+}
+div.accounts_dropdown > ul > li.commercial:before {
+  background-position: 0px -109px;
+}
+div.accounts_dropdown > ul > li > a {
+  display: inline-block;
+  float: right;
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 24em;
+}
+fieldset.accountsettingshead {
+  border-color: #e2e2e2;
+  border-width: 1px 0 0 0;
+  border-type: solid;
+}
+fieldset.accountsettingshead section {
+  float: none;
+  clear: both;
+}
+fieldset.accountsettingshead section > p {
+  width: 50%;
+  float: left;
+  clear: none;
+  margin: 0;
+}
+fieldset.accountsettingshead section > p > label {
+  font-weight: bold;
+  float: none;
+  text-align: left !important;
+}
+fieldset.accountsettingshead section > p > span {
+  line-height: 18px;
+}
+fieldset.accountsettingshead section > p > span.address {
+  padding: 0.5em 0;
+  width: 210px;
+  display: inline-block;
+}
+fieldset.accountsettingshead section > p > span.holdername {
+  padding: 0.5em 0;
+  width: 170px;
+  display: inline-block;
+}
+fieldset.accountsettingshead section > p.left > label {
+  width: 11.3em !important;
+}
+fieldset.accountsettingshead section > p.right > label {
+  width: 8.2em !important;
+}
+.billpayment p > label {
+  padding: 6px 0;
+}
+.billpayment p > label > span {
+  padding: 6px 0;
+  display: inline-block;
+}
+

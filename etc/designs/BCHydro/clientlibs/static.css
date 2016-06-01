@@ -1,0 +1,160 @@
+/* override for edit window */
+.x-window-body label {
+  padding: 0;
+}
+.x-window-body button {
+  min-width: 0;
+}
+/* parsys component */
+div.par,
+div.rightpar {
+  clear: both;
+}
+div.parsys_column {
+  height: 100%;
+  /* temp fix for the column height in the blank page */
+
+  width: 100%;
+  float: left;
+  border: 0;
+  vertical-align: top;
+  padding: 0;
+  margin: 0;
+}
+div.section {
+  zoom: 1;
+}
+div.parsys_column .section {
+  overflow: hidden;
+  width: 100%;
+}
+/* column control layouts */
+div.cq-colctrl-cols {
+  width: 100%;
+  float: left;
+}
+div.cq-colctrl-default {
+  width: 100%;
+}
+/* layout 0 : 50% 50% ( grid6 + grid6 ) */
+div.cq-colctrl-lt0-c0 {
+  width: 340px;
+  margin-right: 10px;
+}
+div.cq-colctrl-lt0-c1 {
+  width: 340px;
+  margin-left: 10px;
+}
+/* layout 1 : 33% 33% 33%( grid4 + grid4 + grid4 ) */
+div.cq-colctrl-lt1-c0 {
+  width: 220px;
+  margin-right: 10px;
+}
+div.cq-colctrl-lt1-c1 {
+  width: 220px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+div.cq-colctrl-lt1-c2 {
+  width: 220px;
+  margin-left: 10px;
+}
+/* layout 2 : 25% 25% 25% 25%( grid4 + grid4 + grid4 ) */
+div.cq-colctrl-lt2-c0 {
+  width: 220px;
+  margin-right: 10px;
+}
+div.cq-colctrl-lt2-c1 {
+  width: 220px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+div.cq-colctrl-lt2-c2 {
+  width: 220px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+div.cq-colctrl-lt2-c3 {
+  width: 220px;
+  margin-left: 10px;
+}
+/* BC Hydro Column Control Options (738 px total)
+2;bch-colctrl-lt0   2 Columns (75% 168px|20)
+2;bch-colctrl-lt1   2 Columns (226px 55%|20)
+2;bch-colctrl-lt2   2 Columns (50% 50%|20)
+3;bch-colctrl-lt3   3 Columns (270px 270px 168px|15) *//* column control layouts */
+div.bch-colctrl-cols {
+  width: 100%;
+  float: left;
+}
+div.bch-colctrl-default {
+  width: 100%;
+}
+/* layout 1: 75% 168px|20 */
+div.bch-colctrl-lt0-c0 {
+  width: 550px;
+  margin-right: 20px;
+}
+div.bch-colctrl-lt0-c1 {
+  width: 168px;
+}
+/* layout 2: 226px 55%|20 */
+div.bch-colctrl-lt1-c0 {
+  width: 226px;
+  margin-right: 20px;
+}
+div.bch-colctrl-lt1-c1 {
+  width: 492px;
+}
+/* layout 3: 50% 50%|20 */
+div.bch-colctrl-lt2-c0 {
+  width: 359px;
+  margin-right: 20px;
+}
+div.bch-colctrl-lt2-c1 {
+  width: 359px;
+}
+/* layout 4: 270px 270px 168px|15 */
+div.bch-colctrl-lt3-c0 {
+  width: 270px;
+  margin-right: 15px;
+}
+div.bch-colctrl-lt3-c1 {
+  width: 270px;
+  margin-right: 15px;
+}
+div.bch-colctrl-lt3-c2 {
+  width: 168px;
+}
+/* anchor place holder */
+.cq-anchor-placeholder {
+  width: 20px;
+  height: 20px;
+  border: 2px dashed #cccccc;
+  background: url("../../../../libs/cq/ui/widgets/themes/default/icons/16x16/anchor.png") no-repeat scroll 50% 50%;
+  height: 16px;
+  width: 16px;
+}
+/* movie place holder:draw dashed box on the top to prevent when the content fill the whole box, user can't edit video any more issue*/
+.cq-placeholder-has-content {
+  width: 100%;
+  height: 30px;
+  border: 2px dashed #cccccc;
+}
+p.cq-redirect-notice {
+  margin: 20px 0 20px 0;
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 40px;
+}
+div.parsys.feature > div.parbase {
+  overflow: hidden;
+}
+div.parsys.feature + div.par.parsys:after {
+  content: '';
+  display: block;
+  height: .1em;
+  width: auto;
+  clear: both;
+}
+

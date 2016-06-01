@@ -1,0 +1,1288 @@
+/*----------------------------------------------------------------
+  *
+  * Filename:   ComponentsStyles.css
+  * Version:    0.0.1
+  * Author: srooks
+  * Description: Styles for CQ5 Managed and Edited Components
+  * These are all styles for a component generally following this template:
+  * 
+  *     <div class="wrapper classes"> 
+  *         <h3>Title/Heading</h3>
+  *          <div class="image"><img src="images/promo-thumb.png" alt="image" /></div>
+  *         <div class="text">
+  *             <p>Texty stuff.</p>
+  *         </div>
+  *         <div class="links"><a href="#">Call to action</a></div>
+  *     </div>           
+  *
+  * With a couple minor variations (e.g. different heading/image positions)
+  *
+==TOC:===================================================
+  __SIDEBOX Generic Sidebox
+  __TPS (TEAM POWER SMART) sidebox variants
+  __TPS_COUNTER special box for the TPS counter.
+  __BANNERS
+  __CONTENT-FEATURE
+  __FEATURE-SPOT
+  __FAQ
+  __CAROUSELS
+ 
+==COLOR LEGEND:==========================================
+  header text:      #30353a, rgb(48, 53, 58)
+  paragraph text:   #555555, rgb(85, 85, 85)
+  lt misc text:     #979a9c, rgb(151, 154, 156)
+  link color:       #0d6893, rgb(13, 104, 147)
+  link hover:       #0d5292, rgb(13, 82, 146)
+  brand blue:       #00adf0, rgb(0, 173, 239)
+  brand green:      #50b849, rgb(80, 184, 72)
+  
+**********************************************************/
+/* __SIDEBOX
+ * Styling for sideboxes
+ * ==================================================
+ * These come in brand blue and green and are based on a basic HTML format similar
+ * to the alerts
+ *
+ */
+div.bch-sidebox {
+  position: relative;
+  font-size: 13px;
+  padding: 0;
+  line-height: 1.25em;
+  border: 2px solid #004f6c;
+  -moz-border-radius: .2em;
+  -webkit-border-radius: .2em;
+  border-radius: .2em;
+  margin-bottom: 1.5em;
+  background-color: #fff;
+}
+/* contextual sizing options */
+div.bch-sidebox {
+  max-width: 220px;
+}
+.column.right .bch-sidebox,
+.column.right-side .bch-sidebox {
+  max-width: none;
+}
+div.bch-sidebox.fw {
+  width: 210px;
+}
+/* contextual sizing options */
+div.bch-sidebox {
+  max-width: 220px;
+}
+.column.right .bch-sidebox,
+.column.right-side .bch-sidebox {
+  max-width: none;
+}
+div.bch-sidebox.fw {
+  width: 210px;
+}
+div.bch-sidebox.blue {
+  border-color: #004f6c;
+}
+div.bch-sidebox.promotional.blue {
+  background-color: #10a3c8;
+  border-color: #10a3c8;
+}
+div.bch-sidebox.promotional.green {
+  background-color: #50b848;
+  border-color: #50b848;
+}
+div.bch-sidebox.green {
+  border-color: #046a38;
+}
+div.bch-sidebox.promotional.csr {
+  background-color: #50b848;
+  border-color: #50b848;
+}
+div.bch-sidebox.informational.csr {
+  border-color: #30353a;
+}
+div.bch-sidebox > div {
+  margin: 0 1.5em;
+  float: none;
+}
+div.bch-sidebox > h3,
+div.bch-sidebox > h4 {
+  margin: 0;
+  padding: 0 1.5em;
+  background-color: #004f6c;
+  color: #fff;
+}
+div.bch-sidebox.green > h3,
+div.bch-sidebox.green > h4 {
+  background-color: #046a38;
+}
+div.bch-sidebox.csr > h3,
+div.bch-sidebox.csr > h4 {
+  background-color: #30353a;
+}
+div.bch-sidebox.promotional > h3,
+div.bch-sidebox.promotional > h4 {
+  font-size: 1.85em;
+  margin: 0;
+  padding: .5em .65em 0;
+  line-height: 1em;
+  font-family: DIN, "Arial narrow", Arial, sans-serif;
+  text-transform: capitalize;
+  font-weight: normal;
+  background-color: transparent;
+}
+div.bch-sidebox.feature-image > h3,
+div.bch-sidebox.feature-image > h4 {
+  padding-bottom: .5em;
+}
+div.bch-sidebox > h3,
+div.bch-sidebox > h4 {
+  font-size: 1em;
+  font-family: Arial, sans-serif;
+  text-transform: none;
+  font-weight: bold;
+  padding: .85em 1.5em;
+  margin: 0;
+  line-height: 1.25em;
+}
+div.bch-sidebox > h3.icon:before,
+div.bch-sidebox > h4.icon:before {
+  /* overriding any icon styles. verboten styling in MOST sideboxes */
+
+  content: none;
+  display: none;
+}
+/* SIDEBOX > DIV.image 
+ * MUST declare the image presentation or the image will not appear 
+ */
+div.bch-sidebox > div.image {
+  display: none;
+  line-height: 0;
+  margin: 0;
+}
+div.bch-sidebox.feature-image > div.image,
+div.bch-sidebox.float-image-left > div.image,
+div.bch-sidebox.float-image-right > div.image {
+  display: block;
+  float: none;
+  width: 100%;
+}
+div.bch-sidebox > div.image * {
+  margin: 0;
+}
+div.bch-sidebox.feature-image > div.image > img {
+  width: 100%;
+  float: none;
+  padding: 0;
+}
+div.bch-sidebox.float-image-left > div.image > img {
+  float: left;
+  margin: .75em .5em .5em 1.5em;
+}
+div.bch-sidebox.float-image-right > div.image > img {
+  float: right;
+  margin: .75em 1.5em .5em .5em;
+}
+div.bch-sidebox.feature-image > div.text {
+  clear: both;
+}
+div.bch-sidebox.float-image-left > div.text > *,
+div.bch-sidebox.float-image-left > div.text > * {
+  clear: none;
+}
+/* SIDEBOX > DIV.text 
+ * 
+ */
+div.bch-sidebox > .text:empty {
+  display: none;
+}
+div.bch-sidebox > div.text > * {
+  margin: .5em 0;
+}
+div.bch-sidebox > div.text > h4 {
+  margin-bottom: .15em;
+  line-height: 1.25em;
+}
+div.bch-sidebox > div.text > h4 + p {
+  margin-top: 0;
+}
+div.bch-sidebox > div.text p {
+  line-height: 1.45em;
+  margin: .5em 0 .5em;
+}
+div.bch-sidebox > div.text p + ul {
+  margin-top: 0;
+}
+div.bch-sidebox > div.text > ul {
+  list-style-type: disc;
+  list-style-position: outside;
+  margin: 0.5em 0 1.25em;
+  display: block;
+  float: none;
+  clear: both;
+}
+div.bch-sidebox > div.text > ul > li {
+  line-height: 1.25em;
+  text-indent: 0;
+  margin-left: 1.1em;
+  margin-bottom: .75em;
+}
+div.bch-sidebox > div.text > ul > li > a {
+  color: #0d6893;
+}
+div.bch-sidebox > div.text > ul.linklist > li > a {
+  font-weight: bold;
+}
+div.bch-sidebox.promotional > .text * {
+  color: #fff;
+}
+/* SIDEBOX > DIV.links
+ * 
+ */
+div.bch-sidebox > div.links {
+  margin: 0;
+  background-color: #fff;
+  padding: .75em 1.5em .75em;
+  clear: both;
+}
+div.bch-sidebox.nolinks > div.links {
+  border-top: none;
+  display: none;
+}
+div.bch-sidebox > div.links > a {
+  margin-top: 0;
+  line-height: 1.15em;
+}
+div.bch-sidebox > div.links a {
+  font-weight: bold;
+}
+/* __TPS (TEAM POWER SMART) Sidebox variants 
+ * These boxes have different HTML, but inherit a fw of the base structures
+ */
+div.bch-sidebox.tps {
+  position: relative;
+  background-color: #50b849;
+  border: none;
+  -moz-border-radius: .6em 0 .6em 0;
+  -webkit-border-radius: .6em 0 .6em 0;
+  border-radius: .6em 0 .6em 0;
+  margin-bottom: 3em;
+  behavior: url('../Javascript/PIE.htc');
+}
+div.tps.nolinks {
+  margin-bottom: 1.6em;
+}
+div.bch-sidebox.tps h3 {
+  font-size: 1.25em;
+  line-height: 1.15em;
+  color: #def873;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: DIN, "Arial Narrow", sans-serif;
+  padding: .8em 1.2em 0;
+  margin-bottom: .65em;
+}
+div.tps.h3-white h3 {
+  color: #fff;
+}
+div.bch-sidebox.tps h4 {
+  font-size: 1em;
+  line-height: 1.25em;
+  color: #def873;
+  background-color: transparent;
+  text-transform: none;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0 1.5em 0 1.5em;
+}
+div.bch-sidebox.tps > div {
+  overflow: hidden;
+  background-color: transparent;
+  color: #fff;
+}
+/* div.image */
+div.bch-sidebox.tps > div.image {
+  display: block;
+  margin: .85em 1.5em;
+}
+div.tps.feature-image > div.image {
+  margin: .85em 0;
+}
+div.tps.noimage > div.image {
+  display: none;
+}
+div.tps > div.image > img {
+  float: left;
+}
+/* div.text */
+div.bch-sidebox.tps > div.text > p {
+  float: left;
+  color: #fff;
+  margin: 0 0 .5em 0;
+}
+div.tps.noimage > div.image + div.text {
+  margin-top: .8em;
+}
+div.bch-sidebox.tps > div.text a {
+  color: #def873;
+  font-weight: normal;
+}
+div.bch-sidebox.tps > div > ul {
+  list-style-position: outside;
+}
+div.bch-sidebox.tps > div > ul > li {
+  list-style: none;
+  color: #fff;
+  margin-bottom: .65em;
+  margin-left: 0.75em;
+  text-indent: -0.65em;
+}
+div.bch-sidebox.tps > div > ul > li:before {
+  content: "\203a \0020";
+}
+div.bch-sidebox.tps > div > ul > li > a {
+  font-weight: normal;
+}
+/* some button-y styles for links */
+div.bch-sidebox.tps > div.text > p .button {
+  color: #50b849;
+  font-weight: bold;
+  border-color: #fff;
+  background-color: #fbfbfb;
+  background: -moz-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#fbfbfb', GradientType=0);
+  /* IE6-9 */
+
+  margin: .5em 0;
+}
+div.bch-sidebox.tps > div.text > p .button:hover {
+  color: #50b849;
+  border-color: #ecf8e4;
+  background-color: #fbfbfb;
+  background: -moz-linear-gradient(top, #fbfbfb 0%, #f2faeb 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #fbfbfb 0%, #f2faeb 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #fbfbfb 0%, #f2faeb 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #fbfbfb 0%, #f2faeb 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #fbfbfb 0%, #f2faeb 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfbfb', endColorstr='#f2faeb', GradientType=0);
+  /* IE6-9 */
+
+}
+div.bch-sidebox.tps > div.text > p .button:active {
+  color: #49a642;
+  border-color: #ecf8e4;
+  background-color: #fbfbfb;
+  background: -moz-linear-gradient(top, #ecf8e4 0%, #f2faeb 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #ecf8e4 0%, #f2faeb 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #ecf8e4 0%, #f2faeb 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #ecf8e4 0%, #f2faeb 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #ecf8e4 0%, #f2faeb 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ecf8e4', endColorstr='#f2faeb', GradientType=0);
+  /* IE6-9 */
+
+}
+/* div.links */
+div.tps.nolinks > div.links {
+  display: none;
+}
+div.tps > div.links {
+  padding-top: 0;
+  position: absolute;
+  bottom: -2.45em;
+  left: 0;
+}
+div.bch-sidebox.tps > div.links a {
+  font-weight: bold;
+}
+/* The __TPS_COUNTER 
+ * Included here for good measure
+ * 
+ * */
+div.tps.counter {
+  -moz-border-radius: 0 .6em 0 .6em;
+  -webkit-border-radius: 0 .6em 0 .6em;
+  border-radius: 0 .6em 0 .6em;
+  behavior: url('../Javascript/PIE.htc');
+  margin-bottom: 1.6em;
+}
+div.tps.counter:after {
+  content: none;
+}
+div.tps.counter > h3 {
+  margin-bottom: 0;
+  line-height: 0.85em;
+}
+div.tps.counter div.text {
+  overflow: hidden;
+  padding: 1.54em 0 0.85em;
+}
+div.tps > div.text > p.ticker {
+  display: block;
+  float: left;
+  margin: 0 .5em 1em 0 ;
+}
+div.tps > div.text > p.ticker > span {
+  color: #b2c801;
+  font-weight: bold;
+  font-family: DIN, Helvetica, Arial, sans-serif;
+  display: inline-block;
+  outline: 1px solid #949a96;
+  padding: 9px 2px 6px;
+  margin: 0 3px 0 0;
+  font-size: 19px;
+  line-height: 1em;
+  background: -moz-linear-gradient(top, #ffffff 0%, #cfcbca 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #ffffff 0%, #cfcbca 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #ffffff 0%, #cfcbca 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #ffffff 0%, #cfcbca 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #ffffff 0%, #cfcbca 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#cfcbca', GradientType=0);
+  /* IE6-9 */
+}
+div.tps.counter div.text > p.label {
+  width: auto;
+  text-align: left;
+  display: block;
+  float: left;
+  font-size: .9em;
+  font-weight: bold;
+  color: #e1edae;
+  text-transform: uppercase;
+}
+/* __CONTENT-FEATURE
+ * Left column (main content area) feature content box with image
+ */
+div.bch-content-feature {
+  float: none;
+  background-color: #fff;
+  padding: 0;
+  width: auto;
+  margin: 0 0 2em;
+  border: 1px solid #d6e3e9;
+  -moz-border-radius: .2em .2em .2em .2em;
+  -webkit-border-radius: .2em .2em .2em .2em;
+  border-radius: .2em .2em .2em .2em;
+  overflow: hidden;
+  behavior: url('../Javascript/PIE.htc');
+}
+div.bch-content-feature > div.image {
+  margin: 0;
+}
+div.bch-content-feature > div.image > img {
+  float: left;
+  margin-right: 1.55em;
+}
+div.bch-content-feature > h3 {
+  margin: .8em 0 .25em;
+  font-size: 1.55em;
+}
+div.bch-content-feature > h3,
+div.bch-content-feature > div.text {
+  clear: none;
+  margin-right: 1.5em;
+}
+div.bch-content-feature > h3,
+div.bch-content-feature > div.text > * {
+  color: #30353a;
+}
+div.bch-content-feature > div.text > * {
+  font-size: 1em;
+}
+div.bch-content-feature > div.text > ul {
+  margin-top: -0.5em;
+  list-style: none outside none;
+}
+div.bch-content-feature > div.text > ul > li:before {
+  content: "\203a \0020";
+}
+div.bch-content-feature > div.links {
+  margin: 1em 0 .5em;
+}
+div.bch-content-feature > div.links > a {
+  /* See styles for __FORMS: BUTTONS. Use hasbutton.secondary on parent div */
+}
+/* __FEATURE-SPOT
+ * Feature spot. A floating component
+ * resembling the sideboxes
+ * Used on Top Level Landing Pages in a 
+ * column-controlled system
+ */
+div.bch-feature-spot {
+  /*width: 47%;*/
+
+  float: left;
+  margin: 0 1.6em 1.6em 0;
+  color: #fff;
+  background-color: #00adf0;
+  overflow: hidden;
+  -moz-border-radius: .2em .2em .2em .2em;
+  -webkit-border-radius: .2em .2em .2em .2em;
+  border-radius: .2em .2em .2em .2em;
+}
+div.bch-feature-spot.blue-green {
+  background-color: #01afb8;
+}
+div.bch-feature-spot > h3 {
+  padding: .5em .65em .35em;
+  font-family: DIN, "Arial narrow", Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.7em;
+  font-weight: normal;
+  line-height: 1.1em;
+  margin: 0;
+  color: #fff;
+}
+div.bch-feature-spot > div {
+  padding: 0em 1.2em 1.2em;
+  margin: 0;
+}
+div.bch-feature-spot > div.image {
+  padding: 0;
+  line-height: 0;
+  width: 100%;
+}
+div.bch-feature-spot > div.image > img {
+  margin-left: -0.1em;
+  width: 101%;
+}
+div.bch-feature-spot > div.text > * {
+  color: #fff;
+}
+div.bch-feature-spot > div.text p {
+  margin: 0 0 .45em;
+  font-size: .95em;
+}
+div.bch-feature-spot > div.text p:last-child {
+  margin: 0;
+}
+/* __FAQ blocks 
+ * header (question) w/plus-minus icons and text block answer
+ * this could have been done using a dl list, but needed to leverage
+ * CQ5 components for editability
+ * */
+div.bch-faq-block {
+  margin-bottom: 1.55em;
+  margin-left: 0.1em;
+}
+div.bch-faq-block > h3 {
+  margin-bottom: 0.5em;
+  float: left;
+  cursor: pointer;
+  font-size: 1.4em;
+  margin-left: 40px;
+  /*text-indent: -45px;*/
+
+  line-height: 1.5em;
+  position: relative;
+}
+div.bch-faq-block > h3.icon:before {
+  /* content: is already defined in GeneralStyles. */
+
+  /* IE note: IE will only redraw :before and :after 
+       when the content changes. Use overflow:hidden and
+       give content a different number of spaces for each 
+       expected state. */
+
+  content: '';
+  width: 38px;
+  height: 38px;
+  overflow: hidden;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/40px-plus-minus-sprite.png') no-repeat;
+  background-position: -41px 0px;
+  display: block;
+  float: left;
+  left: -44px;
+  margin-right: -44px;
+  position: absolute;
+  top: -5px;
+}
+div.bch-faq-block > h3.icon:hover:before {
+  content: ' ';
+  background-position: 0px 0px;
+}
+div.bch-faq-block > div.image > img {
+  float: left;
+  margin: .85em .85em .85em 0;
+}
+div.bch-faq-block > div.text {
+  float: left;
+  clear: both;
+  margin-top: -0.5em;
+}
+div.bch-faq-block > div.text ul {
+  list-style: disc outside none;
+  margin-left: 1.7em;
+  margin-bottom: 0.75em;
+  text-indent: 0;
+}
+div.bch-faq-block > div.text ol {
+  margin-left: 1.7em;
+}
+div.bch-faq-block > div.links {
+  float: left;
+  clear: both;
+  margin-top: -0.5em;
+  margin-bottom: 1.45em;
+}
+div.bch-faq-block > div {
+  margin-left: 3.1em;
+}
+div.closed.bch-faq-block > h3.icon {
+  color: #0d6893;
+  min-height: 38px;
+}
+div.closed.bch-faq-block > h3.icon:hover {
+  color: #0d5292;
+}
+div.closed.bch-faq-block > h3.icon:before {
+  content: '  ';
+  background-position: 0px -40px;
+}
+div.closed.bch-faq-block > h3.icon:hover:before {
+  content: '   ';
+  background-position: -41px -40px;
+}
+div.bch-faq-block.closed > div {
+  display: none;
+}
+/* __TITLE+ABSTRACT LIST ITEMS
+ * Under development...
+ * This is placeholder css
+ */
+div.bch-title-abstract-list {
+  padding: 0;
+}
+div.bch-title-abstract-list > h4 {
+  margin: 0;
+}
+/* __CUSTOMER-SERVICE LINKS GRID 
+ * 
+ */
+div.twobyx-grid-box {
+  /* Updated for column control. No longer floats.
+     width: 45%;
+     float: left;*/
+
+  width: auto;
+  float: none;
+  height: 13.25em;
+  margin: 0;
+}
+/* The way we would prefer to do things if IE was compliant. */
+/*div.twobyx-grid-box:nth-child( 2n+1 ) {
+    border-right: 1px solid #d8e3e7;
+    clear: left;
+}
+div.twobyx-grid-box:nth-last-child( 2n+3 ), div.twobyx-grid-box:nth-last-child( 2n+4 ) {
+    border-bottom: 1px solid #d8e3e7;
+}*/
+/* The way we have to do this because IE is lame. */
+div.clear-border-right {
+  border-right: 1px solid #d8e3e7;
+  clear: left;
+}
+div.border-bottom {
+  border-bottom: 1px solid #d8e3e7;
+}
+div.customer-services-links {
+  padding: 1.25em;
+}
+div.customer-services-links > div.text li {
+  line-height: 1.1em;
+  margin-bottom: .75em;
+  margin-left: 4.3em;
+  width: 80%;
+}
+div.customer-services-links > div.text li > a {
+  font-weight: bold;
+}
+div.customer-services-links > h3 {
+  font-size: 1.65em;
+  margin-bottom: .25em;
+  margin-left: 2.55em;
+  /* in the event of wrap-py goodness */
+
+  text-indent: -2.55em;
+}
+div.customer-services-links > h3 > a {
+  color: inherit;
+  text-decoration: inherit;
+}
+div.customer-services-links > h3.icon:before {
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/h1-icons-sprite.png') no-repeat 0px -1344px;
+  width: 44px;
+  height: 44px;
+  margin-right: 0.5em;
+}
+div.customer-services-links > h3.payment-options:before {
+  background-position: 0px -912px;
+}
+div.customer-services-links > h3.payment-options:hover:before {
+  background-position: -48px -912px;
+}
+div.customer-services-links > h3.moving:before {
+  background-position: 0px -1056px;
+}
+div.customer-services-links > h3.moving:hover:before {
+  background-position: -48px -1056px;
+}
+div.customer-services-links > h3.rates-and-bill:before {
+  background-position: 0px -960px;
+}
+div.customer-services-links > h3.rates-and-bill:hover:before {
+  background-position: -48px -960px;
+}
+div.customer-services-links > h3.power-outages:before {
+  background-position: 0px -1008px;
+}
+div.customer-services-links > h3.power-outages:hover:before {
+  background-position: -48px -1008px;
+}
+/* Article style listings... very basic */
+div.bch-article-listing {
+  clear: both;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #ecf1f4;
+  margin-bottom: 1em;
+  height: 7em;
+  overflow: hidden;
+}
+div.bch-article-listing:last-child,
+div.last-article {
+  border: 0;
+}
+div.bch-article-listing > div.image img {
+  float: left;
+  margin: 0 0.85em 0.85em 0;
+}
+div.bch-article-listing > h3 {
+  clear: none;
+  margin: 0 0 0.15em 0;
+}
+/*div.bch-article-listing > h3 > a { color: inherit; text-decoration: inherit; font-size: 1.25em }*/
+div.bch-article-listing > h3 > a {
+  color: #0d6893;
+  text-decoration: inherit;
+  font-size: 1.25em;
+}
+div.bch-article-listing > div.links {
+  clear: none;
+}
+div.bch-article-listing > div > p {
+  margin-bottom: .4em;
+}
+div.bch-article-listing > div > :last-child {
+  margin-bottom: 0;
+}
+div.bch-article-listing.long {
+  height: auto;
+}
+/* __CAROUSELS
+ * Small and large carousels based on JQuery scrollable
+ * jquerytools.org
+ */
+.small-carousel {
+  -moz-border-radius: .2em .2em;
+  -webkit-border-radius: .2em .2em;
+  border-radius: .2em .2em;
+  margin-right: 0;
+  background-color: #FFFFFF;
+  border: 1px solid #CCE5F0;
+  border-radius: 0.2em 0.2em 0.2em 0.2em;
+  height: 210px;
+  margin: 0 1.3% 0 0;
+  max-height: 210px;
+  padding: 0;
+  width: 218px;
+}
+/*
+root element for the scrollable.  when scrolling occurs this
+element stays still.
+*/
+.small-carousel .scrollable {
+  /* required settings */
+
+  position: relative;
+  overflow: hidden;
+  width: 220px;
+  height: 176px;
+}
+/*
+root element for scrollable items. Must be absolutely positioned
+and it should have a extremely large width to accommodate scrollable
+items.  it's enough that you set width and height for the root element
+and not for this element.
+*/
+.scrollable .items {
+  /* this cannot be too large */
+
+  width: 20000em;
+  position: absolute;
+}
+.scrollable .items > div {
+  float: left;
+}
+.small-carousel .scrollable .items > div {
+  /* adjustment for image components that have borders built in */
+
+  margin-left: -1px;
+  margin-top: -1px;
+}
+/*
+a single item. must be floated in horizontal scrolling.  typically,
+this element is the one that *you* will style the most.
+*/
+div > div.small-carousel-item {
+  float: left;
+  width: 220px;
+  height: 176px;
+  cursor: pointer;
+  overflow: hidden;
+}
+div.small-carousel-item > h3,
+div.small-carousel-item > h4,
+div.small-carousel-item.tagline > div.text > p {
+  font-size: 1.8em;
+  line-height: 1em;
+  font-family: DIN, "Arial narrow", Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: normal;
+  margin: 0.5em 0.5em 0.25em;
+}
+div.small-carousel-item > div.text > p {
+  margin: 0.5em 0.95em 0.5em;
+}
+div.small-carousel-item > div.links {
+  display: none;
+}
+div > div.small-carousel-item > div.image {
+  margin: 0;
+  float: none;
+}
+div.small-carousel-item > div.image > img {
+  width: 100%;
+}
+div.small-carousel-item.float-image-left > div.image > img {
+  width: auto;
+  outline: 1px solid #fff;
+  border: 1px solid transparent;
+  float: left;
+  margin: .5em .5em .5em .95em;
+}
+div.small-carousel-item.float-image-right > div.image > img {
+  width: auto;
+  outline: 1px solid #fff;
+  border: 1px solid transparent;
+  float: right;
+  margin: .5em .95em .5em .5em;
+}
+/* specific styles */
+div.small-carousel-item.green {
+  background-color: #50b849;
+}
+div.small-carousel-item.blue {
+  background-color: #00adf0;
+}
+div.small-carousel-item.green *,
+div.small-carousel-item.blue * {
+  color: #fff;
+}
+div.small-carousel-item.white {
+  background-color: #fff;
+}
+div.small-carousel-item.white * {
+  color: #00adf0;
+}
+div.small-carousel-item.feature-image > div.image {
+  width: 100%;
+  margin: 0;
+}
+div.small-carousel-item.feature-image > div.image > img {
+  width: 100%;
+  border: none;
+  outline: none;
+  float: none;
+}
+div.small-carousel-item.tagline > h3:first-child,
+div.small-carousel-item.tagline > h4:first-child {
+  display: none;
+}
+/* see above. shares style with h4 */
+div.small-carousel-item.no-image > div.image {
+  display: none;
+}
+/* large carousel styles */
+.large-carousel {
+  -moz-border-radius: .2em .2em;
+  -webkit-border-radius: .2em .2em;
+  border-radius: .2em .2em;
+  margin-right: 0;
+  background-color: #FFFFFF;
+  /*border: 1px solid #CCE5F0;*/
+
+  border-radius: 0.2em 0.2em 0.2em 0.2em;
+  height: 310px;
+  margin: 0 1.3% 0 0;
+  max-height: 310px;
+  padding: 0;
+  width: 740px;
+}
+.large-carousel .scrollable {
+  /* required settings */
+
+  position: relative;
+  overflow: hidden;
+  width: 740px;
+  height: 278px;
+}
+/* styley chunks */
+div > div.large-carousel-item {
+  float: left;
+  width: 740px;
+  height: 276px;
+  cursor: pointer;
+  overflow: hidden;
+}
+div.large-carousel-item > h3,
+div.large-carousel-item > h4 {
+  font-size: 1.4em;
+  line-height: 1em;
+  font-family: DIN, "Arial narrow", Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: normal;
+  margin: 3.5em 0 .25em;
+  float: left;
+  width: 21%;
+  clear: none;
+}
+div.large-carousel-item > div.text {
+  margin-left: 1em;
+}
+div.large-carousel-item > div.text > p {
+  margin: .5em .95em .5em;
+}
+div.large-carousel-item > div.links > a:before {
+  content: "\203a \0020";
+}
+div > div.large-carousel-item > div.image {
+  margin: 0;
+}
+div > div.large-carousel-item > div.image > img {
+  float: left;
+  /*border: 1px solid transparent;*/
+
+  margin: 0 1.5em 0 0;
+  /*outline: 1px solid #fff;*/
+
+}
+div.large-carousel-item.green {
+  background-color: #50b849;
+}
+div.large-carousel-item.blue {
+  background-color: #00adf0;
+}
+div.large-carousel-item.green *,
+div.large-carousel-item.blue * {
+  color: #fff;
+}
+div.large-carousel-item.white {
+  background-color: #fff;
+}
+div.large-carousel-item.white * {
+  color: #00adf0;
+}
+/*
+  extra large carousel styles
+*/
+.extra-large-carousel {
+  -moz-border-radius: .2em .2em;
+  -webkit-border-radius: .2em .2em;
+  border-radius: .2em .2em;
+  margin-right: 0;
+  background-color: #FFFFFF;
+  border: 1px solid #CCE5F0;
+  /* border: 5px solid green; */
+
+  border-radius: 0.2em 0.2em 0.2em 0.2em;
+  height: 415px;
+  margin: 0 1.3% 0 0;
+  max-height: 415px;
+  padding: 0;
+  width: 1121px;
+}
+.extra-large-carousel .scrollable {
+  /* required settings */
+
+  position: relative;
+  overflow: hidden;
+  width: 1121px;
+  height: 385px;
+}
+/* styley chunks */
+div > div.extra-large-carousel-item {
+  cursor: pointer;
+  float: left;
+  overflow: auto;
+  width: 1138px;
+}
+div.extra-large-carousel-item > h3,
+div.extra-large-carousel-item > h4 {
+  clear: none;
+  color: white;
+  font-family: DIN;
+  font-weight: bold;
+  font-size: 40px;
+  /*font-weight: 800;*/
+
+  line-height: 1em;
+  padding: 100px 0 0 100px;
+  position: absolute;
+  text-transform: uppercase;
+  width: 100%;
+}
+div.extra-large-carousel-item > div.text {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+  position: relative;
+}
+div.extra-large-carousel-item > div.text > p {
+  color: black;
+  position: absolute;
+}
+div.extra-large-carousel-item > div.links > a:before {
+  content: "\203a \0020";
+}
+div > div.extra-large-carousel-item > div.image {
+  margin: 0;
+}
+div > div.extra-large-carousel-item > div.image > img {
+  float: left;
+  /*border: 1px solid transparent;*/
+
+  margin: 0 1.5em 0 0;
+  /*outline: 1px solid #fff;*/
+
+}
+div.extra-large-carousel-item.green {
+  background-color: #50b849;
+}
+div.extra-large-carousel-item.blue {
+  background-color: #00adf0;
+}
+div.extra-large-carousel-item.green *,
+div.extra-large-carousel-item.blue * {
+  color: #fff;
+}
+div.extra-large-carousel-item.white {
+  background-color: #fff;
+}
+div.extra-large-carousel-item.white * {
+  color: #00adf0;
+}
+div.extra-large-carousel-item.white * {
+  color: #00adf0;
+}
+.extra-large-carousel .large-carousel-item {
+  height: 385px;
+  width: 1121px;
+}
+/*
+div.extra-large-carousel-item > h3, div.extra-large-carousel-item > h4 {
+    clear: none;
+    color: white;
+    font-family: DIN,"Arial narrow",Arial,sans-serif;
+    font-size: 2.4em;
+    font-weight: normal;
+    line-height: 1em;
+    padding: 100px 0 0 100px;
+    position: absolute;
+    text-transform: uppercase;
+    width: 100%;
+}
+*/
+div.extra-large-carousel-item > div.links {
+  display: none;
+}
+div.extra-large-carousel-item > div.text > p {
+  font-size: 14px;
+  color: black;
+  padding-left: 7.6em;
+  padding-top: 11.4em;
+  position: absolute;
+}
+div.extra-large-carousel-item > div.text {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+  position: relative;
+}
+.navi {
+  height: 32px;
+  padding: 0.5em;
+  text-align: center;
+  width: auto;
+}
+/* carousel/scrollable navigation */
+.navi a {
+  background: url("../../../../content/dam/BCHydro/images/sprites/carousel-buttons-sprite.png") no-repeat scroll 0 0 transparent;
+  display: inline-block;
+  height: 15px;
+  margin: 0 2px;
+  width: 15px;
+  font-size: 1px;
+}
+.navi a:hover {
+  background-position: -40px 0;
+}
+.navi a.active {
+  background-position: -20px 0;
+}
+div.parsys.feature > div.parbase {
+  overflow: hidden;
+}
+div.parsys.feature + div.par.parsys:after {
+  content: '';
+  display: block;
+  height: .1em;
+  width: auto;
+  clear: both;
+}
+/* added to fix overlapping highlight boxes with faq component */
+div.parbase.textimage.faq.section {
+  overflow: hidden;
+  padding: 4px 0px 0px 0px;
+}
+div.bch-faq-block > h3.icon.plus.bch-faq-block {
+  margin-bottom: 10px;
+}
+/* R4 Style Inclusions */
+/* #feature-block is included particularly for brand consistancy across R3 and R4 pages.
+ * id scoping prevents it from impacting styles native to R3.
+ */
+@font-face {
+  font-family: "DINWeb-bold";
+font-style: normal;
+font-weight: bold;
+src: url("../../hydro/clientlibs/homepage/fonts/DINWeb-Bold.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/homepage/fonts/DINWeb-Bold.woff") format("woff");
+}
+#feature-block {
+  background-color: #FAFDFF;
+  border: 1px solid #D6E3E9;
+  display: block;
+  margin-bottom: 20px;
+  overflow: hidden;
+  width: 660px;
+}
+#feature-block .text h3 {
+  margin: 15px 0;
+}
+#feature-block.full-image {
+  border: medium none;
+  height: 215px;
+  width: 660px;
+}
+#feature-block.img-text .text {
+  float: left;
+  padding: 0 15px;
+  margin: 0;
+}
+#feature-block.sm .text {
+  min-height: 144px;
+  width: 430px;
+}
+#feature-block.lg .text {
+  min-height: 216px;
+  width: 330px;
+  margin-top: 15px;
+}
+#feature-block.sm.img-text .image {
+  float: left;
+  height: 144px;
+  width: 200px;
+}
+#feature-block.lg .image {
+  float: left;
+  height: 216px;
+  width: 300px;
+}
+#feature-block.sm.ps {
+  border: medium none;
+  border-radius: 0 1em 0 1em;
+}
+#feature-block.ps {
+  background-color: #B3D01E;
+  border: medium none;
+  border-radius: 0 2em 0 2em;
+}
+#feature-block.ps .image {
+  overflow: hidden;
+  margin: 0;
+}
+#feature-block.ps .image img {
+  width: inherit;
+}
+#feature-block.lg.ps h3 {
+  font-size: 1.6em;
+}
+#feature-block.ps h3 {
+  color: #54A400;
+  font-family: DINWeb-bold, sans-serif;
+  /* slight deviation from R4 font definitions */
+
+  font-size: 2.15em;
+  font-weight: bold;
+  line-height: 1;
+  margin: 15px 0;
+  text-transform: uppercase;
+}
+#feature-block.sm.ps .text p {
+  color: #FFFFFF;
+  font-size: 1.07em;
+  width: 428px;
+}
+#feature-block.ps .text p {
+  color: #FFFFFF;
+  font-size: 1.07em;
+  width: 328px;
+}
+

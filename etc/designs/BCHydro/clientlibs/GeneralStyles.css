@@ -1,0 +1,2739 @@
+/***********************************************************
+ 
+  * Filename:	GeneralStyles.css
+  * Version:	0.0.1
+  * Author:	srooks
+  * Description: General styles for BCHydro.com implementing the styleguide
+  * provided by Engine Digital. Please see supplemental stylesheets
+  * for additional styles
+  * As of 5 July, all CPP specific code can be found in BCH-CPP.css
+ 
+==TOC:===================================================
+ 
+  __@Font-Face
+  __Defaults
+  __Global Classes
+  __Block Level Text Styles (h*, p, etc.)
+  __In-line Text Styles (b, i, a, etc.)
+  __Icons
+  __Breadcrumbs
+  __Forms: button
+  __Forms: input[type="text"]
+     * for more form elements, see/include bchydro_forms.css
+  __Alerts
+  __Tabs
+  __Progress_Navigator
+  __Tables
+  __Modal Windows
+  __Tooltips
+  __FINEPRINT / TAC
+  __DIV.DROPDOWN
+  __IDs and CONTEXTS
+  $__div.richTextEditor
+  $__div.text
+  $__#container	The wrapping/centering container
+  $__#mainContent	Main content 
+  		-- includes most page layout class definitions
+  		-- classes include columns_9_3, columns_7_5, and columns_x4
+  		-- .column, .module, .left, .right, .single, etc., .tabs
+  $__#bch_footer	Footer Definitions
+
+ 
+==COLOR LEGEND:==========================================
+  header text:		#30353a, rgb(48, 53, 58)
+  paragraph text:	#555555, rgb(85, 85, 85)
+  lt misc text:		#979a9c, rgb(151, 154, 156)
+  link color:		#0d6893, rgb(13, 104, 147)
+  link hover:		#0d5292, rgb(13, 82, 146)
+  brand blue:		#00adf0, rgb(0, 173, 239)
+  brand green:		#50b849, rgb(80, 184, 72)
+  panel stroke:		#e2e2e2, rgb(226, 226, 226)
+  error red:		@brand-red-dark, rgb(202, 75, 83)
+  
+**********************************************************/
+/* __@FONT-FACE
+=================================================*/
+@font-face {
+  font-family: 'brand-font-light';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Web/GT-Haptik-Light.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Web/GT-Haptik-Light.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Web/GT-Haptik-Light.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Web/GT-Haptik-Light.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-light-oblique';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Oblique-Web/GT-Haptik-Light-Oblique.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Oblique-Web/GT-Haptik-Light-Oblique.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Oblique-Web/GT-Haptik-Light-Oblique.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Oblique-Web/GT-Haptik-Light-Oblique.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-regular';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Web/GT-Haptik-Regular.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Web/GT-Haptik-Regular.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Web/GT-Haptik-Regular.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Web/GT-Haptik-Regular.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-regular-oblique';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Oblique-Web/GT-Haptik-Regular-Oblique.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Oblique-Web/GT-Haptik-Regular-Oblique.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Oblique-Web/GT-Haptik-Regular-Oblique.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Oblique-Web/GT-Haptik-Regular-Oblique.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-medium';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Web/GT-Haptik-Medium.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Web/GT-Haptik-Medium.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Web/GT-Haptik-Medium.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Web/GT-Haptik-Medium.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-medium-oblique';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Oblique-Web/GT-Haptik-Medium-Oblique.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Oblique-Web/GT-Haptik-Medium-Oblique.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Oblique-Web/GT-Haptik-Medium-Oblique.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Oblique-Web/GT-Haptik-Medium-Oblique.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-black';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Web/GT-Haptik-Black.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Web/GT-Haptik-Black.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Web/GT-Haptik-Black.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Web/GT-Haptik-Black.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-black-oblique';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Oblique-Web/GT-Haptik-Black-Oblique.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Oblique-Web/GT-Haptik-Black-Oblique.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Oblique-Web/GT-Haptik-Black-Oblique.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Oblique-Web/GT-Haptik-Black-Oblique.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-bold';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-bold-oblique';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Oblique-Web/GT-Haptik-Bold-Oblique.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Oblique-Web/GT-Haptik-Bold-Oblique.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Oblique-Web/GT-Haptik-Bold-Oblique.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Oblique-Web/GT-Haptik-Bold-Oblique.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'DIN';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.eot"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-light';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Web/GT-Haptik-Light.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Web/GT-Haptik-Light.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Web/GT-Haptik-Light.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Web/GT-Haptik-Light.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-light-oblique';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Oblique-Web/GT-Haptik-Light-Oblique.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Oblique-Web/GT-Haptik-Light-Oblique.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Oblique-Web/GT-Haptik-Light-Oblique.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Light-Oblique-Web/GT-Haptik-Light-Oblique.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-regular';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Web/GT-Haptik-Regular.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Web/GT-Haptik-Regular.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Web/GT-Haptik-Regular.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Web/GT-Haptik-Regular.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-regular-oblique';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Oblique-Web/GT-Haptik-Regular-Oblique.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Oblique-Web/GT-Haptik-Regular-Oblique.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Oblique-Web/GT-Haptik-Regular-Oblique.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Regular-Oblique-Web/GT-Haptik-Regular-Oblique.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-medium';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Web/GT-Haptik-Medium.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Web/GT-Haptik-Medium.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Web/GT-Haptik-Medium.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Web/GT-Haptik-Medium.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-medium-oblique';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Oblique-Web/GT-Haptik-Medium-Oblique.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Oblique-Web/GT-Haptik-Medium-Oblique.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Oblique-Web/GT-Haptik-Medium-Oblique.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Medium-Oblique-Web/GT-Haptik-Medium-Oblique.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-black';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Web/GT-Haptik-Black.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Web/GT-Haptik-Black.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Web/GT-Haptik-Black.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Web/GT-Haptik-Black.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-black-oblique';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Oblique-Web/GT-Haptik-Black-Oblique.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Oblique-Web/GT-Haptik-Black-Oblique.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Oblique-Web/GT-Haptik-Black-Oblique.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Black-Oblique-Web/GT-Haptik-Black-Oblique.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-bold';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'brand-font-bold-oblique';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Oblique-Web/GT-Haptik-Bold-Oblique.eot");
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Oblique-Web/GT-Haptik-Bold-Oblique.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Oblique-Web/GT-Haptik-Bold-Oblique.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Oblique-Web/GT-Haptik-Bold-Oblique.ttf") format("truetype");
+font-weight: normal;
+}
+@font-face {
+  font-family: 'DIN';
+src: url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.eot"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.eot?#iefix") format("embedded-opentype"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.woff") format("woff"), url("../../hydro/clientlibs/global/fonts/GT-Haptik-Bold-Web/GT-Haptik-Bold.ttf") format("truetype");
+font-weight: normal;
+}
+/* __DEFAULTS
+=================================================*/
+html,
+body {
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+}
+/*Setting 100% limits body/html to the height of the containing element: the window... messes things up*/
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+aside,
+header,
+footer,
+nav,
+button,
+input {
+  font-family: Arial, sans-serif;
+  color: #555;
+}
+header,
+footer {
+  clear: both;
+}
+img {
+  vertical-align: middle;
+}
+body div form {
+  margin: 0;
+}
+/* __GLOBAL CLASSES
+ * That do what you might expect
+=================================================*/
+.hidden {
+  display: none !important;
+}
+/* Self explanatory. Used frequently. */
+/* text color */
+.c_blue {
+  color: #0d6893;
+}
+/* applies link color to other elements */
+.c_red,
+.red {
+  color: #fa4616;
+}
+/* applies error color (text) to other elements */
+.c_green,
+.green {
+  color: #50b849;
+}
+.c_dkgrey,
+.c_dkgray {
+  color: #30353a;
+}
+.c_ltgrey,
+.c_ltgray {
+  color: #979a9c;
+}
+/* background colors */
+.bg_grad_pale {
+  /* applies bg gradient */
+
+  background: -moz-linear-gradient(top, #ffffff 0%, #f2f6f8 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #ffffff 0%, #f2f6f8 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #ffffff 0%, #f2f6f8 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #ffffff 0%, #f2f6f8 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #ffffff 0%, #f2f6f8 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f2f6f8', GradientType=0);
+  /* IE6-9 */
+
+}
+.bg_pale {
+  background-color: #f2f6f8;
+}
+.bg_grey,
+.bg_gray {
+  background-color: #f4f4f4;
+}
+/* alignment */
+.textcentered,
+.alignC {
+  text-align: center;
+}
+/* usefully applied to things like headers and input */
+.ralign,
+.alignR {
+  text-align: right;
+}
+.lalign,
+.alignL {
+  text-align: left;
+}
+.floatright,
+.floatR {
+  float: right;
+}
+.floatnone {
+  float: none !important;
+}
+.floatleft,
+.floatL {
+  float: left;
+}
+/* text styles */
+.annotation {
+  font-weight: normal;
+  font-style: italic;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+}
+.unbold {
+  font-weight: normal;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+.smallcaps {
+  font-variant: small-caps;
+}
+.smalltext {
+  font-size: .75em;
+}
+/* truncation */
+span.truncate {
+  display: inline-block;
+  max-width: 15em;
+  /* override with local style to set specifics */
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+  text-indent: 0;
+  /* apparently heritable. needs to be reset */
+
+  word-wrap: normal;
+  /* also heritable */
+
+}
+span.truncate-left {
+  display: inline-block;
+  max-width: 15em;
+  /* override with local style to set specifics */
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  direction: rtl;
+  vertical-align: top;
+  text-indent: 0;
+  word-wrap: normal;
+}
+/* __BLOCK LEVEL TEXT STYLES
+=================================================*/
+/* Headers */
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'brand-font-bold';
+  color: #3e3935;
+  font-weight: normal;
+  margin: 0 0 20px;
+}
+h1 {
+  font-size: 40px;
+  margin-bottom: 1em;
+  line-height: 1em;
+}
+h2 {
+  font-size: 32px;
+  line-height: 1.2em;
+}
+h3 {
+  font-size: 18px;
+  margin-bottom: 0.65em;
+}
+h4 {
+  font-size: 16px;
+  margin: 0 0 0.5em;
+}
+h1 > img {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+/* Early icon implementation. Deprecated. See h1.icon below */
+/* Paragraph text, default container text */
+p,
+div,
+section,
+aside {
+  color: #555;
+  font-size: 13px;
+  line-height: 1.54em;
+  margin: 0 0 0.35em;
+}
+p.intro {
+  font-size: 15px;
+  font-size: 1.15em;
+}
+/* p:first-of-type? for intro paragraphs */
+p {
+  margin-bottom: .8em;
+}
+p.buttons,
+div.buttons {
+  margin-top: 2em;
+}
+/* un-stylee container for holding buttons at bottom of blocks of contents */
+p.note {
+  color: #979a9c;
+  font-size: .85em;
+}
+/* Lists */
+/*ul { list-style: none; }*/
+ul {
+  list-style: none;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-bottom: 0;
+}
+/* embedded sublists lists shoudn't have extra margins at bottom */ol {
+  list-style: decimal outside none;
+  margin-left: 1.45em;
+  text-indent: 0;
+}
+ol ol {
+  list-style: lower-alpha;
+}
+ol ol ol {
+  list-style: lower-roman;
+}
+/* "Generic" Containers: Divs, Sections, Asides */
+/* panel class adds rounded corners and 1px outline */
+.panel {
+  display: block;
+  padding: 18px;
+  border: 1px solid #e2e2e2;
+  -moz-border-radius: .4em;
+  -webkit-border-radius: .4em;
+  border-radius: .4em;
+  margin-bottom: 1em;
+}
+.panel.shaded {
+  background-color: #f8f8f8;
+}
+.panel.no-border {
+  border-color: transparent;
+}
+nav > ul.tabs > li {
+  display: inline-block;
+  float: left;
+  cursor: pointer;
+}
+.label {
+  width: 25%;
+  text-align: right;
+  font-weight: bold;
+  vertical-align: middle;
+}
+/* __IN-LINE TEXT STYLES
+=================================================*/
+a {
+  color: #0D6893;
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  color: #0D5292;
+  text-decoration: underline;
+}
+a[name] {
+  display: inline-block;
+  vertical-align: top;
+}
+/* fix for IE8 empty anchor bug */
+b,
+.bold,
+strong {
+  font-weight: bolder;
+}
+i,
+.italic,
+em {
+  font-style: italic;
+}
+span.cell {
+  display: inline-block;
+  clear: none;
+  width: auto;
+  vertical-align: middle;
+}
+/* inline cell */
+/* in-line styles to duplicate label + input layout in non-forms */
+p > span.label {
+  display: inline-block;
+  float: left;
+  clear: left;
+  padding: 0.5em 0;
+  width: 25%;
+  text-align: right;
+  font-weight: bold;
+  vertical-align: top;
+}
+p > span.label + span.value,
+p > label + span.value {
+  display: inline-block;
+  padding: 0.5em 0.7em;
+  margin: 0 0 0 1.5em;
+  clear: none;
+  vertical-align: top;
+}
+/* __ICONS CLASSES
+ * .icon defines an element as including an icon
+ * <el class="icon icon-type">
+ * In some specific situations, such as ul, class="icons"
+ * can be used to specify icons to be placed on child
+ * elements. The icon class uses the :before pseudo-element
+ * to insert a blank space into the DOM, styling it as an
+ * inline-block with a background sprite image.
+=================================================*/
+/* H1 Icons */
+h1.icon {
+  height: 1.5em;
+  line-height: 1.35em;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+h1.icon:before {
+  content: '';
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+  margin-right: 0.25em;
+  overflow: hidden;
+  vertical-align: middle;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/h1-icons-sprite.png') no-repeat 0px -1344px;
+  /* default is the light grey profile icon */
+
+}
+/* URL overrides for H1 icons 
+ * These are page specific, the recommendation is to set this
+ * in the page's local style block. The account landing page, for instance, doesn't
+ * need to know about the Communications Preferences style def.
+ * Including Communications preferences here simply as an example
+ ***/
+h1.icon.view_profile:before,
+h1.icon.view_profile:hover:before {
+  background-position: 0px 0px;
+}
+h1.icon.epp:before,
+h1.icon.epp:hover:before {
+  background-position: 0px -48px;
+}
+h1.icon.ppp:before,
+h1.icon.ppp:hover:before {
+  background-position: 0px -96px;
+}
+h1.icon.creditcard:before,
+h1.icon.creditcard:hover:before {
+  background-position: 0px -144px;
+}
+h1.icon.cheque:before,
+h1.icon.cheque:hover:before {
+  background-position: 0px -192px;
+}
+h1.icon.online_banking:before,
+h1.icon.online_banking:hover:before {
+  background-position: 0px -240px;
+}
+h1.icon.payment_history:before,
+h1.icon.payment_history:hover:before {
+  background-position: 0px -288px;
+}
+h1.icon.changepassword:before,
+h1.icon.changepassword:hover:before {
+  background-position: 0px -335px;
+}
+h1.icon.commpref:before,
+h1.icon.commpref:hover:before {
+  background-position: 0px -384px;
+}
+h1.icon.defer_payment:before,
+h1.icon.defer_payment:hover:before {
+  background-position: 0px -432px;
+}
+h1.icon.review_baseline:before,
+h1.icon.review_baseline:hover:before {
+  background-position: 0px -480px;
+}
+h1.icon.consumption:before,
+h1.icon.consumption:hover:before {
+  background-position: 0px -528px;
+}
+h1.icon.bill_explainer:before,
+h1.icon.bill_explainer:hover:before {
+  background-position: 0px -576px;
+}
+h1.icon.bill_forecasts:before,
+h1.icon.bill_forecasts:hover:before {
+  background-position: 0px -624px;
+}
+h1.icon.annual_forecast:before,
+h1.icon.annual_forecast:hover:before {
+  background-position: 0px -672px;
+}
+h1.icon.accountSettings:before,
+h1.icon.accountSettings:hover:before {
+  background-position: 0px -720px;
+}
+h1.icon.account_access:before,
+h1.icon.account_access:hover:before {
+  background-position: 0px -768px;
+}
+h1.icon.add_account:before,
+h1.icon.add_account:hover:before {
+  background-position: -1px -816px;
+}
+h1.icon.request_service:before,
+h1.icon.request_service:hover:before {
+  background-position: 0px -864px;
+}
+h1.icon.payment_options:before,
+h1.icon.payment_options:hover:before {
+  background-position: 0px -912px;
+}
+h1.icon.rate_bill_help:before,
+h1.icon.rate_bill_help:hover:before {
+  background-position: 0px -960px;
+}
+h1.icon.power_outage:before,
+h1.icon.power_outage:hover:before {
+  background-position: 0px -1008px;
+}
+h1.icon.moving:before,
+h1.icon.moving:hover:before {
+  background-position: 0px -1056px;
+}
+h1.icon.view_bill:before,
+h1.icon.view_bill:hover:before {
+  background-position: 0px -1488px;
+}
+h1.icon.new_account:before,
+h1.icon.new_account:hover:before {
+  background-position: 0px -1584px;
+}
+h1.icon.link_account:before,
+h1.icon.link_account:hover:before {
+  background-position: 0px -1536px;
+}
+h1.icon.close_account:before,
+h1.icon.close_account:hover:before {
+  background-position: 0px -1632px;
+}
+/* Update the Manage Account and Manage Property H2 padding */
+#mainContent .panel.welcome-myhydro .manage-account > h2,
+#mainContent .panel.welcome-myhydro .manage-property > h2 {
+  padding: 2px 50px;
+}
+/* H3 Icons - H4 Icons */
+h3.icon:before,
+h4.icon:before {
+  content: ' ';
+  display: inline-block;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/20px-icons-sprite.png') no-repeat 0px 0px;
+  margin-right: .1em;
+  vertical-align: middle;
+  height: 1.5em;
+  width: 1.5em;
+}
+h4.icon:before {
+  margin-right: 0;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/16px-icons-sprite.png') no-repeat -40px 0px;
+}
+h3.icon.bill_rate:before {
+  background-position: 0px -40px;
+}
+h4.icon.email:before {
+  background-position: -40px -538px;
+}
+/* -540 + a 2px adjustment */
+h4.icon.email:hover:before {
+  background-position: -40px -538px;
+}
+/* -540 + a 2px adjustment */
+h3.icon.alert_mail:before,
+h4.icon.alert_mail:before {
+  background-position: -25px -73px;
+}
+h3.icon.step_one:before {
+  background-image: url('../../../../content/dam/BCHydro/images/sprites/20px-icons-sprite.png');
+  background-position: -50px -150px;
+  height: 1.6em;
+  width: 1.6em;
+  margin-right: 0.4em;
+  vertical-align: middle;
+}
+h3.icon.step_two:before {
+  background-image: url('../../../../content/dam/BCHydro/images/sprites/20px-icons-sprite.png');
+  background-position: -50px -175px;
+  height: 1.6em;
+  width: 1.6em;
+  margin-right: 0.4em;
+  vertical-align: middle;
+}
+h3.icon.step_three:before {
+  background-image: url('../../../../content/dam/BCHydro/images/sprites/20px-icons-sprite.png');
+  background-position: -50px -200px;
+  height: 1.6em;
+  width: 1.6em;
+  margin-right: 0.4em;
+  vertical-align: middle;
+}
+h3.icon.alert_email:before {
+  background-image: url('../../../../content/dam/BCHydro/images/sprites/20px-icons-sprite.png');
+  background-position: -25px -125px;
+  height: 1.2em;
+  width: 1.2em;
+  margin-right: 0.2em;
+  vertical-align: middle;
+}
+h3.icon.number_one,
+h3.icon.number_two,
+h3.icon.number_three {
+  margin-bottom: 0 !important;
+}
+h3.icon.number_one + p,
+h3.icon.number_two + p,
+h3.icon.number_three + p {
+  margin-top: 0 !important;
+}
+h3.icon.number_one:before,
+h3.icon.number_two:before,
+h3.icon.number_three:before {
+  display: block;
+  float: left;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/40px-plus-minus-sprite.png') no-repeat 0 -123px;
+  margin: 0 5px 5px 0;
+  height: 40px;
+  width: 40px;
+}
+h3.icon.number_two:before {
+  background-position: 0 -164px;
+}
+h3.icon.number_three:before {
+  background-position: 0 -205px;
+}
+/* Link and Span Icons. (add, edit, etc.) */
+a.icon {
+  cursor: pointer;
+}
+a.icon,
+span.icon {
+  white-space: nowrap;
+}
+a.icon:before,
+span.icon:before {
+  content: '';
+  display: inline-block;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/16px-icons-sprite.png') no-repeat -80px -720px;
+  margin-right: .1em;
+  vertical-align: middle;
+  height: 1.2em;
+  width: 1.2em;
+}
+a.icon.edit:before {
+  background-position: -77px -557px;
+}
+a.icon.add:before {
+  background-position: -77px -339px;
+}
+a.icon.edit:hover:before {
+  background-position: -97px -557px;
+}
+a.icon.add:hover:before {
+  background-position: -97px -339px;
+}
+span.icon.checked {
+  color: #50b849;
+}
+span.icon.pending {
+  color: #e87800;
+}
+span.icon.error {
+  color: #fa4616;
+}
+span.icon.checked:before {
+  background-position: -120px -680px;
+}
+span.icon.pending:before {
+  background-position: -120px -839px;
+}
+span.icon.error:before {
+  background-position: -118px -858px;
+}
+#power-saving-tips #feature-block h2 {
+  font-size: 18px;
+}
+/* HR */
+hr {
+  color: transparent;
+  background-color: transparent;
+  margin: 1.5em 0;
+  height: 0px;
+  border-top: 1px solid #ecf1f4;
+  border-bottom: 1px solid #ffffff;
+  clear: both;
+}
+hr.divider {
+  border-top: 1px solid #d4e8f1;
+  border-bottom: 1px solid #ffffff;
+}
+/* __BREADCRUMBS
+ * ==================================================
+ */
+/*#mainContent nav.breadcrumbs {margin-bottom: 1em;} /* inside #mainContent -- not where it should be */
+#container > nav.breadcrumbs {
+  font-size: 12px;
+  margin: 47px 0 18px 80px;
+  padding: 0;
+  clear: both;
+  font-family: 'brand-font-medium';
+}
+/* above #mainContent */
+#container > nav.breadcrumbs + div {
+  margin-top: 0;
+}
+/* when #mainContent follows #mainContent */
+nav.breadcrumbs a {
+  color: #979a9c;
+}
+/* overrides the default link color *//* __FORMS
+ * Broader forms rules are covered by bchydro_forms.css
+ * This stylesheet includes rules for two form elements
+ * that pervade the site: buttons and text fields
+ */
+/* __FORMS: BUTTONS
+ * Covers button, input[type="button|submit"]
+ * as generally used on the site, e.g. login button
+ * ==================================================
+ *
+ * There are three styles defined for the BCHydro site
+ * Primary   | green with white text.    | class: primary
+ * 		used for "submit" and "login" buttons
+ * Secondary | white with blue text.     | class: secondary
+ * 		used for "edit" and other secondary buttons
+ * Tertiary  | borderless with blue text | class: tertiary
+ * 		used for low-visibility buttons, like "cancel"
+ * 
+ * Button padding and border-radius scale relative to font-size
+ * For larger buttons, apply a larger font-size through an additional
+ * class (e.g. "large-button") or in-line style (style="font-size:15px").
+ * 
+ * <a> is included for backwards compatibility with legacy code and
+ * most frequently applies to teritary level "cancel" button links
+ */
+button,
+input[type="button"],
+input[type="submit"],
+.button,
+div.hasbutton > div.links > a {
+  display: inline-block;
+  position: relative;
+  min-width: 60px;
+  font-size: 12.5px;
+  padding: .5em .7em;
+  margin: 0 0.8em 0 0;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 1.4em;
+  text-align: center;
+  cursor: pointer;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #e2e2e2;
+  -moz-border-radius: .2em;
+  -webkit-border-radius: .2em;
+  border-radius: .2em;
+}
+/* Fix the CQ Sidekick button widths */
+.x-btn-mc button {
+  min-width: 16px;
+}
+a.button {
+  line-height: 1.55em;
+  padding: .5em .95em;
+  text-decoration: none;
+}
+/* anchor tags have different native "padding" */
+a.button:hover {
+  text-decoration: none;
+}
+/* primary, green buttons */
+button.primary,
+input[type="button"].primary,
+input[type="submit"].primary,
+.button.primary,
+div.hasbutton.primary > div.links > a {
+  color: #fff;
+  border-color: #50b849;
+  background-color: #50b849;
+  background: -moz-linear-gradient(top, #72c56d 0%, #50b849 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #72c56d 0%, #50b849 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #72c56d 0%, #50b849 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #72c56d 0%, #50b849 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #72c56d 0%, #50b849 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#72c56d', endColorstr='#50b849', GradientType=0);
+  /* IE6-9 */
+
+}
+button:hover.primary,
+input[type="button"]:hover.primary,
+input[type="submit"]:hover.primary,
+.button.primary:hover,
+a:hover > .primary,
+div.hasbutton.primary > div.links > a:hover {
+  border-color: #2c8e26;
+  background-color: #47ad40;
+  background: -moz-linear-gradient(top, #65b95f 0%, #47ad40 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #65b95f 0%, #47ad40 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #65b95f 0%, #47ad40 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #65b95f 0%, #47ad40 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #65b95f 0%, #47ad40 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#65b95f', endColorstr='#47ad40', GradientType=0);
+  /* IE6-9 */
+
+}
+button:active.primary,
+input:active[type="button"].primary,
+input:active[type="submit"].primary,
+.button.primary:active,
+a:active > .primary,
+div.hasbutton.primary > div.links > a:active {
+  background-color: #379130;
+  background: -moz-linear-gradient(top, #50b849 0%, #72c56d 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #50b849 0%, #72c56d 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #50b849 0%, #72c56d 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #50b849 0%, #72c56d 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #50b849 0%, #72c56d 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#50b849', endColorstr='#72c56d', GradientType=0);
+  /* IE6-9 */
+
+}
+/* secondary, white buttons */
+button.secondary,
+input[type="button"].secondary,
+input[type="submit"].secondary,
+.button.secondary,
+div.hasbutton.secondary > div.links > a {
+  color: #0d6893;
+  border-color: #c6d7e0;
+  background-color: #fbfbfb;
+  background: -moz-linear-gradient(top, #ffffff 0%, #f0f7fa 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #ffffff 0%, #f0f7fa 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #ffffff 0%, #f0f7fa 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #ffffff 0%, #f0f7fa 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #ffffff 0%, #f0f7fa 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f0f7fa', GradientType=0);
+  /* IE6-9 */
+
+}
+button:hover.secondary,
+input[type="button"]:hover.secondary,
+input[type="submit"]:hover.secondary,
+.button.secondary:hover,
+a:hover > .secondary,
+div.hasbutton.secondary > div.links > a:hover {
+  background: none;
+  background-color: #f0f7fa;
+  filter: none;
+}
+button:active.secondary,
+input:active[type="button"].secondary,
+input:active[type="submit"].secondary,
+.button.secondary:active,
+a:active > .secondary,
+div.hasbutton.secondary > div.links > a:active {
+  background-color: #dcedf6;
+  background: -moz-linear-gradient(top, #e4f1f8 0%, #f3fafd 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #e4f1f8 0%, #f3fafd 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #e4f1f8 0%, #f3fafd 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #e4f1f8 0%, #f3fafd 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #e4f1f8 0%, #f3fafd 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e4f1f8', endColorstr='#f3fafd', GradientType=0);
+  /* IE6-9 */
+
+}
+/* tertiary, borderless (except when hover/active) buttons, doesn't cover type=submit */
+button.tertiary,
+input[type="button"].tertiary,
+.button.tertiary {
+  color: #0d6893;
+  border-color: transparent;
+  background-color: transparent;
+}
+button:hover.tertiary,
+input[type="button"]:hover.tertiary,
+.button.tertiary:hover,
+a:hover > .button.tertiary {
+  /* identical rendering to secondary button in this state */
+
+  border-color: #c6d7e0;
+  background-color: #f3fafd;
+}
+button:active.tertiary,
+input:active[type="button"].tertiary,
+.button.tertiary:active,
+a:active > .button.tertiary {
+  border-color: #c6d7e0;
+  background-color: #dcedf6;
+  background: #f3fafd;
+  /* Old browsers */
+
+  background: -moz-radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* FF3.6+ */
+
+  background: -webkit-radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* Opera 12+ */
+
+  background: -ms-radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* IE10+ */
+
+  background: radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3fafd', endColorstr='#dcedf6', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+
+}
+/* Special, red button. Reserved for the rare occasion when
+ * clicking might have catastrophic effects like deleting a profile
+ * or starting a World War.
+ */
+button.warning,
+input[type="button"].warning,
+input[type="submit"].warning,
+.button.warning,
+div.hasbutton.warning > div.links > a {
+  color: #fff;
+  border-color: #a8434a;
+  background-color: #a53e45;
+  background: -moz-linear-gradient(top, #c24245 0%, #a53e45 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #c24245 0%, #a53e45 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #c24245 0%, #a53e45 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #c24245 0%, #a53e45 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #c24245 0%, #a53e45 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c24245', endColorstr='#a53e45', GradientType=0);
+  /* IE6-9 */
+
+}
+button:hover.warning,
+input[type="button"]:hover.warning,
+input[type="submit"]:hover.warning,
+.button.warning:hover,
+div.hasbutton.warning > div.links > a:hover {
+  border-color: #8f272a;
+  background-color: #8c353b;
+  background: -moz-linear-gradient(top, #a8393b 0%, #8c353b 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #a8393b 0%, #8c353b 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #a8393b 0%, #8c353b 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #a8393b 0%, #8c353b 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #a8393b 0%, #8c353b 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a8393b', endColorstr='#8c353b', GradientType=0);
+  /* IE6-9 */
+
+}
+button:active.warning,
+input:active[type="button"].warning,
+input:active[type="submit"].warning,
+.button.warning:active,
+div.hasbutton.warning > div.links > a:active {
+  background-color: #913033;
+  background: -moz-linear-gradient(top, #a53e45 0%, #c24245 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #a53e45 0%, #c24245 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #a53e45 0%, #c24245 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #a53e45 0%, #c24245 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #a53e45 0%, #c24245 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a53e45', endColorstr='#c24245', GradientType=0);
+  /* IE6-9 */
+
+}
+/* disabled buttons */
+/* rather than attempting to also css the hover/active states, it may
+ * be more suitable to use jquery to override mouseover/click on disabled
+ * elements.
+ */
+button[disabled],
+input[type="button"][disabled],
+input[type="submit"][disabled],
+button[disabled]:hover,
+button[disabled]:active,
+input[type="button"][disabled]:hover,
+input[type="button"][disabled]:active,
+input[type="submit"][disabled]:hover,
+input[type="submit"][disabled]:active,
+.button.disabled {
+  cursor: default;
+  color: #ccc;
+  border-color: #e2ebef;
+  background-color: #fff;
+  background: -moz-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  background: -webkit-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  background: -o-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  background: -ms-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  background: linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#fbfbfb', GradientType=0);
+  /* IE6-9 */
+
+}
+button[disabled].tertiary,
+input[type="button"][disabled].tertiary {
+  color: #ccc;
+  border-color: #fff !important;
+  background-color: transparent;
+}
+/* in the event the link is inside the span.button */
+.button > a {
+  color: inherit;
+  text-decoration: inherit;
+}
+/* __FORMS: INPUT[type="text"]
+ * Covers text input fields
+ * as generally used on the site, e.g. login username, search
+ * ==================================================
+ *
+ */
+label {
+  display: inline-block;
+  padding: 0.5em 0;
+}
+input[type="text"],
+input[type="password"] {
+  font-size: 13px;
+  color: #555555;
+  border: 1px solid #e2e2e2;
+  border-color: #aaaaaa #d4d4d4 #d4d4d4 #b4b4b4;
+  padding: 0.5em 0.7em;
+  -moz-border-radius: .2em;
+  -webkit-border-radius: .2em;
+  border-radius: .2em;
+  -webkit-box-shadow: inset 1px 1px 1px 0px #cccccc;
+  -moz-box-shadow: inset 1px 1px 1px 0px #cccccc;
+  box-shadow: inset 1px 1px 1px 0px #cccccc;
+  text-overflow: ellipsis;
+}
+input[type="text"][disabled],
+input[type="password"][disabled],
+fieldset select[disabled] {
+  color: #30353a;
+  border: 1px solid #f0f0f0;
+  padding: 0.5em 0.7em;
+  background-color: #f0f0f0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+/* class when default hinting values are displayed, e.g. 'Search...' or 'none chosen' */
+input[type="text"].hinted {
+  color: #999999;
+}
+::-webkit-input-placeholder {
+  color: #999999;
+}
+:-moz-placeholder {
+  color: #999999;
+}
+/* __ALERTS
+ * Styling for div.alert, .message( EVPortlet usage) follows
+ * ==================================================
+/* There are four types of alert messages:
+ * Success, Error, Warning, and Attention
+ * each with it's own class, differentiated by color
+ */
+div.alert,
+.message,
+form div.alert,
+div.modal > div.modalContent div.alert {
+  width: auto;
+  overflow: visible;
+  position: relative;
+  float: none;
+  clear: none;
+  font-size: 13px;
+  border: 3px solid #555;
+  line-height: 1.4em;
+  -moz-border-radius: .2em;
+  -webkit-border-radius: .2em;
+  border-radius: .2em;
+  margin-bottom: 20px;
+  background-color: #fff;
+  behavior: url('../Javascript/PIE.htc');
+}
+div.modal > div.modalContent div.alert {
+  behavior: none;
+}
+div.alert.success {
+  border-color: #50b848;
+}
+div.alert.error,
+.message.error {
+  border-color: #fa4616;
+}
+div.alert.warning {
+  border-color: #fcd299;
+}
+div.alert.attention {
+  border-color: #10a3c8;
+}
+div.alert.csr {
+  border-color: #30353a;
+}
+div.alert.blue_special {
+  border-width: 2px;
+  border-color: #005778;
+  margin-bottom: 1.5em;
+}
+div.alert > * {
+  margin: 0 0.85em 0.5em;
+  font-size: inherit;
+  color: inherit;
+}
+div.alert > .lastchild,
+div.alert > :last-child {
+  margin-bottom: 0.85em;
+}
+div.alert > ul {
+  list-style-type: disc;
+  padding-left: 1em;
+}
+div.alert > ul ul {
+  list-style-type: circle;
+  padding-left: 2em;
+}
+div.alert > h3:first-child,
+.message > h3:first-child,
+div.modal > div.modalContent > div.alert > h3:first-child {
+  font-size: 1em;
+  color: #fff;
+  background-color: #555;
+  margin: 0;
+  padding: 0.85em;
+  width: auto;
+  float: none;
+}
+div.alert > h3:first-child + * {
+  margin-top: 0.85em;
+}
+div.alert > h3.icon:before {
+  margin-right: .25em;
+  float: none;
+  vertical-align: text-top;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/16px-icons-sprite.png') no-repeat -140px -658px;
+  width: 16px;
+}
+div.alert > h3.icon {
+  text-indent: -1.55em;
+  padding-left: 2.7em;
+}
+div.success > h3:first-child {
+  background-color: #50b848;
+  color: #ffffff;
+}
+div.error > h3:first-child,
+.message.error > h3:first-child {
+  color: #ffffff;
+  background-color: #fa4616;
+}
+div.warning > h3:first-child {
+  background-color: #fcd299;
+  color: #3e3935;
+}
+div.attention > h3:first-child {
+  background-color: #10a3c8;
+  color: #ffffff;
+}
+div.csr > h3:first-child {
+  background-color: #30353a;
+}
+div.blue_special > h3:first-child {
+  background-color: #005778;
+  color: #fff;
+  line-height: 1em;
+  font-family: 'brand-font-bold', "Arial narrow", Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.8em;
+  padding: .49em;
+}
+div.blue_special > h3:first-child > img {
+  vertical-align: bottom;
+}
+div.success > h3.icon:before {
+  background-position: -140px -678px;
+}
+div.error > h3.icon:before {
+  /* uses default exclamation-white.png */
+}
+div.warning > h3.icon:before {
+  background-position: -140px -658px;
+}
+div.attention > h3.icon:before {
+  background-position: -140px -639px;
+}
+div.csr > h3.icon:before {
+  background-position: -140px -818px;
+}
+/* __MESSAGE
+ * Styling for .message( EVPortlet application of .alert styles)
+ * ==================================================
+ * Specifically where these differ from div.alert
+ */
+.message {
+  height: 290px;
+  width: 99%;
+  border: 2px solid #d8f3fe;
+}
+.message > h3:first-child {
+  color: #4a7385;
+  background-color: #d8f3fe;
+  text-align: left;
+}
+.message .header-icon {
+  float: left;
+  background: url("../../../../content/dam/BCHydro/images/icon_info.png") no-repeat transparent;
+  width: 16px;
+  height: 17px;
+  margin-right: .5em;
+}
+.message.error .header-icon {
+  background: url("../../../../content/dam/BCHydro/images/exclamation-white.png") no-repeat transparent;
+}
+.message .body-distance {
+  width: 1px;
+  height: 30%;
+  float: left;
+}
+.message .message-body {
+  margin: 0 auto;
+  position: relative;
+  text-align: left;
+  clear: left;
+  width: 450px;
+}
+.message .message-body p {
+  color: #4a7385;
+  font-weight: bold;
+}
+.message.error .message-body p {
+  color: inherit;
+  font-weight: normal;
+}
+.message .body-icon {
+  float: left;
+  background: url("../../../../content/dam/BCHydro/images/consumption-graph-blue.png") no-repeat transparent;
+  width: 30px;
+  height: 33px;
+  margin-right: .5em;
+}
+.message.error .body-icon {
+  background: url("../../../../content/dam/BCHydro/images/exclamation-red.png") no-repeat transparent;
+}
+/* __Tabs
+ * Styling for ul.tabs
+ * ==================================================
+ * As simple an implementation as possible
+ * Hover states not yet determined.
+ *
+ */
+ul.tabs {
+  display: block;
+  clear: both;
+}
+ul.tabs > li {
+  display: inline-block;
+  float: left;
+  cursor: pointer;
+}
+ul.tabs + div,
+ul.tabs + section {
+  clear: both;
+}
+ul.tabs.content {
+  border-bottom: 1px solid #e2e2e2;
+}
+ul.tabs.content > li {
+  position: relative;
+  top: 1px;
+  /* push down to overlap white bottom border on active tab */
+
+  font-size: 1.23em;
+  font-weight: bold;
+  color: #30353a;
+  margin: 0.4em 0 0 0.2em;
+  padding: 0.5em 1.2em 0.5em;
+  -moz-border-radius: .2em .2em 0 0;
+  -webkit-border-radius: .2em .2em 0 0;
+  border-radius: .2em .2em 0 0;
+}
+ul.tabs.content > li > a {
+  color: #0d6893;
+  text-decoration: none;
+}
+ul.tabs.content > li > a:hover {
+  color: #0D5292;
+  text-decoration: none;
+}
+ul.tabs.content > li.active {
+  color: #30353a;
+  border: 1px solid #e2e2e2;
+  border-bottom-color: #ffffff;
+  background-color: #ffffff;
+}
+ul.tabs.content + .tab-content {
+  font-size: 13px;
+}
+/* __PROGRESS_NAVIGATOR
+ * Styling for ol.progress_navigator
+ * ==================================================
+ * As simple an implementation as possible
+ *
+ */
+ol.progress_navigator {
+  list-style-type: none;
+  list-style-position: outside;
+  counter-reset: li;
+  border: 1px solid #dadada;
+  background-color: #f8f8f8;
+  border-radius: 0.2em 0.2em 0.2em 0.2em;
+  overflow: hidden;
+  display: inline-block;
+  width: auto;
+}
+ol.progress_navigator > li {
+  counter-increment: li;
+  position: relative;
+  height: 28px;
+  float: left;
+  padding: 0 0 0 0.85em;
+  margin: 0;
+  font-weight: bold;
+  background-color: #f8f8f8;
+  color: #30353a;
+}
+ol.progress_navigator > li:before {
+  content: counter(li) ".";
+  display: inline-block;
+  margin-right: .4em;
+}
+ol.progress_navigator > li:after {
+  vertical-align: -9px;
+  padding: 0;
+  margin: 0 0 0 .5em;
+  content: '';
+  display: inline-block;
+  height: 28px;
+  width: 12px;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/progress_navigator.gif') no-repeat 0 0;
+}
+ol.progress_navigator > li.current {
+  color: #50b848;
+  background-color: #fff;
+}
+ol.progress_navigator > li.current:after {
+  background-position: 0 -28px;
+}
+ol.progress_navigator > li.finished {
+  color: #939393;
+  /*color: #86B3C9;*/
+
+}
+ol.progress_navigator > li.finished > a {
+  color: inherit;
+}
+ol.progress_navigator > li.before-current:after {
+  background-position: 0 -56px;
+}
+ol.progress_navigator > li.last:after {
+  background-image: none;
+  /* i.e. hide it, but keep for spacing */
+
+  width: 6px;
+}
+ol.progress_navigator.no-numbers > li:before {
+  content: none;
+}
+ol.progress_navigator.alpha > li:before {
+  content: counter(li, upper-alpha) ".";
+}
+ol.progress_navigator.lower-alpha > li:before {
+  content: counter(li, lower-alpha) ".";
+}
+/* __TABLES
+ * Default table styles are intended to cover all appropriately used
+ * tables (i.e. data display) covered by the new design and actively
+ * discourage the poor-practice use of tables as layout devices.
+ * Tables used for layout SHOULD require extra work to localize their
+ * styles to the non-standard instance.
+ *
+-------------------------------------------------*/
+table {
+  width: auto;
+  margin-bottom: 1.5em;
+  background-color: #ffffff;
+}
+/* keep width as 'auto' for more consistant x-browser rendering. override locally if needed */
+table tr {
+  border-bottom: 1px solid #dadada;
+}
+/* Added for JIRA- SUS 985-   - for Jimmy Xu - July 22nd 2013 */
+#EPPMonPay {
+  border-bottom: 0px solid #dadada;
+}
+table > thead > tr > th {
+  /*text-align: left;*/
+
+  text-align: center;
+  /* Don't touch this. Approved visual design standard. Use class lalign or alignL */
+
+  color: #979a9c;
+  font-weight: bold;
+  background-color: #f4f4f4;
+  text-transform: uppercase;
+  font-size: .85em;
+  padding: .6em;
+  vertical-align: bottom;
+  line-height: 1.25em;
+}
+thead > tr > th > a {
+  font-size: inherit;
+  white-space: nowrap;
+}
+thead > tr > th.sortable {
+  cursor: pointer;
+}
+thead > tr > th.sortable:after {
+  content: '';
+  display: inline-block;
+  margin-left: .5em;
+  vertical-align: text-bottom;
+  height: 10px;
+  width: 10px;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/table-controls-sprite.png') no-repeat 0px 0px;
+}
+thead > tr > th.sortable.descending:after {
+  background-position: 0px -10px;
+}
+/* ascending is default */
+thead > tr > th.sorted,
+thead > tr > th.current,
+thead > tr > th.sortable:hover {
+  color: #30353a;
+}
+thead > tr > th.sorted:after,
+thead > tr > th.current:after,
+thead > tr > th.sortable:hover:after {
+  background-position: -20px 0px;
+}
+thead > tr > th.sorted.descending:after,
+thead > tr > th.sortable.descending:hover:after,
+thead > tr > th.current.descending:after {
+  background-position: -20px -10px;
+}
+tbody > tr > td {
+  padding: 0.5em;
+}
+tbody > tr > td > a:hover {
+  text-decoration: none;
+}
+tbody > tr > td:first-child > a {
+  font-weight: bold;
+}
+tbody > tr > td:first-child {
+  white-space: nowrap;
+}
+tbody > tr.expandable > td:first-child span.row-toggle {
+  cursor: pointer;
+  z-index: 10;
+  display: inline-block;
+  margin-right: .5em;
+  vertical-align: middle;
+  height: 10px;
+  width: 10px;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/table-controls-sprite.png') no-repeat 0px -20px;
+}
+tbody > tr.expandable:hover > td {
+  background-color: #fafafa;
+}
+tbody > tr.closed > td:first-child span.row-toggle,
+tbody > tr.closed > td.first-child span.row-toggle {
+  background-position: 0px -20px;
+}
+tbody > tr.closed > td:first-child span.row-toggle:hover,
+tbody > tr.closed > td.first-child span.row-toggle:hover {
+  background-position: -10px -20px;
+}
+tbody > tr.open > td:first-child span.row-toggle,
+tbody > tr.open > td.first-child span.row-toggle {
+  background-position: 0px -30px;
+}
+tbody > tr.open > td:first-child span.row-toggle:hover,
+tbody > tr.open > td.first-child span.row-toggle:hover {
+  background-position: -10px -30px;
+}
+/* __Modal Windows
+ * Styling for Modal windows
+ * ==================================================
+ * As simple an implementation as possible
+ * Both modal window and Loading module covered
+ *
+ */
+div.modal {
+  font-size: 13px;
+  position: fixed;
+  z-index: 82;
+  background-color: #fff;
+  -moz-border-radius: 0.25em;
+  -webkit-border-radius: 0.25em;
+  border-radius: 0.25em;
+}
+div.modal.dark {
+  color: #fff;
+  background-color: #30353a;
+}
+div.scrim {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  width: 101%;
+  height: 101%;
+  background-color: #30353a;
+  filter: progid:DXImageTransform.Microsoft.alpha(Opacity=80);
+  opacity: 0.5;
+  zoom: 1;
+}
+div.scrim a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+div.modal > h2 {
+  margin: 0;
+  padding: 0.9em;
+  font-size: 1.4em;
+  border-bottom: 1px solid #e2e2e2;
+}
+div.modal > div {
+  margin: 0;
+  padding: 1.2em;
+  font-size: inherit;
+}
+div.modal > div.modalContent {
+  max-height: 25em;
+  overflow: auto;
+  padding: 0;
+}
+div.modal > div.modalContent > * {
+  font-size: inherit;
+  margin: 0;
+  padding: 0 1.2em 1.2em 1.2em;
+  line-height: 1.25em;
+}
+div.modal > div.modalContent h2 {
+  font-size: 1.4em;
+  margin: 0;
+  padding: 0 .85em .6em .85em;
+  line-height: 1.25em;
+}
+div.modal > div.modalContent h3 {
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0 1em .9em 1em;
+  line-height: 1.25em;
+}
+div.modal > div.modalContent p {
+  font-size: inherit;
+  margin: 0 24px 0 0;
+  padding: 0 1.2em 1.2em 1.2em;
+  line-height: 1.25em;
+}
+div.modal > div.modalContent > :first-child {
+  padding-top: .6em;
+}
+div.modal > div.modalContent li {
+  margin-left: 1.2em;
+}
+div.modal > div.modalContent ol,
+div.modal > div.modalContent ul,
+div.modal > div.modalContent dl {
+  padding-left: 2.4em;
+  margin-bottom: 0.65em;
+}
+div.modal > div.modalContent ol {
+  list-style: decimal;
+}
+div.modal > div.modalContent ol ol {
+  list-style: lower-alpha;
+}
+div.modal > div.modalContent ul {
+  list-style: disc;
+}
+div.modal > div.buttons {
+  background-color: #f2f6f8;
+  border-top: 1px solid #eaeaec;
+  -moz-border-radius: 0 0 0.25em 0.25em;
+  -webkit-border-radius: 0 0 0.25em 0.25em;
+  border-radius: 0 0 0.25em 0.25em;
+}
+div.modal > div.buttons > button {
+  font-size: inherit;
+}
+div.modal > div.buttons > :last-child {
+  margin-right: 0;
+}
+div.modal > div.buttons > a {
+  font-weight: bold;
+}
+div.modal.carat > h2:before {
+  content: '';
+  display: inline-block;
+  height: 9px;
+  width: 14px;
+  position: absolute;
+  top: -7px;
+  left: 1.5em;
+  background: transparent url('../../../../content/dam/BCHydro/images/dark-carat.png') no-repeat 0 0;
+  /*default goes with dark modal*/
+
+}
+div.modal.dark > h2 {
+  color: #fff;
+  border-color: #454a4e;
+}
+div.modal.dark > div.modalContent > p {
+  color: #fff;
+}
+div.modal.dark > div.buttons {
+  background-color: #454a4e;
+  border-color: #585c60;
+}
+div.modal.dark > div.buttons > button.tertiary,
+div.modal.dark > div.buttons > a {
+  color: #fff;
+}
+div.modal.dark > div.buttons > button.tertiary:hover {
+  color: #0d5292;
+}
+div.modal.dark > div.buttons > button.tertiary:active {
+  color: #0d5292;
+}
+div.modal.dark:before {
+  top: -8px;
+  left: 1.5em;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/dark-carat-sprite.png') no-repeat 0 0;
+  /* This is where we change these things */
+
+}
+div.modal.dark.above:before {
+  bottom: -9px;
+  left: 1.5em;
+  top: auto;
+  background-position: 0 -10px;
+  /* This is where we change these things */
+
+}
+div.modal.contained {
+  height: auto;
+  position: absolute;
+}
+div.modal.contained > div.buttons > * {
+  font-size: .9em;
+}
+div.modal > a.close {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: auto;
+  top: 1.1em;
+  right: 1.2em;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/close-sprite.png') no-repeat 0px 0px;
+}
+div.modal > a.close:hover {
+  background-position: 0px -24px;
+}
+div.modal.small {
+  width: 26em;
+}
+div.modal.medium {
+  width: 33em;
+}
+div.modal.large {
+  width: 45em;
+}
+div.modal.extralarge {
+  width: 55em;
+}
+div.loading {
+  width: 17em;
+  padding: 0.7em;
+  background: #30353a;
+  /* and for those that support alpha channel transparency */
+
+  background: rgba(48, 53, 58, 0.9);
+  /* MS bg transparency */
+
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#e630353a, endColorstr=#e630353a)";
+  /* For IE 8*/
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#e630353a, endColorstr=#e630353a)";
+  -moz-border-radius: 0.25em;
+  -webkit-border-radius: 0.25em;
+  border-radius: 0.25em;
+}
+p.loading {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #555;
+  text-align: center;
+  border: 0;
+  margin: 0;
+}
+div.loading p.loading {
+  color: #fff;
+  margin: .5em;
+}
+div.loading > h2 {
+  display: none;
+}
+div.loading > .buttons {
+  display: none;
+}
+.loading p > img.throbber,
+p.loading > img.throbber {
+  padding-right: 0.5em;
+  background-color: transparent;
+  vertical-align: middle;
+}
+/* __TOOLTIPS 
+ * Similar in style to the dark modal
+ * ==================================================
+ * As simple an implementation as possible
+ */
+/* first, the link styling */
+a.tooltip,
+a[rel='tooltip'] {
+  display: inline-block;
+  vertical-align: baseline;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/16px-icons-sprite.png') no-repeat 0 -620px;
+  width: 13px;
+  height: 12px;
+  margin-left: .25em;
+  cursor: pointer;
+}
+a.tooltip:hover,
+a[rel='tooltip']:hover {
+  background-position: -20px -620px;
+}
+div.tooltip {
+  display: none;
+  white-space: normal;
+  font-size: 13px;
+  font-weight: normal;
+  padding: 0;
+  text-transform: none;
+  text-align: left;
+  height: auto;
+  z-index: 82;
+  border: 1px solid #eaeaec;
+  -moz-border-radius: 0.25em;
+  -webkit-border-radius: 0.25em;
+  border-radius: 0.25em;
+  color: #555555;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 2px 2px 2px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow: 0px 2px 2px 2px rgba(50, 50, 50, 0.25);
+  box-shadow: 0px 2px 2px 2px rgba(50, 50, 50, 0.25);
+}
+div.tooltip:before {
+  /* default up-pointing carat */
+
+  content: '';
+  display: inline-block;
+  height: 10px;
+  width: 18px;
+  position: absolute;
+  top: -10px;
+  left: 1.5em;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/white-carat-sprite.png') no-repeat 0 0;
+}
+div.tooltip.size1 {
+  width: 17em;
+}
+div.tooltip.size2 {
+  width: 24em;
+}
+div.tooltip.size3 {
+  width: 32em;
+}
+div.tooltip.size4 {
+  width: 39em;
+}
+div.tooltip.size1:before {
+  left: 7.75em;
+}
+div.tooltip.size2:before {
+  left: 11.25em;
+}
+div.tooltip.size3:before {
+  left: 15.25em;
+}
+div.tooltip.size4:before {
+  left: 18.75em;
+}
+div.top.tooltip {
+  top: auto;
+  left: auto;
+  bottom: auto;
+  right: auto;
+}
+div.top.tooltip:before {
+  top: auto;
+  bottom: -10px;
+  background-position: 0 -10px;
+}
+div.tooltip > a.close {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: auto;
+  top: .85em;
+  right: .85em;
+  margin: 0;
+  padding: 0;
+  background: transparent url('../../../../content/dam/BCHydro/images/sprites/close-sprite.png') no-repeat 0px 0px;
+}
+div.tooltip > a.close:hover {
+  background-position: 0px -24px;
+}
+div.tooltip > *,
+div > div.text div.tooltip > p {
+  color: #555555;
+  margin: 0 1.2em .5em;
+  padding-right: 24px;
+  letter-spacing: normal;
+  float: none;
+  white-space: normal;
+}
+div.tooltip > .last {
+  padding-bottom: .85em;
+  float: none;
+}
+div.tooltip > :first-child {
+  padding-top: 1em;
+  float: none;
+}
+div.tooltip > h3:first-child {
+  color: #30353a;
+  background-color: #f2f6f8;
+  border-bottom: 1px solid #eaeaec;
+  margin: 0 0 .5em;
+  padding: .75em 40px .75em  1em;
+  float: none;
+  white-space: normal;
+}
+div.tooltip ul {
+  list-style: disc;
+  margin-left: 2.5em;
+}
+div.tooltip li {
+  line-height: 1.5em;
+  margin-bottom: .5em;
+}
+div.tooltip.size2 img {
+  width: 19.6em;
+}
+div.tooltip.size3 img {
+  width: 27.6em;
+}
+div.tooltip.size4 img {
+  width: 34.6em;
+}
+div.tooltip > p.links {
+  background-color: #f2f6f8;
+  border-top: 1px solid #eaeaec;
+  margin: 0;
+  padding: .85em 1.2em;
+  -moz-border-radius: 0 0 0.25em 0.25em;
+  -webkit-border-radius: 0 0 0.25em 0.25em;
+  border-radius: 0 0 0.25em 0.25em;
+  float: none;
+}
+div.tooltip > p.links > * {
+  font-size: inherit;
+}
+div.tooltip > p.links > a {
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+div.tooltip > p.links > a.learnmore:before {
+  background-position: 0 -640px;
+}
+/* __FINEPRINT / TAC 
+ * Fineprint/TAC
+ * ==================================================
+ * Just larger than illegible print blocks
+ * The descendant div is the content management div that 
+ * gets included from CQ5 (.text.parbase.richTextEditor).
+ */
+div.fineprint > div > *,
+div.tac > div > * {
+  font-size: .75em;
+}
+div.fineprint > div h2,
+div.fineprint > div h3,
+div.fineprint > div h4,
+div.tac > div h2,
+div.tac > div h3,
+div.tac > div h4 {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+/* __DIV.DROPDOWN 
+ * Custom select/dropdown css
+ * ================================================== 
+ * Moved from Forms.css. Covers custom selects
+ * but also used for the account picker.
+ */
+div.dropdown {
+  float: none;
+  display: inline-block;
+  position: relative;
+  overflow: visible;
+  color: #999999;
+  min-width: 50px;
+  font-size: 1em;
+  border: 1px solid #c6d7e0;
+  margin: 0;
+  padding: 0.4em 0.7em;
+  -moz-border-radius: .2em;
+  -webkit-border-radius: .2em;
+  border-radius: .2em;
+  background-color: #fbfbfb;
+  background: -moz-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+  /* W3C */
+
+  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fbfbfb',GradientType=0 );  IE6-9 */
+
+  /* filter declaration breaks dropdown visibility in IE 8 */
+
+  z-index: 5;
+}
+div.dropdown.active,
+div:hover.dropdown {
+  color: #0d6893;
+  background-color: #dcedf6;
+  background: #f3fafd;
+  /* Old browsers */
+
+  background: -moz-radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* FF3.6+ */
+
+  background: -webkit-radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* Opera 12+ */
+
+  background: -ms-radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* IE10+ */
+
+  background: radial-gradient(center, ellipse cover, #f3fafd 67%, #dcedf6 100%);
+  /* W3C */
+
+  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3fafd', endColorstr='#dcedf6',GradientType=1 );  IE6-9 fallback on horizontal gradient */
+
+  /* filter declaration breaks dropdown visibility in IE 8 */
+
+}
+div.dropdown > a {
+  display: block;
+  text-decoration: none;
+  color: #999999;
+}
+div.dropdown.active > a,
+div:hover.dropdown > a {
+  color: #0d6893;
+}
+div.dropdown > a.current {
+  padding-right: 20px;
+}
+div.dropdown > a.selector {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 20px;
+  height: 32px;
+  /*float: right;*/
+
+  background: transparent url("../../../../content/dam/BCHydro/images/sprites/dropdown-sprite.png") 3px 3px no-repeat;
+  overflow: visible;
+}
+div.dropdown.active a.selector,
+div:hover.dropdown > a.selector {
+  background-position: 3px -22px;
+}
+div.dropdown > span.nocurrent {
+  display: block;
+  color: #999999;
+  margin-right: 20px;
+  /* was padding-right:20px; */
+
+}
+div.dropdown > ul {
+  /* default state */
+
+  display: block;
+  position: absolute;
+  top: 2.45em;
+  left: -1px;
+  float: left;
+  z-index: 30;
+  background-color: #ffffff;
+  border: 1px solid #c6d7e0;
+  -moz-border-radius: .2em;
+  -webkit-border-radius: .2em;
+  border-radius: .2em;
+  max-height: 24.2em;
+  /* covers 10 items. More should scroll. */
+
+  overflow-y: auto;
+}
+/*div.dropdown.active > ul { 
+	display: block;
+}*/
+div.dropdown > ul > li {
+  cursor: pointer;
+  color: #0d6893;
+  background-color: #ffffff;
+  padding: 0.4em 1em 0.4em 30px;
+  border-bottom: 1px solid #c6d7e0;
+  white-space: nowrap;
+}
+div.dropdown > ul > li:hover,
+div.dropdown > ul > li:hover.current {
+  background-color: #f3fafd;
+}
+div.dropdown > ul > li:last-child {
+  border: none;
+}
+div.dropdown > ul > li.current {
+  font-weight: bold;
+  background: url("../../../../content/dam/BCHydro/images/sprites/dropdown-sprite.png") 0.7em -48px no-repeat;
+}
+div.dropdown > ul > li.default {
+  font-style: italic;
+  color: #ccc;
+}
+div.dropdown.disabled,
+div:hover.dropdown.disabled {
+  color: #ccc;
+  background: none;
+  background-color: #F0F0F0;
+  border: 1px solid #F0F0F0;
+}
+div.dropdown.disabled > a,
+div:hover.dropdown.disabled > a {
+  color: #ccc !important;
+  background-position: 0px 1px !important;
+}
+/* __IDs and CONTEXTS
+ * The MAJOR structural elements with IDs
+ * ==================================================
+ * IDs being defined in the global stylesheet should
+ * be kept to a low number and only cover elements
+ * that truly pervade the site. The ID selector has the 
+ * highest specificity of all the CSS selectors which
+ * means id rules override most others.
+ * 
+ * Contexts provide particular styling to elements in 
+ * certain situations. Mostly for CQ5 generated elements, 
+ * like the Rich Text Editor blocks.
+ */
+/* __div.richTextEditor
+ * CQ5 component. Particular style overrides to 
+ * match expectations of the content managers.
+ * within these components.
+-------------------------------------------------*/
+.parsys div.text.richTextEditor ul {
+  list-style: disc outside none;
+  margin-left: 2em;
+  margin-bottom: 1.55em;
+}
+.parsys div.text.richTextEditor ul ul,
+.parsys div.text.richTextEditor ol ol,
+.parsys div.text.richTextEditor ul ol,
+.parsys div.text.richTextEditor ol ul {
+  margin-bottom: 0.65em;
+}
+.parsys div.text.richTextEditor ol {
+  margin-left: 2.45em;
+  margin-bottom: 1.55em;
+}
+.parsys div.text.richTextEditor table > tbody > tr > td {
+  white-space: normal;
+}
+.parsys div.text.richTextEditor table.layout tr > td,
+.parsys div.text.richTextEditor table.no-padding tr > td,
+.parsys div.rawHTML table tr > td {
+  padding: 0;
+}
+.parsys div.rawHTML table tr {
+  border: none;
+}
+/* NB: CQ5 does not use the <thead /> tag */
+.parsys div.text.richTextEditor table tr > th {
+  text-align: left;
+  /* approved visual design for data tables is centered... */
+
+  color: #979a9c;
+  font-weight: bold;
+  background-color: #f4f4f4;
+  text-transform: uppercase;
+  font-size: .85em;
+  padding: .6em;
+  vertical-align: bottom;
+  line-height: 1.25em;
+  white-space: normal;
+}
+.parsys div.text.richTextEditor table tr > th > a {
+  font-size: inherit;
+  white-space: nowrap;
+}
+/* __div.text
+ * CQ5 component. Particular style overrides to 
+ * match expectations of the content managers.
+ * within these components.
+-------------------------------------------------*/
+div.parsys div.text ul {
+  list-style: disc outside none;
+  margin-left: 1em;
+}
+div.parsys div.text ol > ol,
+div.parsys div.text ul > ul,
+div.parsys div.text ul > ol,
+div.parsys div.text ol > ul {
+  margin-bottom: 0;
+}
+/*  __#container
+-------------------------------------------------*/
+#container {
+  width: 1120px;
+  /*for design's sake */
+  min-width: 1120px;
+  /*senagend - for 100% height*/
+
+  max-width: 1120px;
+  margin: 0 auto;
+  min-height: 100%;
+  /*height:100%;senagend - for 100% height*/
+
+  border-bottom: 0;
+  overflow: hidden;
+}
+/*  __#mainContent
+ *  These are the classes for styling the layout
+ *  of the main column divisions as per the style guide.
+ *  The layout numbers in class names are references
+ *  to the twelve column grid.
+-------------------------------------------------*/
+#mainContent {
+  /*position:relative*/
+  /*padding-top:1.55em;*/
+}
+/* position:relative causing IE7 bug with jumping child elements. */
+#mainContent > .column {
+  position: relative;
+  float: left;
+  clear: none;
+}
+#mainContent > .left {
+  clear: left;
+  margin: 0 1.8% 0 7.1%;
+  min-height: 450px;
+  width: 63.9%;
+  /* default width for backwards compatibility */
+
+  padding-bottom: 20px;
+}
+#mainContent > .right {
+  margin: 0 7.1% 0 0;
+  width: 20.1%;
+  /* default width for backwards compatibility */
+
+  padding-left: 20px;
+  min-height: 450px;
+}
+#mainContent > .right.demarcated {
+  /* padding-left: 1.8%; */
+
+  border-left: 1px solid #e2e2e2;
+  background: transparent url('../../../../content/dam/BCHydro/images/right-col-edge-fade.png') no-repeat 0 0;
+  min-height: 665px;
+  /* the height of the background image*/
+
+}
+/* The classes defining the split are applied to the parent div */
+/* The 3/4 - 1/4 split */
+#mainContent.columns_9_3 > .column.left {
+  width: 66%;
+}
+#mainContent.columns_9_3 > .column.right {
+  width: 16%;
+}
+/* Actually 7.5-4.5 */
+#mainContent.columns_7_5 > .column.left {
+  width: 51.7%;
+}
+#mainContent.columns_7_5 > .column.right {
+  width: 30.3%;
+}
+/* 4 columns */
+#mainContent.columns_x4 > .column {
+  width: 20%;
+  margin-right: 1.8%;
+}
+/* doesn't include padding */
+#mainContent.columns_x4 > .right {
+  width: 18.3%;
+}
+/* accommodate the left padding */
+#mainContent.columns_x4 > .span_3 {
+  width: 63.9%;
+}
+/* still need to specify left or right as appropriate! */
+#mainContent.columns_x4 > .span_2 {
+  width: 42%;
+}
+/* still need to specify left or right if appropriate! */
+/* defined below */
+/* single column doesn't rely on splits */
+#mainContent.columns_x4 > .span_all,
+#mainContent.columns_x4 > .column.single,
+.column.single,
+.column.span_all {
+  margin: 0 7.1%;
+  width: 85.8%;
+  overflow: visible;
+}
+#mainContent + * {
+  clear: both;
+}
+/* If it comes after #mainContent, it clears. */
+/*.column h1{margin:.5em 0} This is generally overridden all other places. */
+/* Left Column */
+section.left > h1:first-child,
+div.left > h1:first-child,
+section.left > h1.first-child,
+div.left > h1.first-child {
+  /* extend h1 */
+
+  padding: 0;
+  margin: 0.35em 0 0;
+  height: 2.35em;
+}
+section.left > h1.icon:first-child,
+div.left > h1.icon:first-child,
+section.left > h1.icon.first-child,
+div.left > h1.icon.first-child {
+  /* extend h1.icon */
+
+  margin-top: 0.05em;
+  /* compensate for icon */
+
+}
+/* The img.icon is deprecated... use h1.icon */
+section.left > h1:first-child > img.icon,
+div.left > h1:first-child > img.icon,
+section.left > h1.first-child > img.icon,
+div.left > h1.first-child > img.icon {
+  /* extend h1 */
+
+  padding-right: 0.3em;
+}
+/* Right Column */
+.column.right > div:first-child,
+.column.right > div.first-child {
+  /*margin-top: 4.25em;*/
+
+}
+.column.right > h2:first-child {
+  /* extend h2 */
+
+  color: #555;
+  margin: .6em 0 .3em 18px;
+  height: 1.53em;
+}
+.column.right > * {
+  margin-right: 1px;
+  /* compensate for nav relative position */
+}
+#mainContent > header:first-child.column,
+#mainContent > header.first-child.column {
+  margin-bottom: 1em;
+}
+/* Modules */
+.module {
+  float: left;
+  clear: none;
+  margin: 0 1.8% .5em 0;
+  font-size: 13px;
+  padding: 0.5em;
+}
+/* reset the base font for module content */
+.module.two {
+  width: 45.5%;
+}
+.module.three {
+  width: 29%;
+}
+.module.three.span2 {
+  width: 61.8%;
+}
+.module.icon-indent > div {
+  margin-left: 1.9em;
+}
+.module.icon-indent > div > :last-child {
+  margin-bottom: 0;
+}
+/* Tertiary Navigation 
+ * Please note the careful use of general and direct descendency
+ * before trying to edit this block of code.
+ * */
+.column.right nav.tertiary {
+  margin: 1em 0 1.7em -20px;
+}
+nav.tertiary a:hover {
+  color: #30353a;
+  text-decoration: none;
+}
+nav.tertiary ul > li.active {
+  color: #30353a;
+  font-weight: bold;
+  background-color: #fff;
+  border-left-color: #fff;
+}
+nav.tertiary li.active li {
+  font-weight: normal;
+}
+nav.tertiary li:hover {
+  background-color: #fff;
+}
+nav.tertiary li:hover a {
+  color: #30353a;
+}
+nav.tertiary li.active a {
+  color: #30353a;
+}
+nav.tertiary > h3,
+div.tertiary > h3 {
+  text-transform: uppercase ;
+  color: #6c7074;
+  margin: 0.3em .1em 0.6em 1em;
+  font-size: 1em;
+}
+nav.tertiary > h3 > a,
+div.tertiary > h3 > a {
+  color: inherit;
+}
+nav.tertiary > ul {
+  display: block;
+  position: relative;
+  left: -1px;
+  /* lay over the border*/
+}
+nav.tertiary > ul > li {
+  background-color: #f0faff;
+  padding: .85em 1.3em;
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: #e2e2e2;
+}
+/* :first-child is x-browser supported. .first-child is included for completeness with .last-child */
+nav.tertiary > ul > li:first-child,
+nav.tertiary > ul > li.first-child {
+  border-width: 1px;
+  -moz-border-radius: 0 0.2em 0 0;
+  -webkit-border-radius: 0 0.2em 0 0;
+  border-radius: 0 0.2em 0 0;
+}
+nav.tertiary > ul > li:last-child,
+nav.tertiary > ul > li.last-child {
+  -moz-border-radius: 0 0 0.2em 0;
+  -webkit-border-radius: 0 0 0.2em 0;
+  border-radius: 0 0 0.2em 0;
+}
+nav.tertiary > ul > li ul {
+  margin-top: .5em;
+  padding-left: 1em;
+}
+nav.tertiary > ul > li ul > li {
+  padding: .25em 0;
+}
+nav.tertiary > ul > li > ul > li > ul {
+  border-left: 1px solid #e2e2e2;
+}
+nav.tertiary > ul > li > ul > li > ul > li:first-child,
+nav.tertiary > ul > li > ul > li > ul > li.first-child {
+  padding-top: 0;
+}
+nav.tertiary ul > li.active {
+  font-weight: bold;
+}
+nav.tertiary > ul > li.expanded {
+  background-color: #fff;
+  border-left-color: #fff;
+  color: #86b3c9;
+}
+nav.tertiary > ul > li.expanded li {
+  color: #30353a;
+}
+nav.tertiary > ul > li.expanded a {
+  color: #86b3c9;
+}
+nav.tertiary > ul > li.expanded.active {
+  color: #30353a;
+}
+nav.tertiary > ul > li.expanded.active a {
+  color: #0d6893;
+}
+nav.tertiary > ul > li.expanded > a {
+  font-weight: bold;
+}
+nav.tertiary > ul > li.expanded > ul > .active a {
+  color: #0d6893;
+}
+nav.tertiary > ul > li.expanded:hover a {
+  color: #0d6893;
+}
+nav.tertiary > ul > li.expanded:hover a:hover {
+  color: #30353a;
+}
+/*  __#bch_footer
+ * 
+ * 
+-------------------------------------------------*/
+#bch_footer {
+  border-top: 1px solid #d6e3e9;
+  margin: 0 0 2.5em 0;
+  background-color: #fff;
+}
+#bch_footer > .row {
+  margin: 0 7.1%;
+  padding: 0.55em 0;
+  border-bottom: 1px solid #d6e3e9;
+  min-height: 2.2em;
+}
+#bch_footer > .row ul {
+  margin: .6em 0 0;
+  display: inline-block;
+}
+#bch_footer ul.tabs {
+  list-style: none;
+}
+#bch_footer ul.tabs > li {
+  display: inline-block;
+  float: left;
+  cursor: pointer;
+}
+#bch_footer nav.bch_info {
+  float: left;
+  font-size: 1em;
+  margin: 0;
+  color: #555555;
+}
+#bch_footer nav.bch_info ul {
+  padding-right: 1em;
+}
+#bch_footer nav.bch_info ul li {
+  margin-left: 0;
+  margin-right: 1.8em;
+}
+#bch_footer nav.bch_info ul li a {
+  color: #555555;
+}
+#bch_footer div.profile-status {
+  margin: 0;
+  text-align: right;
+}
+#bch_footer div.profile-status button:last-child {
+  margin-left: .7em;
+  margin-right: 0;
+}
+#bch_footer nav.primaryFooterNav {
+  color: #0D6893;
+  font-weight: bold;
+  overflow: visible;
+}
+#bch_footer nav.primaryFooterNav ul li {
+  padding: 0 1.25em 0 0;
+  vertical-align: middle;
+}
+#bch_footer nav.primaryFooterNav ul li:hover {
+  color: #0d5292;
+}
+#bch_footer nav.primaryFooterNav ul li a {
+  color: #0d6893;
+}
+#bch_footer nav.primaryFooterNav ul li a:hover {
+  color: #0d5292;
+}
+#bch_footer > .terms {
+  color: #979a9c;
+}
+#bch_footer > .terms small {
+  display: inline-block;
+  margin: .6em 0;
+  font-size: .85em;
+}
+#bch_footer > .terms ul {
+  float: right;
+}
+#bch_footer > .terms ul li {
+  display: inline-block;
+  float: left;
+  margin-right: 1em;
+}
+#bch_footer > .terms ul li:last-child {
+  margin-right: 0;
+}
+#bch_footer > .terms a {
+  color: #979a9c;
+}
+
