@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.6">
+    <meta name="description" content="Find current power outages on a map.">
+    <meta name="keywords" content="outage, power outage, out, location, customer outage, map municipality, region">
+    <meta name="author" content="">
+    <meta http-equiv="Expires" content="300" />
+    <meta http-equiv="Cache-Control" content="public" />
+    <meta name="DCS.dcsqry" content="" />
+    <meta name="WT.cg_n" content="Safety & Outages" />
+    <meta name="WT.cg_s" content="Outages map" />
+    <title>BC Hydro</title>
+    <script type="text/javascript" src="/etc/designs/hydro/mobile/clientlibs/global-media.min.js"></script>
+</head>
+
+<body>
+    <!-- R3 Request URL: httpss://www.bchydro.com:80/content/include/cached/framework/header.validatesession.html -->
+    <!-- R3 Request URI: /content/include/cached/framework/header.validatesession.html -->
+    <!-- R3 Request Selectors: numAccounts.0.inlineCSS.true.useAbsUrl.false.reqPath.%252Fpower-outages%252Fapp%252Fhome.html.includeHead.true -->
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <!-- Begin Meta Tagging for WebTrends -->
+        <meta name="WT.cg_n" content="Safety & Outages" />
+        <meta name="WT.cg_s" content="Outages landing;Logged In" />
+        <meta name="SmartView_Page" content="0" />
+        <meta name="�" content="�" />
+        <!--  End Meta Tagging for Webtrends -->
+        <link rel="icon" type="image/vnd.microsoft.icon" href="/content/dam/BCHydro/images/icons/favicon.ico" />
+        <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/content/dam/BCHydro/images/icons/favicon.ico" />
+        <link href="/content/dam/BCHydro/images/icons/hydro-icon-27-droid.png" rel="apple-touch-icon" sizes="27x27" />
+        <link href="/content/dam/BCHydro/images/icons/hydro-icon-72-droid.png" rel="apple-touch-icon" sizes="72x72" />
+        <link href="/content/dam/BCHydro/images/icons/hydro-icon-114-droid.png" rel="apple-touch-icon" sizes="114x114" />
+        <link href="/content/dam/BCHydro/images/icons/hydro-icon-76.png" rel="apple-touch-icon" sizes="114x114" />
+        <link href="/content/dam/BCHydro/images/icons/hydro-icon-120.png" rel="apple-touch-icon" sizes="120x120" />
+        <link href="/content/dam/BCHydro/images/icons/hydro-icon-152.png" rel="apple-touch-icon" sizes="152x152" />
+
+        <title>BC Hydro - Power Outages</title>
+        <meta content="width=device-width;" name="viewport">
+        <meta name="keywords" content="" />
+
+        <link type="text/css" rel="stylesheet" href="/etc/designs/BCHydro/clientlibs/Reset.css" />
+        <link type="text/css" rel="stylesheet" href="/etc/designs/BCHydro/clientlibs/static.css" />
+        <link rel="stylesheet" href="/etc/clientlibs/foundation/main.min.css" type="text/css">
+        <script type="text/javascript" src="/etc/clientlibs/granite/jquery.min.js"></script>
+        <script type="text/javascript" src="/etc/clientlibs/granite/utils.min.js"></script>
+        <script type="text/javascript" src="/etc/clientlibs/granite/jquery/granite.min.js"></script>
+        <script type="text/javascript" src="/etc/clientlibs/foundation/jquery.min.js"></script>
+        <script type="text/javascript" src="/etc/clientlibs/foundation/main.min.js"></script>
+
+        <link type="text/css" rel="stylesheet" href="/etc/designs/BCHydro/clientlibs/BCH-MyAccount.css" />
+
+        <link type="text/css" rel="stylesheet" href="/etc/designs/BCHydro/clientlibs/GeneralStyles.css" />
+        <link type="text/css" rel="stylesheet" href="/etc/designs/BCHydro/clientlibs/ComponentsStyles.css" />
+        <link type="text/css" rel="stylesheet" href="/etc/designs/BCHydro/clientlibs/BCHHeader.css" />
+
+        <script src="/etc/designs/BCHydro/Javascript/jquery-1.7.1.min.js" language="JavaScript"></script>
+
+        <!--[if lt IE 9 ]>
+    	<script src="/etc/designs/BCHydro/Javascript/html5.js"></script>
+    <![endif]-->
+        <!--[if IE 7 ]>
+    	<link type="text/css" rel="stylesheet" href="/etc/designs/BCHydro/clientlibs/IE7.css?v=2"/>
+    <![endif]-->
+        <!--[if IE 8 ]>
+    	<link type="text/css" rel="stylesheet" href="/etc/designs/BCHydro/clientlibs/IE8.css?v=2"/>
+    <![endif]-->
+    </head>
+
+    <body>
+        <div id="container">
+            <div class="notifications">
+                <script type="text/javascript">
+                    $(function () {
+
+                        if (isBrowserOld()) {
+                            displayBrowserNotification();
+                        }
+
+                        displayGeneralNotification();
+                        displayEmergencyNotification();
+
+                        $('#notification-browser #browser-message-close').on('click', function (e) {
+                            //e.preventDefault();            
+                            // Hide the alert message
+                            $('.browserMessage').slideUp();
+                            // Create cookie - emergencyMessageDismiss
+                            createCookie('browserMessageDismiss', 1, 0);
+                        });
+
+                        $('#general-message-close').on('click', function (e) {
+                            e.preventDefault();
+                            // Hide the alert message
+                            $('.generalMessage').slideUp();
+                            // Create cookie - generalMessageDismiss
+                            createCookie('generalMessageDismiss', 1, 0);
+                        });
+
+                    });
+                </script>
+
+                <div class="notification generalMessage alert-info" id="notification-general" style="display: none"></div>
+                <div class="notification browserSupport alert-warning" id="notification-browser" style="display: none"></div>
+                <div class="notification emergencyMessage alert-emergency" id="notification-emergency" style="display: none"></div>
+            </div>
+
+            <header id="bchheader" class="masthead hydro-r3">
+                <div id="bchh-utility_nav" class="bchh-utilmenu">
+                    <ul class="bchh-utilmenu">
+                        <li>
+                            <a href="/about.html" class="bchh-item">About BC Hydro</a>
+                        </li>
+                        <li>
+                            <a href="/careers.html" class="bchh-item">Careers</a>
+                        </li>
+                        <li>
+                            <a href="/newsletters.html" class="bchh-item">Newsletters</a>
+                        </li>
+                        <li>
+                            <a href="/contact.html" class="bchh-item">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End: #bchh-utility_nav -->
+
+                <div id="bchh-header-container">
+
+                    <a id="bchh-bchydro-logo" class="ir" href="/">BC Hydro Regeneration | 50</a>
+                    <!-- end #bchh-bchydro-logo -->
+
+                    <!-- Start: #bchh-hello -->
+                    <div id="bchh-hello" style="display:none">
+
+                        <!-- Start: #bchh-loginblock-in -->
+                        <div id="bchh-loginblock-in">
+                            <span id="bchh-welcome">Hi UserFirst</span>
+                            <ul id="bchh-my-profile" class="bchh-utilmenu">
+                                <li class="bchh-sub"><a href="https://www.bchydro.com/BCHCustomerPortal/web/viewProfile.html" class="bchh-profile bchh-item"><span class="bchh-icon bchh-i-profile"></span>My Profile<span class="bchh-icon bchh-i-arrow"></span></a>
+                                    <div class="bchh-utilsubmenu">
+                                        <ul>
+                                            <li><a href="https://www.bchydro.com/BCHCustomerPortal/web/viewProfile.html">Personal Information</a></li>
+                                            <li><a href="https://www.bchydro.com/BCHCustomerPortal/web/commPrefLanding.html">Subscriptions &amp; Alerts</a></li>
+                                            <li id="bchh-change-password"><a href="https://www.bchydro.com/BCHCustomerPortal/web/changePassword.html">Change Password</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                            <button id="btnLogout" class="secondary" onClick="location.href='https://www.bchydro.com/BCHCustomerPortal/web/logout.html'">Log out</button>
+                        </div>
+                        <!-- End: #bchh-loginblock-in -->
+                        <!-- End: #bchh-loginblock-out -->
+                        <div id="bchh-loginblock-out">
+                            <a href="https://www.bchydro.com/BCHCustomerPortal/createProfile.html">Sign Up</a>
+                            <button id="btnLogin" class="primary" onClick="location.href='https://www.bchydro.com/BCHCustomerPortal/web/login.html'">Log in</button>
+                        </div>
+                        <!-- End: #bchh-loginblock-out -->
+                        <!-- Start: #bchh-searchblock -->
+                        <div id="bchh-searchblock">
+                            <form id="headerSearch" name="seek1" action="/search.html" method="get">
+                                <fieldset>
+                                    <input type="hidden" value="bchydro-com" name="site">
+                                    <input type="hidden" value="bchydro-com" name="client">
+                                    <input type="hidden" value="bchydro-com" name="proxystylesheet">
+                                    <input type="hidden" value="xml_no_dtd" name="output">
+                                    <label for="search">Search</label>
+                                    <i class="fa fa-search"></i>
+                                    <input type="text" value="" name="q" maxlength="100" id="search" placeholder="How can we help?" />
+                                </fieldset>
+                            </form>
+                        </div>
+                        <!-- End: #bchh-searchblock -->
+                        <input type="hidden" value="false" id="sessionLoggedIn">
+                    </div>
+                    <!-- end #bchh-hello -->
+                </div>
+                <!-- end #bchh-header-container -->
+
+                <div id="bchh-main_nav" class="bchh-subs">
+                    <ul id="bchh-nav">
+                        <li><a href="/accounts-billing.html">Accounts &amp; Billing</a></li>
+                        <li><a href="/powersmart.html">Energy savings</a></li>
+                        <li><a href="/news.html">News, events &amp; media</a></li>
+                        <li><a href="/energy-in-bc.html">Energy in B.C.</a></li>
+                        <li><a href="/community.html">Community</a></li>
+                        <li class="current"><a href="/safety-outages.html">Safety &amp; Outages</a></li>
+                    </ul>
+                </div>
+                <div id="bchh-sub_nav">
+                    <ul class="bchh-sub_nav">
+                        <!--//#####################################
+            // Change the font of My Account menu item here
+            //#####################################    -->
+
+                        <li lvl="5" class="bchh-sub current">
+                            <a href="/safety-outages/power-outages.html">Power Outages</a>
+                            <!--//#####################################
+            // end
+            //#####################################    -->
+
+                            <div depth="5" class="bchh-menu">
+                                <div class="bchh-menu-close">
+                                    <a class="ir" href="#">Close</a>
+                                </div>
+                                <div class="bchh-menu-container">
+                                    <ul depth="6">
+                                        <li class="bchh-header">
+                                            <a href="/safety-outages/power-outages/outage_map.html">Outage map </a>
+                                    </ul>
+                                    <ul depth="6">
+                                        <li class="bchh-header">
+                                            <a href="/safety-outages/power-outages/outage_list.html">Outage list </a>
+                                    </ul>
+                                    <ul depth="6">
+                                        <li class="bchh-header">
+                                            <a href="/safety-outages/power-outages/reporting_outage.html">Report an outage </a>
+                                    </ul>
+                                    <ul depth="6">
+                                        <li class="bchh-header">
+                                            <a href="/safety-outages/power-outages/prepare-for-outages.html">Prepare for outages </a>
+                                            <li depth="7">
+                                                <a href="/safety-outages/power-outages/prepare-for-outages/prepare-your-home.html">Prepare your home for an outage</a>
+                                            </li>
+                                            <li depth="7">
+                                                <a href="/safety-outages/power-outages/prepare-for-outages/prepare-your-business.html">Prepare your business for an outage</a>
+                                            </li>
+                                    </ul>
+                                    <ul depth="6">
+                                        <li class="bchh-header">
+                                            <a href="/safety-outages/power-outages/planned-outages.html">Why and how we plan outages </a>
+                                    </ul>
+                                    <ul depth="6">
+                                        <li class="bchh-header">
+                                            <a href="/safety-outages/power-outages/outages_rss.html">RSS outages feeds </a>
+                                    </ul>
+                                </div>
+                            </div>
+                            </li>
+
+                            <!--//#####################################
+            // Change the font of My Account menu item here
+            //#####################################    -->
+
+                            <li lvl="5" class="bchh-sub">
+                                <a href="/safety-outages/stay-safe.html">Learn to Stay Safe</a>
+                                <!--//#####################################
+            // end
+            //#####################################    -->
+
+                                <div depth="5" class="bchh-menu">
+                                    <div class="bchh-menu-close">
+                                        <a class="ir" href="#">Close</a>
+                                    </div>
+                                    <div class="bchh-menu-container">
+                                        <ul depth="6">
+                                            <li class="bchh-header">
+                                                <a href="/safety-outages/stay-safe/safety-at-home.html">Electricity safety at home </a>
+                                                <li depth="7">
+                                                    <a href="/safety-outages/stay-safe/safety-at-home/electrical-safety-tips.html">Electrical safety tips</a>
+                                                </li>
+                                                <li depth="7">
+                                                    <a href="/safety-outages/stay-safe/safety-at-home/protect-electronics.html">Protect your electronics</a>
+                                                </li>
+                                                <li depth="7">
+                                                    <a href="/safety-outages/stay-safe/safety-at-home/safety-for-kids.html">Electrical safety for kids</a>
+                                                </li>
+                                        </ul>
+                                        <ul depth="6">
+                                            <li class="bchh-header">
+                                                <a href="/safety-outages/stay-safe/safety-outside.html">Electrical safety outside </a>
+                                                <li depth="7">
+                                                    <a href="/safety-outages/stay-safe/safety-outside/outdoor-safety-bchydro-site.html">Outdoor safety and BC Hydro sites</a>
+                                                </li>
+                                                <li depth="7">
+                                                    <a href="/safety-outages/stay-safe/safety-outside/safe-distance.html">Safe Distance and Power Lines</a>
+                                                </li>
+                                                <li depth="7">
+                                                    <a href="/safety-outages/stay-safe/safety-outside/trees-power-lines.html">Trees and power lines</a>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                </li>
+
+                                <!--//#####################################
+            // Change the font of My Account menu item here
+            //#####################################    -->
+
+                                <li lvl="5" class="bchh-sub">
+                                    <a href="/safety-outages/safety-in-emergencies.html">Safety in Emergencies</a>
+
+                                    <!--//#####################################
+            // end
+            //#####################################    -->
+
+                                    <div depth="5" class="bchh-menu">
+                                        <div class="bchh-menu-close">
+                                            <a class="ir" href="#">Close</a>
+                                        </div>
+                                        <div class="bchh-menu-container">
+                                            <ul depth="6">
+                                                <li class="bchh-header">
+                                                    <a href="/safety-outages/safety-in-emergencies/evacuations.html">Plan ahead for evacuations </a>
+                                            </ul>
+                                            <ul depth="6">
+                                                <li class="bchh-header">
+                                                    <a href="/safety-outages/safety-in-emergencies/natural-disasters.html">Earthquakes, wildfires, and floods </a>
+                                            </ul>
+                                            <ul depth="6">
+                                                <li class="bchh-header">
+                                                    <a href="/safety-outages/safety-in-emergencies/accidents-people.html">Electrical accidents </a>
+                                            </ul>
+                                            <ul depth="6">
+                                                <li class="bchh-header">
+                                                    <a href="/safety-outages/safety-in-emergencies/motor-vehicle-accidents.html">Motor vehicle accidents involving power lines </a>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    </li>
+
+                                    <!--//#####################################
+            // Change the font of My Account menu item here
+            //#####################################    -->
+
+                                    <li lvl="5" class="bchh-sub">
+                                        <a href="/safety-outages/worker-training.html">Worker Safety Training</a>
+                                        <!--//#####################################
+            // end
+            //#####################################    -->
+
+                                        <div depth="5" class="bchh-menu">
+                                            <div class="bchh-menu-close">
+                                                <a class="ir" href="#">Close</a>
+                                            </div>
+                                            <div class="bchh-menu-container">
+                                                <ul depth="6">
+                                                    <li class="bchh-header">
+                                                        <a href="/safety-outages/worker-training/safety-resources.html">Electrical safety resources </a>
+                                                </ul>
+                                                <ul depth="6">
+                                                    <li class="bchh-header">
+                                                        <a href="/safety-outages/worker-training/trades.html">Electrical Safety Awareness sessions for trades workers </a>
+                                                </ul>
+                                                <ul depth="6">
+                                                    <li class="bchh-header">
+                                                        <a href="/safety-outages/worker-training/first-responders.html">Safety training for first responders  </a>
+                                                </ul>
+                                                <ul depth="6">
+                                                    <li class="bchh-header">
+                                                        <a href="/safety-outages/worker-training/firefighters.html">Electrical Safety Awareness sessions for fire fighter training officers </a>
+                                                </ul>
+                                                <ul depth="6">
+                                                    <li class="bchh-header">
+                                                        <a href="/safety-outages/worker-training/students.html">Electrical Safety Awareness for post-secondary students </a>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        </li>
+
+                                        <!--//#####################################
+            // Change the font of My Account menu item here
+            //#####################################    -->
+
+                                        <li lvl="5" class="bchh-sub">
+                                            <a href="/safety-outages/keeping-communities-safe.html">Keeping Our Communities Safe</a>
+                                            <!--//#####################################
+            // end
+            //#####################################    -->
+
+                                            <div depth="5" class="bchh-menu">
+                                                <div class="bchh-menu-close">
+                                                    <a class="ir" href="#">Close</a>
+                                                </div>
+                                                <div class="bchh-menu-container">
+                                                    <ul depth="6">
+                                                        <li class="bchh-header">
+                                                            <a href="/safety-outages/keeping-communities-safe/health-electricity.html">Health and electricity </a>
+                                                    </ul>
+                                                    <ul depth="6">
+                                                        <li class="bchh-header">
+                                                            <a href="/safety-outages/keeping-communities-safe/electricity-theft.html">Electricity theft </a>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            </li>
+                    </ul>
+                </div>
+            </header>
+            <nav class="breadcrumbs ors">
+                <a href="/">Home</a> &nbsp;&rsaquo;&nbsp;
+                <a href="/safety-outages.html">Safety &amp; Outages</a> &nbsp;&rsaquo;&nbsp;Power Outages
+            </nav>
+            <script src="/etc/designs/hydro/clientlibs/notifications.js"></script>
+            <link rel="stylesheet" type="text/css" href="/etc/designs/hydro/clientlibs/notifications.css">
+            <div id="mainContent" class="columns_x4 floatnone">
+                <section class="column left span_3">
+                    <article class="column content">
+                        <div class="content-inner">
+                            <h1 class="page-title">ORS PoC Outage map</h1>
+                            <link href="/etc/designs/hydro/mobile/clientlibs/outages/css/outages.css" rel="stylesheet">
+                            <script src="//maps.googleapis.com/maps/api/js?v=3&sensor=true&visual_refresh=true"></script>
+                            <script>
+                                var hash = window.location.hash;
+
+                                var region = null;
+                                var regions = [];
+
+
+                                region = {
+                                    id: '848340027',
+                                    paths: [new google.maps.LatLng(52.9603282838662, -122.445082984441), new google.maps.LatLng(52.9603282838662, -122.442102816079), new google.maps.LatLng(52.9585286987183, -122.442102816079), new google.maps.LatLng(52.9585286987183, -122.445082984441)]
+                                };
+
+                                regions.push(region);
+
+                                region = {
+                                    id: '521980323',
+                                    paths: [new google.maps.LatLng(50.1167921564644, -123.135750876244), new google.maps.LatLng(50.1167921564644, -122.208214296001), new google.maps.LatLng(49.0298783616419, -122.208214296001), new google.maps.LatLng(49.0298783616419, -123.135750876244)]
+                                };
+
+                                regions.push(region);
+
+                                region = {
+                                    id: '1602964060',
+                                    paths: [new google.maps.LatLng(54.6094249187891, -128.412189535727), new google.maps.LatLng(54.6094249187891, -128.409100067511), new google.maps.LatLng(54.6076315779912, -128.409100067511), new google.maps.LatLng(54.6076315779912, -128.412189535727)]
+                                };
+
+                                regions.push(region);
+
+                                region = {
+                                    id: '2072041405',
+                                    paths: []
+                                };
+
+                                regions.push(region);
+
+                                region = {
+                                    id: '725364552',
+                                    paths: [new google.maps.LatLng(51.373822335838, -121.041919878999), new google.maps.LatLng(51.373822335838, -121.039046027907), new google.maps.LatLng(51.3720236260058, -121.039046027907), new google.maps.LatLng(51.3720236260058, -121.041919878999)]
+                                };
+
+                                regions.push(region);
+
+                                region = {
+                                    id: '1602896846',
+                                    paths: []
+                                };
+
+                                regions.push(region);
+
+                                region = {
+                                    id: '1812901382',
+                                    paths: [new google.maps.LatLng(48.6954489403959, -123.440912727956), new google.maps.LatLng(48.6954489403959, -123.38355148537), new google.maps.LatLng(48.4288614059822, -123.38355148537), new google.maps.LatLng(48.4288614059822, -123.440912727956)]
+                                };
+
+                                regions.push(region);
+
+
+                                var map;
+                                var markers = [];
+                                var displayedOutage = null;
+                                var showPolygon = null;
+                                var clusterZoomLevel = 12;
+
+                                google.maps.visualRefresh = true;
+
+                                function initialize() {
+                                    if (!google.maps.Polygon.prototype.getBounds) {
+                                        google.maps.Polygon.prototype.getBounds = function (latLng) {
+                                            if (this.bounds) {
+                                                return this.bounds;
+                                            }
+
+                                            var bounds = new google.maps.LatLngBounds();
+                                            var paths = this.getPaths();
+                                            var path;
+
+                                            for (var p = 0; p < paths.getLength(); p++) {
+                                                path = paths.getAt(p);
+                                                for (var i = 0; i < path.getLength(); i++) {
+                                                    bounds.extend(path.getAt(i));
+                                                }
+                                            }
+
+                                            this.bounds = bounds;
+                                            return bounds;
+                                        }
+                                    }
+
+                                    var zoom = 4;
+                                    var center = new google.maps.LatLng(54.40986, -125.092773);
+                                    var initBounds = null;
+
+                                    if (hash) {
+                                        if (hash.indexOf("#locate=") === 0) {
+                                            var seperator = hash.indexOf("_");
+                                            var lat = hash.substring(8, seperator);
+                                            var lon = hash.substring(seperator + 1);
+
+                                            if (!isNaN(parseFloat(lat)) && isFinite(lat) && !isNaN(parseFloat(lon)) && isFinite(lon)) {
+                                                zoom = 12;
+                                                center = new google.maps.LatLng(lat, lon);
+                                            }
+                                        } else if (hash.indexOf("#region=") === 0) {
+                                            var hashValue = hash.substring(8);
+
+                                            for (var i = 0; i < regions.length; i++) {
+                                                if (regions[i].id == hashValue) {
+                                                    initBounds = new google.maps.LatLngBounds();
+                                                    var paths = regions[i].paths;
+                                                    for (var j = 0; j < paths.length; j++) {
+                                                        initBounds.extend(paths[j]);
+                                                    }
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    var mapOptions = {
+                                        zoom: zoom,
+                                        center: center,
+                                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                                        streetViewControl: false,
+                                        tilt: 0,
+                                        styles: [{
+                                            featureType: "poi",
+                                            elementType: "labels",
+                                            stylers: [{
+                                                visibility: "off"
+                                            }]
+                                        }],
+                                        mapTypeControl: false
+                                    };
+
+                                    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+                                    if (initBounds != null) {
+                                        map.fitBounds(initBounds);
+                                    }
+
+                                    var marker = null;
+
+                                    // Dynamic data load from JSON
+                                    $.ajax({
+                                            type: "GET",
+                                            url: 'http://localhost:9988/markers',
+                                            dataType: 'json',
+                                        })
+                                        .done(function (data) {
+                                            var markerArray = data;
+                                            console.log(markerArray[0].position.lat + " " + markerArray[0].position.lng);
+
+                                            // Loop through markers array and parse JSON to 
+                                            for (var i = 0; i < markerArray.length; i++) {
+
+                                                var markerTitle = markerArray[i].title;
+
+                                                // marker object
+                                                marker = new google.maps.Marker({
+                                                    position: new google.maps.LatLng(markerArray[i].position.lat, markerArray[i].position.lng),
+                                                    map: map,
+                                                    title: markerTitle,
+                                                    icon: '/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
+                                                });
+
+                                                // marker polygon
+                                                var pathArray = [];
+                                                for (var j = 0; j < markerArray[i].polygon.length; j++) {
+                                                    pathArray.push(new google.maps.LatLng(markerArray[i].polygon[j].lat, markerArray[i].polygon[j].lng));
+                                                }
+
+                                                marker.polygon = new google.maps.Polygon({
+                                                    paths: pathArray,
+                                                    strokeColor: '#FF0000',
+                                                    clickable: true,
+                                                    strokeOpacity: 0.8,
+                                                    strokeWeight: 2,
+                                                    fillColor: '#FF0000',
+                                                    fillOpacity: 0.35,
+                                                    map: map,
+                                                    title: markerTitle,
+                                                    visible: false
+                                                });
+
+                                                // marker data
+                                                marker.data = {
+                                                    id: markerArray[i].data.id,
+                                                    dateOff: markerArray[i].data.dateOff,
+                                                    crewStatus: markerArray[i].data.crewStatus,
+                                                    crewEta: markerArray[i].data.crewEta,
+                                                    dateOn: markerArray[i].data.dateOn,
+                                                    area: markerArray[i].data.area,
+                                                    cause: markerArray[i].data.cause,
+                                                    numCustomersOut: markerArray[i].data.numCustomersOut,
+                                                    lastUpdated: markerArray[i].data.lastUpdated
+                                                };
+
+
+                                                markers.push(marker);
+
+                                            } // end for        
+
+                                            for (i = 0; i < markers.length; i++) {
+                                                addMarkerClick(markers[i]);
+                                            }
+
+                                            if (hash) {
+                                                if (hash.indexOf("#outage=") === 0) {
+                                                    var hashValue = hash.substring(8);
+
+                                                    for (var i = 0; i < markers.length; i++) {
+                                                        if (markers[i].data.id == hashValue) {
+                                                            google.maps.event.addListenerOnce(map, "idle", function () {
+                                                                google.maps.event.trigger(markers[i], 'click');
+                                                            });
+                                                            break;
+                                                        }
+                                                    }
+                                                } else if (hash === "#locate") {
+                                                    google.maps.event.addListenerOnce(map, "idle", function () {
+                                                        $("#has-gps").click();
+                                                    });
+                                                } else if (hash.indexOf("#address=") === 0) {
+                                                    var hashValue = hash.substr(9);
+                                                    $("#AddressOrPostalCode").val(decodeURIComponent(hashValue));
+                                                    google.maps.event.addListenerOnce(map, "idle", function () {
+                                                        gotoMapLocation();
+                                                    });
+                                                }
+                                            }
+
+
+
+                                            google.maps.event.addListener(map, 'idle', function () {
+                                                var bounds = map.getBounds();
+                                                var newShowPolygon = map.getZoom() > clusterZoomLevel;
+                                                var icon = newShowPolygon ? '/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage-small.png' : '/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png';
+
+                                                if (displayedOutage != null && !bounds.contains(displayedOutage.getPosition())) {
+                                                    displayedOutage.setIcon(icon);
+                                                    displayedOutage.polygon.setVisible(newShowPolygon);
+                                                    displayedOutage = null;
+                                                    $("#map-panel").hide();
+                                                }
+
+                                                if ((showPolygon == null) || (showPolygon && !newShowPolygon) || (!showPolygon && newShowPolygon)) {
+                                                    showPolygon = newShowPolygon;
+                                                    for (var i = 0; i < markers.length; i++) {
+                                                        if (markers[i] != displayedOutage) {
+                                                            markers[i].setIcon(icon);
+                                                            markers[i].polygon.setVisible(showPolygon);
+                                                        }
+                                                    }
+                                                }
+
+                                                var singleOutage = null;
+                                                for (var i = 0; i < markers.length; i++) {
+                                                    if (bounds.contains(markers[i].getPosition())) {
+                                                        if (singleOutage != null) {
+                                                            singleOutage = null;
+                                                            break;
+                                                        }
+
+                                                        singleOutage = markers[i];
+                                                    }
+                                                }
+
+                                                if (singleOutage != null) {
+                                                    showOutageDetails(singleOutage, false);
+                                                }
+                                            });
+
+
+
+                                            // create a marker cluster only after we zoom in on the map
+                                            var mc = new MarkerClusterer(map, markers, {
+                                                ignoreHidden: true,
+                                                gridSize: 30,
+                                                styles: [{
+                                                    url: "/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outages-cluster.png",
+                                                    height: 38,
+                                                    width: 38,
+                                                    fontFamily: 'DINWeb-Medium,Arial,sans-serif',
+                                                    textColor: 'white',
+                                                    anchorText: [-1, -1]
+                                        }],
+                                                maxZoom: clusterZoomLevel
+                                            });
+
+                                            google.maps.event.addListener(mc, 'clusteringend', function (cluster) {
+                                                var markers = cluster.getMarkers();
+                                                for (var i = 0; i < markers.length; i++) {
+                                                    if (markers[i] == displayedOutage && markers[i].getMap() == null) {
+                                                        displayedOutage.setIcon('/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png');
+                                                        displayedOutage.polygon.setVisible(false);
+                                                        displayedOutage = null;
+                                                        $("#map-panel").hide();
+                                                    }
+                                                }
+                                            });
+
+                                        }); // end of done
+
+                                    function checkClickZoom() {
+                                        var zoom = map.getZoom();
+
+                                        if (zoom <= clusterZoomLevel) {
+                                            zoom = clusterZoomLevel + 1;
+                                        }
+
+                                        map.setZoom(zoom);
+                                    }
+
+                                    function showOutageDetails(outage, fitbounds) {
+                                        if (fitbounds) {
+                                            map.fitBounds(outage.polygon.getBounds());
+                                            checkClickZoom();
+                                            google.maps.event.addListenerOnce(map, 'bounds_changed', function () {
+                                                checkClickZoom();
+                                            });
+                                        }
+
+                                        if (outage == displayedOutage) {
+                                            return;
+                                        }
+
+                                        outage.setIcon('/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage-clicked.png');
+                                        outage.polygon.setVisible(true);
+
+                                        $("#offTime").html(outage.data.dateOff);
+
+                                        if (outage.data.crewStatus != '') {
+                                            $("#crewStatus").html(outage.data.crewStatus);
+                                            $("#crewStatus").parent().show();
+                                        } else {
+                                            $("#crewStatus").parent().hide();
+                                        }
+
+                                        if ((outage.data.crewStatus == 'Not assigned' || outage.data.crewStatus == 'Dispatched' || outage.data.crewStatus == 'Enroute') && outage.data.crewEta != '') {
+                                            $("#crewEta").html(outage.data.crewEta);
+                                            $("#crewEta").parent().show();
+                                        } else {
+                                            $("#crewEta").parent().hide();
+                                        }
+
+                                        if (outage.data.crewStatus == '' || outage.data.crewStatus == 'On-site') {
+                                            $("#onTime").html(outage.data.dateOn);
+                                            $("#onTime").parent().show();
+                                        } else {
+                                            $("#onTime").parent().hide();
+                                        }
+
+                                        $("#cause").html(outage.data.area + '. ' + outage.data.cause);
+                                        $("#affected").html(outage.data.numCustomersOut);
+                                        $("#updated").html(outage.data.lastUpdated);
+                                        $("#map-panel").show();
+
+                                        if (displayedOutage != null) {
+                                            displayedOutage.setIcon('/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage-small.png');
+                                            displayedOutage.polygon.setVisible(true);
+                                        }
+
+                                        displayedOutage = outage;
+                                    }
+
+                                    function addMarkerClick(marker) {
+                                        google.maps.event.addListener(marker, 'click', function () {
+                                            showOutageDetails(marker, true);
+                                        });
+
+                                        google.maps.event.addListener(marker.polygon, 'click', function () {
+                                            showOutageDetails(marker, true);
+                                        });
+                                    }
+
+                                }
+
+                                google.maps.event.addDomListener(window, 'load', initialize);
+                            </script>
+
+                            <!-- OUTAGES MAP -->
+                            <div class="text parbase">
+                                <section class="rte">
+                                    <h4>Report an outage:</h4>
+                                    <p>Call <a href="tel:18887693766">1 888 769 3766</a> or <a href="https://www.bchydro.com/youraccount/outageweb/report.do?src=wep">report online</a>
+                                        <br>
+                                    </p>
+                                </section>
+                            </div>
+                            <div class="outagesmap-wrapper">
+                                <div id="map_canvas" style="height:350px;"></div>
+                                <table style="display:none;" id="map-panel" class="table outages-map table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label>Off since</label>
+                                            </td>
+                                            <td id="offTime"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Crew status</label>
+                                            </td>
+                                            <td id="crewStatus"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Est. arrival</label>
+                                            </td>
+                                            <td id="crewEta"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Est. time on</label>
+                                            </td>
+                                            <td id="onTime"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Details</label>
+                                            </td>
+                                            <td id="cause"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Customers affected</label>
+                                            </td>
+                                            <td id="affected"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Last updated</label>
+                                            </td>
+                                            <td id="updated"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="section find">
+                                <div class="icon-outages-wrapper">
+                                    <a name="outages-icon-anchor"></a>
+                                    <h4>Find outages by:</h4>
+                                    <a id="has-gps" href="/index.html#locate=" class="icon-outages nearme button blue secondary"><i class="fa fa-location-arrow fa-2x"></i>Near me</a>
+                                    <a class="icon-outages mid-icon address button blue secondary"><i class="fa fa-home fa-2x"></i>Address</a>
+                                    <a href="/outage-list.html" class="icon-outages list button blue secondary"><i class="fa fa-list-ul fa-2x"></i>List</a>
+                                </div>
+
+                                <!-- ADDRESS FORM-->
+                                <form class="outages-address form" action="/index.html" method="GET" novalidate="novalidate">
+                                    <div class="form-group">
+                                        <input type="text" class="{required:true, messages:{required:&#39;Please enter address or postal code.&#39;, email:&#39;Please enter adddress or postal code.&#39;}} form-control" name="txtComments" required="" id="AddressOrPostalCode" placeholder="* Enter Address or Postal code">
+                                    </div>
+                                    <button id="map-address-submit" type="submit" class="primary btn btn-default">Find outages</button>
+                                </form>
+                            </div>
+                            <p>* Is this information helpful? <a href="https://iris.insitesystems.com/Pages/survey.aspx?passkey=BRHE&view=start" target="_blank">Please give us some feedback.</a></p>
+                        </div>
+                    </article>
+                </section>
+
+
+                <section id="col2" class="column right">
+                    <div class="right-inner">
+                        <div class="parsys rightPar">
+                            <!-- Tertiary Nav Include -->
+                            <nav id="tertiary_nav" class="tertiary">
+                                <h3><a class="tertiary_nav_handle" href="/safety-outages/power-outages.html">Power Outages</a></h3>
+                                <ul>
+                                    <li class="expanded active">
+                                        <a class="tertiary_nav_handle" href="/safety-outages/power-outages/outage_map.html">Outage map</a>
+                                    </li>
+                                    <li>
+                                        <a class="tertiary_nav_handle" href="/safety-outages/power-outages/outage_list.html">Outage list</a>
+                                    </li>
+                                    <li><a class="tertiary_nav_handle" href="/safety-outages/power-outages/reporting_outage.html">Report an outage</a></li>
+                                    <li><a class="tertiary_nav_handle" href="/safety-outages/power-outages/prepare-for-outages.html">Prepare for outages</a></li>
+                                    <li><a class="tertiary_nav_handle" href="/safety-outages/power-outages/planned-outages.html">Why and how we plan outages</a></li>
+                                    <li><a class="tertiary_nav_handle" href="/safety-outages/power-outages/outages_rss.html">RSS outages feeds</a></li>
+                                </ul>
+                            </nav>
+                            <script>
+                                $(document).ready(function () {
+                                    var params = [];
+                                    var queryStr = '';
+                                    $.each(params, function (index, value) {
+                                        if (index == 0) {
+                                            queryStr += '?' + value;
+                                        } else {
+                                            queryStr += '&' + value;
+                                        }
+                                    });
+                                    $("nav.tertiary a.tertiary_nav_handle").each(function () {
+                                        this.href = this.href + queryStr
+                                    });
+                                });
+                            </script>
+                            <!-- Tertiary Nav Include Ends -->
+                        </div>
+                    </div>
+                    <!-- /end rightside-inner -->
+                </section>
+            </div>
+
+            <!-- Request URL: httpss://www.bchydro.com:80/content/include/cached/framework/footer.validatesession.html -->
+            <link type="text/css" rel="stylesheet" property="stylesheet" href="/etc/designs/BCHydro/clientlibs/BCH-Footer.css" />
+
+            <!-- The Footer -->
+            <footer id="footer" class="footer">
+                <div class="footer-links">
+                    <div class="footer-links-box">
+                        <div class="footer-links-icon icon-billing"></div>
+                        <div class="footer-links-content">
+                            <div class="text parbase">
+                                <section class="rte">
+                                    <h4>Need help with your bill?</h4>
+                                    <p>Get answers to questions about paying your bill, rates, moving your account and more.</p>
+                                </section>
+                            </div>
+
+                            <div class="bch-button"><a class="button secondary inverse" href="/accounts-billing/get-help.html">Get help</a></div>
+
+                        </div>
+                    </div>
+                    <div class="footer-links-box">
+                        <div class="footer-links-icon icon-bug"></div>
+                        <div class="footer-links-content">
+                            <div class="text parbase">
+                                <section class="rte">
+                                    <h4>Working with BC Hydro</h4>
+                                    <p>We rely on a variety of suppliers, contractors &amp; consultants. And we offer rewarding careers, too.
+                                        <br>
+                                    </p>
+                                </section>
+                            </div>
+
+                            <div class="bch-button"><a class="button secondary inverse" href="/careers.html">Learn more</a></div>
+
+                        </div>
+                    </div>
+                    <div class="footer-links-box">
+                        <div class="footer-links-icon icon-contact-us"></div>
+                        <div class="footer-links-content">
+                            <div class="text parbase">
+                                <section class="rte">
+                                    <h4>Get in touch with us</h4>
+                                    <p>Call us to report a power outage in your area or to get information you couldn't find online.</p>
+                                </section>
+                            </div>
+
+                            <div class="bch-button"><a class="button secondary inverse" href="/contact.html">Contact us</a></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="footer-social-copyright">
+                    <div id="footer-social">
+                        <div class="rawHtml social">
+                            <a href="http://www.facebook.com/bchydro" title="Facebook" target="_blank" class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-social"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></a>
+
+                            <a href="http://www.twitter.com/bchydro" title="Twitter" target="_blank" class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-social"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></a>
+
+                            <a href="https://instagram.com/bchydro/?hl=en" title="Instagram" target="_blank" class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-social"></i><i class="fa fa-instagram fa-stack-1x fa-inverse"></i></a>
+
+                            <a href="http://www.youtube.com/bchydro" title="YouTube" target="_blank" class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-social"></i><i class="fa fa-youtube-play fa-stack-1x fa-inverse"></i></a>
+                        </div>
+
+                    </div>
+                    <div id="footer-copyright">
+                        <div class="rawHtml copyright">
+                            Copyright &copy; 2016 BC Hydro. All Rights Reserved | <a href="/siteinfo/legal.html">Legal</a>
+                            <A href="/siteinfo/privacy.html">Privacy Statements</a>
+                        </div>
+
+                        <a class="view-mobile fullsite" href="/index.html?fixZoomMobile=true">View Mobile Site</a>
+                    </div>
+                </div>
+            </footer>
+            <!-- END Footer -->
+
+            <script src="/etc/designs/BCHydro/Javascript/masonry.js"></script>
+            <script src="/etc/designs/BCHydro/Javascript/jquery.placeholder.min.js"></script>
+            <script src="/etc/designs/BCHydro/Javascript/jquery.hoverIntent.js"></script>
+            <script src="/etc/designs/BCHydro/Javascript/bchheader.js"></script>
+            <script src="/etc/designs/BCHydro/Javascript/cookie-utils.js"></script>
+            <script src="/etc/designs/hydro/mobile/clientlibs/global/js/jquery.cookie.js"></script>
+            <script src="/etc/designs/hydro/mobile/clientlibs/global/js/fullsite.js"></script>
+            <script src="/etc/designs/hydro/clientlibs/global/js/webtrends.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                //<![CDATA[
+                var _tag = new WebTrends();
+                _tag.dcsGetId();
+                //]]>
+            </script>
+            <script type="text/javascript">
+                //<![CDATA[
+                _tag.dcsCustom = function () {
+                    // Add custom parameters here.
+                    //_tag.DCSext.param_name=param_value;
+                }
+                _tag.dcsCollect();
+                //]]>
+            </script>
+            <noscript>
+                <div><img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="//www8.bchydro.com/dcs4zxlja10000sxcmlgunoe0_6k3y/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=9.4.0&amp;dcssip=www.bchydro.com" /></div>
+            </noscript>
+
+            <script type="text/javascript" src="/etc/designs/hydro/clientlibs/global/js/webtrends.js"></script>
+            <script type="text/javascript" src="/etc/designs/hydro/mobile/clientlibs/outages/js/outage-local.js"></script>
+            <script type="text/javascript" src="/etc/designs/hydro/mobile/clientlibs/outages/js/outages.js"></script>
+            <script type="text/javascript" src="/etc/designs/BCHydro/Javascript/jquery.tablesorter.min.js"></script>
+    </body>
+
+
+
+</html>

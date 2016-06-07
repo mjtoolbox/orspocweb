@@ -1,4 +1,3 @@
-
 /*
  http://www.JSON.org/json2.js
  2011-01-18
@@ -177,19 +176,19 @@ if (!window.JSON) {
         Date.prototype.toJSON = function (key) {
 
             return isFinite(this.valueOf()) ?
-                this.getUTCFullYear()     + '-' +
-                    f(this.getUTCMonth() + 1) + '-' +
-                    f(this.getUTCDate())      + 'T' +
-                    f(this.getUTCHours())     + ':' +
-                    f(this.getUTCMinutes())   + ':' +
-                    f(this.getUTCSeconds())   + 'Z' : null;
+                this.getUTCFullYear() + '-' +
+                f(this.getUTCMonth() + 1) + '-' +
+                f(this.getUTCDate()) + 'T' +
+                f(this.getUTCHours()) + ':' +
+                f(this.getUTCMinutes()) + ':' +
+                f(this.getUTCSeconds()) + 'Z' : null;
         };
 
-        String.prototype.toJSON      =
-            Number.prototype.toJSON  =
-                Boolean.prototype.toJSON = function (key) {
-                    return this.valueOf();
-                };
+        String.prototype.toJSON =
+            Number.prototype.toJSON =
+            Boolean.prototype.toJSON = function (key) {
+                return this.valueOf();
+            };
     }
 
     var JSON = window.JSON,
@@ -197,13 +196,13 @@ if (!window.JSON) {
         escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
         gap,
         indent,
-        meta = {    // table of character substitutions
+        meta = { // table of character substitutions
             '\b': '\\b',
             '\t': '\\t',
             '\n': '\\n',
             '\f': '\\f',
             '\r': '\\r',
-            '"' : '\\"',
+            '"': '\\"',
             '\\': '\\\\'
         },
         rep;
@@ -211,10 +210,10 @@ if (!window.JSON) {
 
     function quote(string) {
 
-// If the string contains no control characters, no quote characters, and no
-// backslash characters, then we can safely slap some quotes around it.
-// Otherwise we must also replace the offending characters with safe escape
-// sequences.
+        // If the string contains no control characters, no quote characters, and no
+        // backslash characters, then we can safely slap some quotes around it.
+        // Otherwise we must also replace the offending characters with safe escape
+        // sequences.
 
         escapable.lastIndex = 0;
         return escapable.test(string) ? '"' + string.replace(escapable, function (a) {
@@ -227,159 +226,159 @@ if (!window.JSON) {
 
     function str(key, holder) {
 
-// Produce a string from holder[key].
+        // Produce a string from holder[key].
 
-        var i,          // The loop counter.
-            k,          // The member key.
-            v,          // The member value.
+        var i, // The loop counter.
+            k, // The member key.
+            v, // The member value.
             length,
             mind = gap,
             partial,
             value = holder[key];
 
-// If the value has a toJSON method, call it to obtain a replacement value.
+        // If the value has a toJSON method, call it to obtain a replacement value.
 
         if (value && typeof value === 'object' &&
             typeof value.toJSON === 'function') {
             value = value.toJSON(key);
         }
 
-// If we were called with a replacer function, then call the replacer to
-// obtain a replacement value.
+        // If we were called with a replacer function, then call the replacer to
+        // obtain a replacement value.
 
         if (typeof rep === 'function') {
             value = rep.call(holder, key, value);
         }
 
-// What happens next depends on the value's type.
+        // What happens next depends on the value's type.
 
         switch (typeof value) {
-            case 'string':
-                return quote(value);
+        case 'string':
+            return quote(value);
 
-            case 'number':
+        case 'number':
 
-// JSON numbers must be finite. Encode non-finite numbers as null.
+            // JSON numbers must be finite. Encode non-finite numbers as null.
 
-                return isFinite(value) ? String(value) : 'null';
+            return isFinite(value) ? String(value) : 'null';
 
-            case 'boolean':
-            case 'null':
+        case 'boolean':
+        case 'null':
 
-// If the value is a boolean or null, convert it to a string. Note:
-// typeof null does not produce 'null'. The case is included here in
-// the remote chance that this gets fixed someday.
+            // If the value is a boolean or null, convert it to a string. Note:
+            // typeof null does not produce 'null'. The case is included here in
+            // the remote chance that this gets fixed someday.
 
-                return String(value);
+            return String(value);
 
-// If the type is 'object', we might be dealing with an object or an array or
-// null.
+            // If the type is 'object', we might be dealing with an object or an array or
+            // null.
 
-            case 'object':
+        case 'object':
 
-// Due to a specification blunder in ECMAScript, typeof null is 'object',
-// so watch out for that case.
+            // Due to a specification blunder in ECMAScript, typeof null is 'object',
+            // so watch out for that case.
 
-                if (!value) {
-                    return 'null';
+            if (!value) {
+                return 'null';
+            }
+
+            // Make an array to hold the partial results of stringifying this object value.
+
+            gap += indent;
+            partial = [];
+
+            // Is the value an array?
+
+            if (Object.prototype.toString.apply(value) === '[object Array]') {
+
+                // The value is an array. Stringify every element. Use null as a placeholder
+                // for non-JSON values.
+
+                length = value.length;
+                for (i = 0; i < length; i += 1) {
+                    partial[i] = str(i, value) || 'null';
                 }
 
-// Make an array to hold the partial results of stringifying this object value.
+                // Join all of the elements together, separated with commas, and wrap them in
+                // brackets.
 
-                gap += indent;
-                partial = [];
-
-// Is the value an array?
-
-                if (Object.prototype.toString.apply(value) === '[object Array]') {
-
-// The value is an array. Stringify every element. Use null as a placeholder
-// for non-JSON values.
-
-                    length = value.length;
-                    for (i = 0; i < length; i += 1) {
-                        partial[i] = str(i, value) || 'null';
-                    }
-
-// Join all of the elements together, separated with commas, and wrap them in
-// brackets.
-
-                    v = partial.length === 0 ? '[]' : gap ?
-                        '[\n' + gap + partial.join(',\n' + gap) + '\n' + mind + ']' :
-                        '[' + partial.join(',') + ']';
-                    gap = mind;
-                    return v;
-                }
-
-// If the replacer is an array, use it to select the members to be stringified.
-
-                if (rep && typeof rep === 'object') {
-                    length = rep.length;
-                    for (i = 0; i < length; i += 1) {
-                        k = rep[i];
-                        if (typeof k === 'string') {
-                            v = str(k, value);
-                            if (v) {
-                                partial.push(quote(k) + (gap ? ': ' : ':') + v);
-                            }
-                        }
-                    }
-                } else {
-
-// Otherwise, iterate through all of the keys in the object.
-
-                    for (k in value) {
-                        if (Object.hasOwnProperty.call(value, k)) {
-                            v = str(k, value);
-                            if (v) {
-                                partial.push(quote(k) + (gap ? ': ' : ':') + v);
-                            }
-                        }
-                    }
-                }
-
-// Join all of the member texts together, separated with commas,
-// and wrap them in braces.
-
-                v = partial.length === 0 ? '{}' : gap ?
-                    '{\n' + gap + partial.join(',\n' + gap) + '\n' + mind + '}' :
-                    '{' + partial.join(',') + '}';
+                v = partial.length === 0 ? '[]' : gap ?
+                    '[\n' + gap + partial.join(',\n' + gap) + '\n' + mind + ']' :
+                    '[' + partial.join(',') + ']';
                 gap = mind;
                 return v;
+            }
+
+            // If the replacer is an array, use it to select the members to be stringified.
+
+            if (rep && typeof rep === 'object') {
+                length = rep.length;
+                for (i = 0; i < length; i += 1) {
+                    k = rep[i];
+                    if (typeof k === 'string') {
+                        v = str(k, value);
+                        if (v) {
+                            partial.push(quote(k) + (gap ? ': ' : ':') + v);
+                        }
+                    }
+                }
+            } else {
+
+                // Otherwise, iterate through all of the keys in the object.
+
+                for (k in value) {
+                    if (Object.hasOwnProperty.call(value, k)) {
+                        v = str(k, value);
+                        if (v) {
+                            partial.push(quote(k) + (gap ? ': ' : ':') + v);
+                        }
+                    }
+                }
+            }
+
+            // Join all of the member texts together, separated with commas,
+            // and wrap them in braces.
+
+            v = partial.length === 0 ? '{}' : gap ?
+                '{\n' + gap + partial.join(',\n' + gap) + '\n' + mind + '}' :
+                '{' + partial.join(',') + '}';
+            gap = mind;
+            return v;
         }
     }
 
-// If the JSON object does not yet have a stringify method, give it one.
+    // If the JSON object does not yet have a stringify method, give it one.
 
     if (typeof JSON.stringify !== 'function') {
         JSON.stringify = function (value, replacer, space) {
 
-// The stringify method takes a value and an optional replacer, and an optional
-// space parameter, and returns a JSON text. The replacer can be a function
-// that can replace values, or an array of strings that will select the keys.
-// A default replacer method can be provided. Use of the space parameter can
-// produce text that is more easily readable.
+            // The stringify method takes a value and an optional replacer, and an optional
+            // space parameter, and returns a JSON text. The replacer can be a function
+            // that can replace values, or an array of strings that will select the keys.
+            // A default replacer method can be provided. Use of the space parameter can
+            // produce text that is more easily readable.
 
             var i;
             gap = '';
             indent = '';
 
-// If the space parameter is a number, make an indent string containing that
-// many spaces.
+            // If the space parameter is a number, make an indent string containing that
+            // many spaces.
 
             if (typeof space === 'number') {
                 for (i = 0; i < space; i += 1) {
                     indent += ' ';
                 }
 
-// If the space parameter is a string, it will be used as the indent string.
+                // If the space parameter is a string, it will be used as the indent string.
 
             } else if (typeof space === 'string') {
                 indent = space;
             }
 
-// If there is a replacer, it must be a function or an array.
-// Otherwise, throw an error.
+            // If there is a replacer, it must be a function or an array.
+            // Otherwise, throw an error.
 
             rep = replacer;
             if (replacer && typeof replacer !== 'function' &&
@@ -388,28 +387,30 @@ if (!window.JSON) {
                 throw new Error('JSON.stringify');
             }
 
-// Make a fake root object containing our value under the key of ''.
-// Return the result of stringifying the value.
+            // Make a fake root object containing our value under the key of ''.
+            // Return the result of stringifying the value.
 
-            return str('', {'': value});
+            return str('', {
+                '': value
+            });
         };
     }
 
 
-// If the JSON object does not yet have a parse method, give it one.
+    // If the JSON object does not yet have a parse method, give it one.
 
     if (typeof JSON.parse !== 'function') {
         JSON.parse = function (text, reviver) {
 
-// The parse method takes a text and an optional reviver function, and returns
-// a JavaScript value if the text is a valid JSON text.
+            // The parse method takes a text and an optional reviver function, and returns
+            // a JavaScript value if the text is a valid JSON text.
 
             var j;
 
             function walk(holder, key) {
 
-// The walk method is used to recursively walk the resulting structure so
-// that modifications can be made.
+                // The walk method is used to recursively walk the resulting structure so
+                // that modifications can be made.
 
                 var k, v, value = holder[key];
                 if (value && typeof value === 'object') {
@@ -428,9 +429,9 @@ if (!window.JSON) {
             }
 
 
-// Parsing happens in four stages. In the first stage, we replace certain
-// Unicode characters with escape sequences. JavaScript handles many characters
-// incorrectly, either silently deleting them, or treating them as line endings.
+            // Parsing happens in four stages. In the first stage, we replace certain
+            // Unicode characters with escape sequences. JavaScript handles many characters
+            // incorrectly, either silently deleting them, or treating them as line endings.
 
             text = String(text);
             cx.lastIndex = 0;
@@ -441,39 +442,41 @@ if (!window.JSON) {
                 });
             }
 
-// In the second stage, we run the text against regular expressions that look
-// for non-JSON patterns. We are especially concerned with '()' and 'new'
-// because they can cause invocation, and '=' because it can cause mutation.
-// But just to be safe, we want to reject all unexpected forms.
+            // In the second stage, we run the text against regular expressions that look
+            // for non-JSON patterns. We are especially concerned with '()' and 'new'
+            // because they can cause invocation, and '=' because it can cause mutation.
+            // But just to be safe, we want to reject all unexpected forms.
 
-// We split the second stage into 4 regexp operations in order to work around
-// crippling inefficiencies in IE's and Safari's regexp engines. First we
-// replace the JSON backslash pairs with '@' (a non-JSON character). Second, we
-// replace all simple value tokens with ']' characters. Third, we delete all
-// open brackets that follow a colon or comma or that begin the text. Finally,
-// we look to see that the remaining characters are only whitespace or ']' or
-// ',' or ':' or '{' or '}'. If that is so, then the text is safe for eval.
+            // We split the second stage into 4 regexp operations in order to work around
+            // crippling inefficiencies in IE's and Safari's regexp engines. First we
+            // replace the JSON backslash pairs with '@' (a non-JSON character). Second, we
+            // replace all simple value tokens with ']' characters. Third, we delete all
+            // open brackets that follow a colon or comma or that begin the text. Finally,
+            // we look to see that the remaining characters are only whitespace or ']' or
+            // ',' or ':' or '{' or '}'. If that is so, then the text is safe for eval.
 
             if (/^[\],:{}\s]*$/
                 .test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@')
                     .replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']')
                     .replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
 
-// In the third stage we use the eval function to compile the text into a
-// JavaScript structure. The '{' operator is subject to a syntactic ambiguity
-// in JavaScript: it can begin a block or an object literal. We wrap the text
-// in parens to eliminate the ambiguity.
+                // In the third stage we use the eval function to compile the text into a
+                // JavaScript structure. The '{' operator is subject to a syntactic ambiguity
+                // in JavaScript: it can begin a block or an object literal. We wrap the text
+                // in parens to eliminate the ambiguity.
 
                 j = eval('(' + text + ')');
 
-// In the optional fourth stage, we recursively walk the new structure, passing
-// each name/value pair to a reviver function for possible transformation.
+                // In the optional fourth stage, we recursively walk the new structure, passing
+                // each name/value pair to a reviver function for possible transformation.
 
                 return typeof reviver === 'function' ?
-                    walk({'': j}, '') : j;
+                    walk({
+                        '': j
+                    }, '') : j;
             }
 
-// If the text is not JSON parseable, then a SyntaxError is thrown.
+            // If the text is not JSON parseable, then a SyntaxError is thrown.
 
             throw new SyntaxError('JSON.parse');
         };
@@ -497,28 +500,28 @@ if (!window.JSON) {
  * For usage, please visit creator site http://benalman.com/projects/jquery-hashchange-plugin/
  */
 
-(function($,window,undefined){
+(function ($, window, undefined) {
     '$:nomunge'; // Used by YUI compressor.
 
     // Reused string.
     var str_hashchange = 'hashchange',
 
-    // Method / object references.
+        // Method / object references.
         doc = document,
         fake_onhashchange,
         special = $.event.special,
 
-    // Does the browser support window.onhashchange? Note that IE8 running in
-    // IE7 compatibility mode reports true for 'onhashchange' in window, even
-    // though the event isn't supported, so also test document.documentMode.
+        // Does the browser support window.onhashchange? Note that IE8 running in
+        // IE7 compatibility mode reports true for 'onhashchange' in window, even
+        // though the event isn't supported, so also test document.documentMode.
         doc_mode = doc.documentMode,
-        supports_onhashchange = 'on' + str_hashchange in window && ( doc_mode === undefined || doc_mode > 7 );
+        supports_onhashchange = 'on' + str_hashchange in window && (doc_mode === undefined || doc_mode > 7);
 
     // Get location.hash (or what you'd expect location.hash to be) sans any
     // leading #. Thanks for making this necessary, Firefox!
-    function get_fragment( url ) {
+    function get_fragment(url) {
         url = url || location.href;
-        return '#' + url.replace( /^[^#]*#?(.*)$/, '$1' );
+        return '#' + url.replace(/^[^#]*#?(.*)$/, '$1');
     };
 
     // Method: jQuery.fn.hashchange
@@ -547,8 +550,8 @@ if (!window.JSON) {
 
     // Allow the "shortcut" format $(elem).hashchange( fn ) for binding and
     // $(elem).hashchange() for triggering, like jQuery does for built-in events.
-    $.fn[ str_hashchange ] = function( fn ) {
-        return fn ? this.bind( str_hashchange, fn ) : this.trigger( str_hashchange );
+    $.fn[str_hashchange] = function (fn) {
+        return fn ? this.bind(str_hashchange, fn) : this.trigger(str_hashchange);
     };
 
     // Property: jQuery.fn.hashchange.delay
@@ -586,7 +589,7 @@ if (!window.JSON) {
     //
     // jQuery.fn.hashchange.src = 'path/to/file.html';
 
-    $.fn[ str_hashchange ].delay = 50;
+    $.fn[str_hashchange].delay = 50;
     /*
      $.fn[ str_hashchange ].domain = null;
      $.fn[ str_hashchange ].src = null;
@@ -637,26 +640,30 @@ if (!window.JSON) {
 
     // Override existing $.event.special.hashchange methods (allowing this plugin
     // to be defined after jQuery BBQ in BBQ's source code).
-    special[ str_hashchange ] = $.extend( special[ str_hashchange ], {
+    special[str_hashchange] = $.extend(special[str_hashchange], {
 
         // Called only when the first 'hashchange' event is bound to window.
-        setup: function() {
+        setup: function () {
             // If window.onhashchange is supported natively, there's nothing to do..
-            if ( supports_onhashchange ) { return false; }
+            if (supports_onhashchange) {
+                return false;
+            }
 
             // Otherwise, we need to create our own. And we don't want to call this
             // until the user binds to the event, just in case they never do, since it
             // will create a polling loop and possibly even a hidden Iframe.
-            $( fake_onhashchange.start );
+            $(fake_onhashchange.start);
         },
 
         // Called only when the last 'hashchange' event is unbound from window.
-        teardown: function() {
+        teardown: function () {
             // If window.onhashchange is supported natively, there's nothing to do..
-            if ( supports_onhashchange ) { return false; }
+            if (supports_onhashchange) {
+                return false;
+            }
 
             // Otherwise, we need to stop ours (if possible).
-            $( fake_onhashchange.stop );
+            $(fake_onhashchange.stop);
         }
 
     });
@@ -665,25 +672,27 @@ if (!window.JSON) {
     // event for browsers that don't natively support it, including creating a
     // polling loop to watch for hash changes and in IE 6/7 creating a hidden
     // Iframe to enable back and forward.
-    fake_onhashchange = (function(){
+    fake_onhashchange = (function () {
         var self = {},
             timeout_id,
 
-        // Remember the initial hash so it doesn't get triggered immediately.
+            // Remember the initial hash so it doesn't get triggered immediately.
             last_hash = get_fragment(),
 
-            fn_retval = function(val){ return val; },
+            fn_retval = function (val) {
+                return val;
+            },
             history_set = fn_retval,
             history_get = fn_retval;
 
         // Start the polling loop.
-        self.start = function() {
+        self.start = function () {
             timeout_id || poll();
         };
 
         // Stop the polling loop.
-        self.stop = function() {
-            timeout_id && clearTimeout( timeout_id );
+        self.stop = function () {
+            timeout_id && clearTimeout(timeout_id);
             timeout_id = undefined;
         };
 
@@ -692,24 +701,24 @@ if (!window.JSON) {
         // window when necessary.
         function poll() {
             var hash = get_fragment(),
-                history_hash = history_get( last_hash );
+                history_hash = history_get(last_hash);
 
-            if ( hash !== last_hash ) {
-                history_set( last_hash = hash, history_hash );
+            if (hash !== last_hash) {
+                history_set(last_hash = hash, history_hash);
 
-                $(window).trigger( str_hashchange );
+                $(window).trigger(str_hashchange);
 
-            } else if ( history_hash !== last_hash ) {
-                location.href = location.href.replace( /#.*/, '' ) + history_hash;
+            } else if (history_hash !== last_hash) {
+                location.href = location.href.replace(/#.*/, '') + history_hash;
             }
 
-            timeout_id = setTimeout( poll, $.fn[ str_hashchange ].delay );
+            timeout_id = setTimeout(poll, $.fn[str_hashchange].delay);
         };
 
         // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
         // vvvvvvvvvvvvvvvvvvv REMOVE IF NOT SUPPORTING IE6/7/8 vvvvvvvvvvvvvvvvvvv
         // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-        var ie = (function(){
+        var ie = (function () {
 
             var undef,
                 v = 3,
@@ -718,13 +727,13 @@ if (!window.JSON) {
 
             while (
                 div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
-                    all[0]
-                );
+                all[0]
+            );
 
             return v > 4 ? v : undef;
 
         }());
-        ie && !supports_onhashchange && (function(){
+        ie && !supports_onhashchange && (function () {
             // Not only do IE6/7 need the "magical" Iframe treatment, but so does IE8
             // when running in "IE7 compatibility" mode.
 
@@ -733,39 +742,39 @@ if (!window.JSON) {
 
             // When the event is bound and polling starts in IE 6/7, create a hidden
             // Iframe for history handling.
-            self.start = function(){
-                if ( !iframe ) {
-                    iframe_src = $.fn[ str_hashchange ].src;
+            self.start = function () {
+                if (!iframe) {
+                    iframe_src = $.fn[str_hashchange].src;
                     iframe_src = iframe_src && iframe_src + get_fragment();
 
                     // Create hidden Iframe. Attempt to make Iframe as hidden as possible
                     // by using techniques from http://www.paciellogroup.com/blog/?p=604.
                     iframe = $('<iframe tabindex="-1" title="empty"/>').hide()
 
-                        // When Iframe has completely loaded, initialize the history and
-                        // start polling.
-                        .one( 'load', function(){
-                            iframe_src || history_set( get_fragment() );
-                            poll();
-                        })
+                    // When Iframe has completely loaded, initialize the history and
+                    // start polling.
+                    .one('load', function () {
+                        iframe_src || history_set(get_fragment());
+                        poll();
+                    })
 
-                        // Load Iframe src if specified, otherwise nothing.
-                        .attr( 'src', iframe_src || 'javascript:0' )
+                    // Load Iframe src if specified, otherwise nothing.
+                    .attr('src', iframe_src || 'javascript:0')
 
-                        // Append Iframe after the end of the body to prevent unnecessary
-                        // initial page scrolling (yes, this works).
-                        .insertAfter( 'body' )[0].contentWindow;
+                    // Append Iframe after the end of the body to prevent unnecessary
+                    // initial page scrolling (yes, this works).
+                    .insertAfter('body')[0].contentWindow;
 
                     // Whenever `document.title` changes, update the Iframe's title to
                     // prettify the back/next history menu entries. Since IE sometimes
                     // errors with "Unspecified error" the very first time this is set
                     // (yes, very useful) wrap this with a try/catch block.
-                    doc.onpropertychange = function(){
+                    doc.onpropertychange = function () {
                         try {
-                            if ( event.propertyName === 'title' ) {
+                            if (event.propertyName === 'title') {
                                 iframe.document.title = doc.title;
                             }
-                        } catch(e) {}
+                        } catch (e) {}
                     };
 
                 }
@@ -777,18 +786,18 @@ if (!window.JSON) {
             self.stop = fn_retval;
 
             // Get history by looking at the hidden Iframe's location.hash.
-            history_get = function() {
-                return get_fragment( iframe.location.href );
+            history_get = function () {
+                return get_fragment(iframe.location.href);
             };
 
             // Set a new history item by opening and then closing the Iframe
             // document, *then* setting its location.hash. If document.domain has
             // been set, update that as well.
-            history_set = function( hash, history_hash ) {
+            history_set = function (hash, history_hash) {
                 var iframe_doc = iframe.document,
-                    domain = $.fn[ str_hashchange ].domain;
+                    domain = $.fn[str_hashchange].domain;
 
-                if ( hash !== history_hash ) {
+                if (hash !== history_hash) {
                     // Update Iframe with any initial `document.title` that might be set.
                     iframe_doc.title = doc.title;
 
@@ -797,7 +806,7 @@ if (!window.JSON) {
                     iframe_doc.open();
 
                     // Set document.domain for the Iframe document as well, if necessary.
-                    domain && iframe_doc.write( '<script>document.domain="' + domain + '"</script>' );
+                    domain && iframe_doc.write('<script>document.domain="' + domain + '"</script>');
 
                     iframe_doc.close();
 
@@ -814,7 +823,7 @@ if (!window.JSON) {
         return self;
     })();
 
-})(jQuery,this);
+})(jQuery, this);
 /**
  * @name MarkerClustererPlus for Google Maps V3
  * @version 2.1.1 [November 4, 2013]
@@ -938,8 +947,7 @@ ClusterIcon.prototype.onAdd = function () {
     this.div_.className = this.className_;
     if (this.visible_) {
         this.show();
-    }
-    else{
+    } else {
         this.hide();
     }
 
@@ -1030,8 +1038,8 @@ ClusterIcon.prototype.onRemove = function () {
         var par = this.div_.parentNode;
         if (this.div_.innerHTML)
             par.removeChild(this.div_);
-        if (!par.hasChildNodes()){
-          //  par.innerHTML = "";
+        if (!par.hasChildNodes()) {
+            //  par.innerHTML = "";
         }
         this.div_ = null;
     }
@@ -2239,7 +2247,7 @@ MarkerClusterer.prototype.distanceBetweenPoints_ = function (p1, p2) {
     var dLon = (p2.lng() - p1.lng()) * Math.PI / 180;
     var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
         Math.cos(p1.lat() * Math.PI / 180) * Math.cos(p2.lat() * Math.PI / 180) *
-            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c;
     return d;
@@ -2465,15 +2473,17 @@ if (typeof String.prototype.trim !== 'function') {
      * IE hack since trim() doesn't exist in all browsers
      * @return {string} The string with removed whitespace
      */
-    String.prototype.trim = function() {
+    String.prototype.trim = function () {
         return this.replace(/^\s+|\s+$/g, '');
     }
 }
 
-var gotoMapLocation = function() {
+var gotoMapLocation = function () {
     var geocoder = new google.maps.Geocoder();
     if ($("#AddressOrPostalCode").val()) {
-        geocoder.geocode( { 'address': $("#AddressOrPostalCode").val() +', British Columbia, Canada'}, function(results, status) {
+        geocoder.geocode({
+            'address': $("#AddressOrPostalCode").val() + ', British Columbia, Canada'
+        }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
 
                 map.setCenter(new google.maps.LatLng(54.40986, -125.092773));
@@ -2481,7 +2491,7 @@ var gotoMapLocation = function() {
                     map.setZoom(4);
                 }
 
-                for (var i=0; i<results[0].address_components.length; i++) {
+                for (var i = 0; i < results[0].address_components.length; i++) {
                     if (results[0].address_components[i].types[0] == "administrative_area_level_1") {
                         // this is the object you are looking for
                         if (results[0].address_components[i].long_name == "British Columbia") {
@@ -2491,13 +2501,13 @@ var gotoMapLocation = function() {
                     }
                 }
 
-                if ($("#AddressOrPostalCode:focus").length){
+                if ($("#AddressOrPostalCode:focus").length) {
                     $("#AddressOrPostalCode").blur();
                 }
 
                 $('.outages-address').removeClass('open');
                 $('html, body').animate({
-                    scrollTop: $("#map_canvas").position().top -50
+                    scrollTop: $("#map_canvas").position().top - 50
                 }, 250);
             } else {
                 alert('Geocode was not successful for the following reason: ' + status);
@@ -2506,46 +2516,42 @@ var gotoMapLocation = function() {
     }
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
     var containsMap = $("#map_canvas").length === 1;
     var list = $("#current").length === 1;
-    if(navigator.geolocation) {
-            $("#has-gps").click(function(e){
-                e.preventDefault();
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    if (containsMap){
+    if (navigator.geolocation) {
+        $("#has-gps").click(function (e) {
+            e.preventDefault();
+            navigator.geolocation.getCurrentPosition(function (position) {
+                if (containsMap) {
 
-                        var initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                    var initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                     map.setCenter(initialLocation);
                     //weird bug with setting zoom level
-                    if(map.getZoom() != 12) {
-                    	map.setZoom(12);
+                    if (map.getZoom() != 12) {
+                        map.setZoom(12);
                     }
                     $('.outages-address').removeClass('open');
                     $('html, body').animate({
-                        scrollTop:  $("#map_canvas").offset().top -50
+                        scrollTop: $("#map_canvas").offset().top - 50
                     }, 250);
-                    }
-                    else{
-                        window.location = $("#has-gps").attr("href") + encodeURIComponent(position.coords.latitude +"_"+position.coords.longitude);
-                    }
-                }, function() {
-                	window.location = $("#has-gps").attr("href");
-                });
-
+                } else {
+                    window.location = $("#has-gps").attr("href") + encodeURIComponent(position.coords.latitude + "_" + position.coords.longitude);
+                }
+            }, function () {
+                window.location = $("#has-gps").attr("href");
             });
-        }
 
-
-    else{
+        });
+    } else {
         $("#has-gps").parent().hide();
     }
 
 
-    $('.icon-outages.address').click(function() {
+    $('.icon-outages.address').click(function () {
         $(this).toggleClass('active');
         $('.outages-address').toggleClass('open');
-        if ($(".outages-address").is(":visible")){
+        if ($(".outages-address").is(":visible")) {
             if (!(/Edge\/|Trident\/|MSIE /.test(window.navigator.userAgent))) {
                 $("#AddressOrPostalCode").focus();
             }
@@ -2576,47 +2582,46 @@ $(document).ready(function(){
         }
     }
 
-    $(".form-control").change(function(){
+    $(".form-control").change(function () {
         doFilter($(this).parents(".outage-list-details"));
     });
 
-    if (list){
+    if (list) {
 
 
-        function switchTabs(){
+        function switchTabs() {
             var hash = location.hash || "#current";
             var tab = hash;
             var innerContent = null;
-            if (tab.indexOf('-') != -1){
+            if (tab.indexOf('-') != -1) {
                 innerContent = hash;
-                tab = tab.substr(0,tab.indexOf('-'))
+                tab = tab.substr(0, tab.indexOf('-'))
             }
             var activeTab = $('[href=' + tab + ']');
             if (activeTab.length) {
                 activeTab.tab('show');
             }
-            if (innerContent != null && $(innerContent).length){
+            if (innerContent != null && $(innerContent).length) {
                 $(tab).children(".region-list").hide();
                 $(tab).children(".outage-list-details").removeClass("show");
                 $(innerContent).addClass("show");
                 $('html, body').animate({
                     scrollTop: 0
                 }, 250);
-            }
-            else{
+            } else {
                 $(tab).children(".region-list").show();
                 $(tab).children(".outage-list-details").removeClass("show");
 
             }
         }
-        $('a[data-toggle="tab"]').on('click', function(e) {
+        $('a[data-toggle="tab"]').on('click', function (e) {
             location.hash = $(this).attr('href').substr(1);
             //e.preventDefault();
             //$($(this).attr('href')).children(".region-list").addClass("show");
             //$($(this).attr('href')).children(".outage-list-details").removeClass("show");
         });
 
-        $(window).hashchange( function(){
+        $(window).hashchange(function () {
             // Alerts every time the hash changes!
             switchTabs();
         });
@@ -2630,11 +2635,10 @@ $(document).ready(function(){
 
     $(".form").validate({
         errorContainer: $(".form div.error"),
-        submitHandler : function(){
-            if (containsMap){
-               gotoMapLocation();
-            }
-            else{
+        submitHandler: function () {
+            if (containsMap) {
+                gotoMapLocation();
+            } else {
                 var href = $("#map-address-submit").parent("form").attr("action");
                 window.location = href + "#address=" + encodeURIComponent($("#AddressOrPostalCode").val());
             }
@@ -2643,4 +2647,3 @@ $(document).ready(function(){
 
 
 });
-
