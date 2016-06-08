@@ -547,7 +547,7 @@
                                     // Dynamic data load from JSON
                                     $.ajax({
                                             type: "GET",
-                                            url: 'http://localhost:9988/markers',
+                                            url: 'https://orspocstorage.blob.core.windows.net/jsoncontainer/ORS.json',
                                             dataType: 'json',
                                         })
                                         .done(function (data) {
