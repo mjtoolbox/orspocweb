@@ -547,12 +547,13 @@
                                     // Dynamic data load from JSON
                                     $.ajax({
                                             type: "GET",
-                                            url: 'https://orspocstorage.blob.core.windows.net/jsoncontainer/ORS.json',
-                                            dataType: 'jsonp'
+                                            url: 'http://orspocstorage.blob.core.windows.net/jsoncontainer/ORS.json',
+                                            dataType: 'json'
                                         })
                                         .done(function (data) {
                                             var markerData = JSON.parse(data);
-                                            console.log(markerData.markers[0].position.lat + " " + markerData.markers[0].position.lng);
+                                            console.log(markerData.array[0].position.lat + " " + markerData.array[0].position.lng);
+
 
                                             // Loop through markers array and parse JSON to 
                                             for (var i = 0; i < markerData.markers.length; i++) {
