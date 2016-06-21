@@ -551,19 +551,17 @@
                                             dataType: 'json'
                                         })
                                         .done(function (data) {
-                                            var markerData = [];
-                                            markerData = data.makers;
-                                            console.log(markerData[0].position.lat + " " + markerData[0].position.lng);
+                                            console.log(data.markers[0].position.lat + " " + data.markers[0].position.lng);
                                             //console.log(data.markers[0].title);
 
                                             // Loop through markers array and parse JSON to 
-                                            for (var i = 0; i < markerData.markers.length; i++) {
+                                            for (var i = 0; i < data.markers.length; i++) {
 
-                                                var markerTitle = markerData.markers[i].title;
+                                                var markerTitle = data.markers[i].title;
 
                                                 // marker object
                                                 marker = new google.maps.Marker({
-                                                    position: new google.maps.LatLng(markerData.markers[i].position.lat, markerData.markers[i].position.lng),
+                                                    position: new google.maps.LatLng(data.markers[i].position.lat, data.markers[i].position.lng),
                                                     map: map,
                                                     title: markerTitle,
                                                     icon: '/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
@@ -571,8 +569,8 @@
 
                                                 // marker polygon
                                                 var pathArray = [];
-                                                for (var j = 0; j < markerData.markers[i].polygon.length; j++) {
-                                                    pathArray.push(new google.maps.LatLng(markerData.markers[i].polygon[j].lat, markerData.markers[i].polygon[j].lng));
+                                                for (var j = 0; j < data.markers[i].polygon.length; j++) {
+                                                    pathArray.push(new google.maps.LatLng(data.markers[i].polygon[j].lat, data.markers[i].polygon[j].lng));
                                                 }
 
                                                 marker.polygon = new google.maps.Polygon({
@@ -590,15 +588,15 @@
 
                                                 // marker data
                                                 marker.data = {
-                                                    id: markerData.markers[i].data.id,
-                                                    dateOff: markerData.markers[i].data.dateOff,
-                                                    crewStatus: markerData.markers[i].data.crewStatus,
-                                                    crewEta: markerData.markers[i].data.crewEta,
-                                                    dateOn: markerData.markers[i].data.dateOn,
-                                                    area: markerData.markers[i].data.area,
-                                                    cause: markerData.markers[i].data.cause,
-                                                    numCustomersOut: markerData.markers[i].data.numCustomersOut,
-                                                    lastUpdated: markerData.markers[i].data.lastUpdated
+                                                    id: data.markers[i].data.id,
+                                                    dateOff: data.markers[i].data.dateOff,
+                                                    crewStatus: data.markers[i].data.crewStatus,
+                                                    crewEta: data.markers[i].data.crewEta,
+                                                    dateOn: data.markers[i].data.dateOn,
+                                                    area: data.markers[i].data.area,
+                                                    cause: data.markers[i].data.cause,
+                                                    numCustomersOut: data.markers[i].data.numCustomersOut,
+                                                    lastUpdated: data.markers[i].data.lastUpdated
                                                 };
 
 
