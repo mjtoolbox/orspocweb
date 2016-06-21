@@ -551,9 +551,10 @@
                                             dataType: 'json'
                                         })
                                         .done(function (data) {
-                                            //var markerData = data.makers;
-                                            //console.log(markerData.makers[0].position.lat + " " + markerData.markers[0].position.lng);
-                                            console.log(data.markers[0].title);
+                                            var markerData = [];
+                                            markerData = data.makers;
+                                            console.log(markerData[0].position.lat + " " + markerData[0].position.lng);
+                                            //console.log(data.markers[0].title);
 
                                             // Loop through markers array and parse JSON to 
                                             for (var i = 0; i < markerData.markers.length; i++) {
