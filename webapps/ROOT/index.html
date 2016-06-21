@@ -548,11 +548,11 @@
                                     $.ajax({
                                             type: "GET",
                                             url: 'http://orspocstorage.blob.core.windows.net/jsoncontainer/ORS.json',
-                                            dataType: 'json',
+                                            dataType: 'json'
                                         })
                                         .done(function (data) {
-                                            var markerArray = data;
-                                            console.log(markerArray[0].position.lat + " " + markerArray[0].position.lng);
+                                            var markerData = JSON.parse(data);
+                                            console.log(markerData.markerArray[0].position.lat + " " + markerData.markerArray[0].position.lng);
 
                                             // Loop through markers array and parse JSON to 
                                             for (var i = 0; i < markerArray.length; i++) {
