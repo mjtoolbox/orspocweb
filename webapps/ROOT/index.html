@@ -547,21 +547,21 @@
                                     // Dynamic data load from JSON
                                     $.ajax({
                                             type: "GET",
-                                            url: 'http://orspocstorage.blob.core.windows.net/jsoncontainer/ORS.json',
-                                            dataType: 'json',
+                                            url: 'https://orspocstorage.blob.core.windows.net/jsoncontainer/ORS.json',
+                                            dataType: 'jsonp'
                                         })
                                         .done(function (data) {
-                                            var markerArray = data;
-                                            console.log(markerArray[0].position.lat + " " + markerArray[0].position.lng);
+                                            var markerData = JSON.parse(data);
+                                            console.log(markerData.markers[0].position.lat + " " + markerData.markers[0].position.lng);
 
                                             // Loop through markers array and parse JSON to 
-                                            for (var i = 0; i < markerArray.length; i++) {
+                                            for (var i = 0; i < markerData.markers.length; i++) {
 
-                                                var markerTitle = markerArray[i].title;
+                                                var markerTitle = markerData.markers[i].title;
 
                                                 // marker object
                                                 marker = new google.maps.Marker({
-                                                    position: new google.maps.LatLng(markerArray[i].position.lat, markerArray[i].position.lng),
+                                                    position: new google.maps.LatLng(markerData.markers[i].position.lat, markerData.markers[i].position.lng),
                                                     map: map,
                                                     title: markerTitle,
                                                     icon: '/etc/designs/hydro/mobile/clientlibs/outages/images/icon-outage.png'
@@ -569,8 +569,8 @@
 
                                                 // marker polygon
                                                 var pathArray = [];
-                                                for (var j = 0; j < markerArray[i].polygon.length; j++) {
-                                                    pathArray.push(new google.maps.LatLng(markerArray[i].polygon[j].lat, markerArray[i].polygon[j].lng));
+                                                for (var j = 0; j < markerData.markers[i].polygon.length; j++) {
+                                                    pathArray.push(new google.maps.LatLng(markerData.markers[i].polygon[j].lat, markerData.markers[i].polygon[j].lng));
                                                 }
 
                                                 marker.polygon = new google.maps.Polygon({
@@ -588,15 +588,15 @@
 
                                                 // marker data
                                                 marker.data = {
-                                                    id: markerArray[i].data.id,
-                                                    dateOff: markerArray[i].data.dateOff,
-                                                    crewStatus: markerArray[i].data.crewStatus,
-                                                    crewEta: markerArray[i].data.crewEta,
-                                                    dateOn: markerArray[i].data.dateOn,
-                                                    area: markerArray[i].data.area,
-                                                    cause: markerArray[i].data.cause,
-                                                    numCustomersOut: markerArray[i].data.numCustomersOut,
-                                                    lastUpdated: markerArray[i].data.lastUpdated
+                                                    id: markerData.markers[i].data.id,
+                                                    dateOff: markerData.markers[i].data.dateOff,
+                                                    crewStatus: markerData.markers[i].data.crewStatus,
+                                                    crewEta: markerData.markers[i].data.crewEta,
+                                                    dateOn: markerData.markers[i].data.dateOn,
+                                                    area: markerData.markers[i].data.area,
+                                                    cause: markerData.markers[i].data.cause,
+                                                    numCustomersOut: markerData.markers[i].data.numCustomersOut,
+                                                    lastUpdated: markerData.markers[i].data.lastUpdated
                                                 };
 
 
