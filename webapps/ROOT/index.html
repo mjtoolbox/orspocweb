@@ -547,7 +547,8 @@
                                     // Dynamic data load from JSON
                                     $.ajax({
                                             type: "GET",
-                                            url: 'http://orspocstorage.blob.core.windows.net/jsoncontainer/ORS.json',
+                                            //url: 'http://orspocstorage.blob.core.windows.net/jsoncontainer/ORS.json',
+                                            url: 'http://orspocws.azurewebsites.net/orspoc/webservice',
                                             dataType: 'json'
                                         })
                                         .done(function (data) {
